@@ -1,0 +1,40 @@
+const fakeCardInfo = [
+  {
+    id: 1,
+    name: "Property Name",
+    address: "Address",
+    location: "Location",
+    bed: "3",
+    bath: "4",
+    feature: "feature",
+    details: "details",
+    price: 1000000,
+    img: "/images/Foyer-Mob 1.png",
+  },
+  {
+    id: 2,
+    name: "Property Name",
+    address: "Address",
+    location: "Location",
+    bed: "3",
+    bath: "4",
+    feature: "feature",
+    details: "details",
+    price: 2000000,
+    img: "/images/Foyer-Mob 1.png",
+  },
+  {
+    id: 3,
+    name: "Property Name",
+    address: "Address",
+    location: "Location",
+    bed: "3",
+    bath: "4",
+    feature: "feature",
+    details: "details",
+    price: 3000000,
+    img: "/images/Foyer-Mob 1.png",
+  },
+];
+
+export default fakeCardInfo;
