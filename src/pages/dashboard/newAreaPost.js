@@ -3,15 +3,15 @@ import { Dropdown, Form } from "react-bootstrap";
 import PublishIcon from "@material-ui/icons/Publish";
 import Swal from "sweetalert2";
 import ArrowRightIcon from "@material-ui/icons/ArrowRight";
-import { EditorState } from "draft-js";
+// import { EditorState } from "draft-js";
 import dynamic from "next/dynamic";
 
-const Editor = dynamic(
-  () => {
-    return import("react-draft-wysiwyg").then((mod) => mod.Editor);
-  },
-  { loading: () => null, ssr: false }
-);
+// const Editor = dynamic(
+//   () => {
+//     return import("react-draft-wysiwyg").then((mod) => mod.Editor);
+//   },
+//   { loading: () => null, ssr: false }
+// );
 
 const NewAreaPost = () => {
   const [visibilities, setVisibilities] = useState(false);
@@ -234,7 +234,7 @@ const NewAreaPost = () => {
                 ></Form.Control>
               </Form.Group>
               <div className="d-flex">
-                <Editor
+                {/* <Editor
                   // editorState={editState}
                   toolbarClassName="toolbarClassName"
                   wrapperClassName="wrapperClassName"
@@ -251,7 +251,7 @@ const NewAreaPost = () => {
                       alt: { present: true, mandatory: true },
                     },
                   }}
-                />
+                /> */}
               </div>
               <div className="my-5">
                 <div>
