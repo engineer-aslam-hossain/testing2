@@ -16,12 +16,12 @@
 html {
   scroll-behavior: smooth;
 }
-/* * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "PT Sans", sans-serif;
-} */
+}
 
 main {
   margin-top: 7rem;
@@ -798,8 +798,7 @@ section.socailMedia {
 }
 
 @media (min-width: 768px) {
-  .facebook,
-  iframe {
+  .socialMedia {
     width: 100% !important;
   }
   .sectionTitle .Title {

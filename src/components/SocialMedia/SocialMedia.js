@@ -20,7 +20,7 @@ const SocialMedia = ({ posts }) => {
                   <img src="images/icon_fb.svg" alt="" /> Facebook
                 </h5>
                 <div
-                  className="facebook mx-auto"
+                  className="socialMedia mx-auto"
                   style={{
                     background: "white",
                     width: "340px",
@@ -44,7 +44,7 @@ const SocialMedia = ({ posts }) => {
                   <img src="images/icon_twitter.svg" alt="" /> Twitter
                 </h5>
                 <div
-                  className="facebook mx-auto"
+                  className="socialMedia mx-auto"
                   style={{
                     background: "white",
                     width: "340px",
@@ -63,7 +63,7 @@ const SocialMedia = ({ posts }) => {
                   <img src="images/icon_insta.svg" alt="" /> Instagram
                 </h5>
                 <div
-                  className="facebook mx-auto"
+                  className="socialMedia mx-auto"
                   style={{
                     background: "white",
                     width: "340px",
