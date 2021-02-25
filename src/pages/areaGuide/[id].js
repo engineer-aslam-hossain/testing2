@@ -2,10 +2,10 @@ import Custom404 from "../404";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
-const MyEditor = dynamic(
-  () => import("../../components/EditorJsTools/EditorJsTools"),
-  { ssr: false }
-);
+// const MyEditor = dynamic(
+//   () => import("../../components/EditorJsTools/EditorJsTools"),
+//   { ssr: false }
+// );
 const SingleAreaRoute = ({ data }) => {
   const { address, content, district, img } = data.data;
   const { about, comunity, properties, title, contentImg } = content;
