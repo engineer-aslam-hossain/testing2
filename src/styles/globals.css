@@ -2219,3 +2219,8 @@ nav.p-0.navbar.navbar-expand-lg.navbar-light {
   background-color: #e7e7e7;
   top: -1rem;
 }
+
+body.plugin {
+  display: flex;
+  justify-content: flex-end;
+}
