@@ -3,7 +3,6 @@ import fakeSocialIcons from "../../fakeData/fakeSocialIcons";
 import fakeFooterItems from "../../fakeData/fakeFooterItems";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
-import MessengerCustomerChat from "react-messenger-customer-chat";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import { useEffect } from "react";
 const Footer = () => {
@@ -89,12 +88,7 @@ const Footer = () => {
               <WhatsAppIcon />
             </a>
           </div>
-          <div className="col-md-12 d-flex justify-content-end position-relative">
-            <MessengerCustomerChat
-              pageId="227159470741481"
-              appId="687119211961427"
-            />
-          </div>
+          <div className="col-md-12 d-flex justify-content-end position-relative"></div>
           {/* <div className="position-relative col-md-12 scrolling">
             <div className="scrollToTop" onClick={scrollToTopbar}>
               <ArrowUpwardIcon />
