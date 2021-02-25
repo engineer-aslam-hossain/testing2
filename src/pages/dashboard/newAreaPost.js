@@ -117,12 +117,12 @@ const NewAreaPost = () => {
     });
   }
 
-  const [editState, setEditState] = useState({
-    editorChangeState: EditorState.createEmpty(),
-  });
-  const onEditorStateChange = (editorState) => {
-    setEditState(editorState);
-  };
+  // const [editState, setEditState] = useState({
+  //   editorChangeState: EditorState.createEmpty(),
+  // });
+  // const onEditorStateChange = (editorState) => {
+  //   setEditState(editorState);
+  // };
 
   return (
     <section>
