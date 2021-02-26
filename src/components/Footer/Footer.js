@@ -4,6 +4,7 @@ import fakeFooterItems from "../../fakeData/fakeFooterItems";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
+import MessengerCustomerChat from "react-messenger-customer-chat";
 import { useEffect } from "react";
 const Footer = () => {
   const handleScroll = () => {
@@ -11,9 +12,9 @@ const Footer = () => {
       document.body.scrollTop > 20 ||
       document.documentElement.scrollTop > 20
     ) {
-      // document.querySelector(".scrolling").style.display = "block";
+      document.querySelector(".whatsapp").style.display = "block";
     } else {
-      // document.querySelector(".scrolling").style.display = "none";
+      document.querySelector(".whatsapp").style.display = "none";
     }
   };
 
@@ -78,7 +79,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div>
+          <div className="whatsapp">
             <a
               href="https://wa.me/+8801681845722"
               className="whatsapp_float"
@@ -87,6 +88,17 @@ const Footer = () => {
             >
               <WhatsAppIcon />
             </a>
+          </div>
+          <div className="col-md-12">
+            <MessengerCustomerChat
+              pageId="227159470741481"
+              appId="687119211961427"
+            />
+            <div
+              className="fb-customerchat"
+              attribution="setup_tool"
+              page_id="227159470741481"
+            ></div>
           </div>
           <div className="col-md-12 d-flex justify-content-end position-relative"></div>
           {/* <div className="position-relative col-md-12 scrolling">

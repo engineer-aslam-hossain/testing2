@@ -75,122 +75,77 @@ const AreaGuide = () => {
   // console.log(searchAreaAddress, searchAreaAddressData);
   return (
     <section className="areaGuide">
-      <div className="col-md-12  areaGuideHeaderMain">
-        <div className="col-md-12 mx-auto my-5 d-flex flex-wrap">
-          <div className="col-md-6 px-0">
-            <img
-              src="/images/AdobeStock_181034458.jpg"
-              alt=""
-              className="areaGuideImg img-fluid"
-            />
-          </div>
-          <div className="col-md-6 AreaGuideTitle pl-5">
-            <h1>Area Guide</h1>
-            <p>
-              A neighbourhood guide provides foundational information you need
-              to start your home search and dive into some of the details that
-              matter the most. Ready to get started?
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className="container">
-        <div className="row">
-          <div className="col-md-12  areaGuideHeaderMain">
-            <div className="col-md-12 mx-auto my-5 d-flex flex-wrap">
-              <div className="col-md-6 px-0">
-                <img
-                  src="/images/AdobeStock_181034458.jpg"
-                  alt=""
-                  className="areaGuideImg img-fluid"
-                />
-              </div>
-              <div className="col-md-6 AreaGuideTitle pl-5">
+      <section className="areaGuideHeaderMain">
+        <div className="container h-100">
+          <div className="row  areaGuideHeaderMain h-100  align-items-center">
+            <div className="col-md-12 AreaGuideTitle d-flex flex-column align-items-center justify-content-between">
+              <div className="col-md-6 d-flex flex-column align-items-center mb-5">
                 <h1>Area Guide</h1>
-                <p>
-                  A neighbourhood guide provides foundational information you
-                  need to start your home search and dive into some of the
-                  details that matter the most. Ready to get started?
-                </p>
+                {/* <p>
+                    A neighbourhood guide provides foundational information you
+                    need to start your home search and dive into some of the
+                    details that matter the most. Ready to get started?
+                  </p> */}
               </div>
-            </div>
-          </div>
-          <div className="col-md-12 px-4">
-            <div className="col-md-12 d-flex flex-wrap justify-content-around mx-auto areaGuideInputGroup">
-              <div className="col-md-6 d-flex justify-content-center areaGuideSearch">
-                <InputGroup className="">
-                  <FormControl
-                    placeholder="Search for an area"
-                    className="areaSearch"
-                    onChange={(e) => setSearchAreaAddress(e.target.value)}
-                    onKeyDown={(e) => e.keyCode === 13 && searchAreaByAddress()}
-                  />
-                  <InputGroup.Append>
-                    <InputGroup.Text
-                      className="searchIcon"
-                      onClick={searchAreaByAddress}
-                    >
-                      <SearchIcon />
-                    </InputGroup.Text>
-                  </InputGroup.Append>
-                </InputGroup>
-              </div>
-              <div className="col-md-3 d-flex justify-content-center districtDiv">
-                <Dropdown className="districtDropDow d-flex align-items-center">
-                  <Dropdown.Toggle className="headerMain" drop="left">
-                    {selectedDistrict}
-                  </Dropdown.Toggle>
+              <div className="col-md-10 px-4 mx-auto mt-5 ">
+                <div className="col-md-12 d-flex flex-wrap justify-content-around mx-auto areaGuideInputGroup">
+                  <div className="col-md-6 d-flex justify-content-center areaGuideSearch">
+                    <InputGroup className="">
+                      <FormControl
+                        placeholder="Search for an area"
+                        className="areaSearch"
+                        onChange={(e) => setSearchAreaAddress(e.target.value)}
+                        onKeyDown={(e) =>
+                          e.keyCode === 13 && searchAreaByAddress()
+                        }
+                      />
+                      <InputGroup.Append>
+                        <InputGroup.Text
+                          className="searchIcon"
+                          onClick={searchAreaByAddress}
+                        >
+                          <SearchIcon />
+                        </InputGroup.Text>
+                      </InputGroup.Append>
+                    </InputGroup>
+                  </div>
+                  <div className="col-md-3 d-flex justify-content-center districtDiv">
+                    <Dropdown className="districtDropDow d-flex align-items-center">
+                      <Dropdown.Toggle className="headerMain" drop="left">
+                        {selectedDistrict}
+                      </Dropdown.Toggle>
 
-                  <Dropdown.Menu className="searchDropDownMenu">
-                    <div>
-                      <div>
-                        <div className="proTypeOptionsDiv">
-                          <div className="d-flex flex-column">
-                            {districts.map((item) => (
-                              <button
-                                className="propertyTypeBtn"
-                                key={item._id}
-                                onClick={() =>
-                                  setSelectedDistrict(item.district)
-                                }
-                              >
-                                {item.district}
-                              </button>
-                            ))}
+                      <Dropdown.Menu className="searchDropDownMenu">
+                        <div>
+                          <div>
+                            <div className="proTypeOptionsDiv">
+                              <div className="d-flex flex-column">
+                                {districts.map((item) => (
+                                  <button
+                                    className="propertyTypeBtn"
+                                    key={item._id}
+                                    onClick={() =>
+                                      setSelectedDistrict(item.district)
+                                    }
+                                  >
+                                    {item.district}
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </div>
-              {/* <div className="col-md-3 d-flex justify-content-center">
-              <Dropdown className="d-flex align-items-center">
-                <Dropdown.Toggle className="headerMain" drop="left">
-                  Popularity
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu className="searchDropDownMenu">
-                  <div>
-                    <div>
-                      <div className="proTypeOptionsDiv">
-                        <div className="d-flex flex-column">
-                          {fakePopularity.map((item) => (
-                            <Dropdown.Item key={item.id}>
-                              {item.name}
-                            </Dropdown.Item>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
+                      </Dropdown.Menu>
+                    </Dropdown>
                   </div>
-                </Dropdown.Menu>
-              </Dropdown>
-            </div> */}
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
+      <div className="container">
         <div className="col-md-12">
           <CommonHeader title={selectedDistrict} />
         </div>
