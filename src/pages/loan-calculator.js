@@ -253,45 +253,49 @@ const loanCalculator = () => {
               <div className="px-5">
                 <h2 className="calculationTitle"> Calculation Results</h2>
               </div>
-              <div className="col-md-12 d-flex flex-wrap calculationResult">
-                <div className="col-md-6 px-0 calculationLeft">
-                  <div className="d-flex mb-2">
-                    <div className="col-md-4 px-0 d-flex justify-content-between flex-wrap">
-                      <p>Property Price</p>
+              <div className="col-md-12 d-flex flex-wrap calculationResult justify-content-between">
+                <div className="col-md-4 px-0 calculationLeft d-flex flex-column justify-content-between">
+                  <div>
+                    <div className="d-flex mb-2 justify-content-between">
+                      <div className="px-0">
+                        <p>Property Price</p>
+                      </div>
+                      <div className="">
+                        <p>
+                          <strong>BDT {loanCalculation.price}</strong>
+                        </p>
+                      </div>
                     </div>
-                    <p>
-                      <strong>BDT {loanCalculation.price}</strong>
-                    </p>
-                  </div>
-                  <div className="d-flex mb-2">
-                    <div className="col-md-4 px-0 d-flex justify-content-between flex-wrap">
-                      <p>Loan Period</p>
+                    <div className="d-flex mb-2 justify-content-between">
+                      <div className="px-0">
+                        <p>Loan Period</p>
+                      </div>
+                      <p>
+                        <strong>{loanCalculation.period} Years</strong>
+                      </p>
                     </div>
-                    <p>
-                      <strong>{loanCalculation.period} Years</strong>
-                    </p>
-                  </div>
-                  <div className="d-flex mb-2">
-                    <div className="col-md-4 px-0 d-flex justify-content-between flex-wrap">
-                      <p>Down Payment</p>
+                    <div className="d-flex mb-2 justify-content-between">
+                      <div className="px-0">
+                        <p>Down Payment</p>
+                      </div>
+                      <p>
+                        <strong>
+                          BDT {loanCalculation.down_Payment} ({downPaymentRate}{" "}
+                          %)
+                        </strong>
+                      </p>
                     </div>
-                    <p>
-                      <strong>
-                        BDT {loanCalculation.down_Payment} ({downPaymentRate} %)
-                      </strong>
-                    </p>
-                  </div>
-                  <div className="d-flex mb-2">
-                    <div className="col-md-4 px-0 d-flex justify-content-between flex-wrap">
-                      <p>Interest Rate</p>
+                    <div className="d-flex mb-2 justify-content-between">
+                      <div className=" px-0 d-flex justify-content-between flex-wrap">
+                        <p>Interest Rate</p>
+                      </div>
+                      <p>
+                        <strong>
+                          BDT {loanCalculation.interest_rate} ({interestRate} %)
+                        </strong>
+                      </p>
                     </div>
-                    <p>
-                      <strong>
-                        BDT {loanCalculation.interest_rate} ({interestRate} %)
-                      </strong>
-                    </p>
                   </div>
-
                   <div className="my-4">
                     <Link href="/loan-calculator#calculate">
                       <a onClick={calculateAgain} className="calculateAgain">
@@ -300,30 +304,29 @@ const loanCalculator = () => {
                     </Link>
                   </div>
                 </div>
-                <div className="col-md-6 calculationRight">
-                  <div>
-                    <p>Calculation Results</p>
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <h1>BDT {loanCalculation.monthlyInstallment} </h1>
-                    <h6>monthly installment</h6>
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <h6>in</h6>
-                    <h1>{loanCalculation.period} Years </h1>
-                    <h6>for a total</h6>
-                  </div>
-                  <div className="d-flex align-items-center">
-                    <h6>of</h6>
-                    <h1>
-                      BDT{" "}
-                      {(
-                        loanCalculation.monthlyInstallment *
-                        loanCalculation.period *
-                        12
-                      ).toFixed(0)}
-                    </h1>
-                    <h6>Total Loan</h6>
+                <div className="col-md-6 ">
+                  <div className="calculationRight">
+                    <div>
+                      <div className="">
+                        <h6>monthly installment</h6>
+                        <h1>BDT {loanCalculation.monthlyInstallment} </h1>
+                      </div>
+                      <div className="my-3">
+                        <h6>Loan Period</h6>
+                        <h1>{loanCalculation.period} Years </h1>
+                      </div>
+                      <div className="">
+                        <h6>Loan Amount</h6>
+                        <h1>
+                          BDT{" "}
+                          {(
+                            loanCalculation.monthlyInstallment *
+                            loanCalculation.period *
+                            12
+                          ).toFixed(0)}
+                        </h1>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -351,6 +354,9 @@ const loanCalculator = () => {
                     <td>
                       <p>Monthly Installment</p>
                       {/* <h3>BDT 79,533</h3> */}
+                    </td>
+                    <td>
+                      <button className="applyNowBtn">Apply Now</button>
                     </td>
                   </tr>
                 </tbody>

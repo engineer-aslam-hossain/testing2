@@ -69,13 +69,15 @@ const UserProfile = () => {
               </div>
               <div className="col-md-12 d-flex flex-wrap px-0">
                 {fakePropertyManagementData.map((item) => (
-                  <div key={item.id} className="col-md-3 singlePropertyCard">
-                    <div className="mb-3">
-                      <img src={item.icon} alt="icons" />
+                  <Link href={`/${item.route}`} key={item.id}>
+                    <div key={item.id} className="col-md-3 singlePropertyCard">
+                      <div className="mb-3">
+                        <img src={item.icon} alt="icons" />
+                      </div>
+                      <h4>{item.title}</h4>
+                      <p>{item.details}</p>
                     </div>
-                    <h4>{item.title}</h4>
-                    <p>{item.details}</p>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -85,13 +87,15 @@ const UserProfile = () => {
               </div>
               <div className="col-md-12 d-flex flex-wrap px-0">
                 {myActivities.map((item) => (
-                  <div key={item.id} className="col-md-3 singlePropertyCard">
-                    <div className="mb-3">
-                      <img src={item.icon} alt="icons" />
+                  <Link href={`/${item.route}`} key={item.id}>
+                    <div key={item.id} className="col-md-3 singlePropertyCard">
+                      <div className="mb-3">
+                        <img src={item.icon} alt="icons" />
+                      </div>
+                      <h4>{item.title}</h4>
+                      <p>{item.details}</p>
                     </div>
-                    <h4>{item.title}</h4>
-                    <p>{item.details}</p>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>

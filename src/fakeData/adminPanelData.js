@@ -38,7 +38,7 @@ const adminPanelData = [
     id: 6,
     icon: "icons/admin/ListedAll.svg",
     title: "All Property Listings",
-    route: "allListingRequest",
+    route: "postedProperties",
     details: "Post a new Property to Rent, Sell or Auction.",
   },
   {

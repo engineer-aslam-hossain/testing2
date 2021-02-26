@@ -2,7 +2,19 @@ const fakeFooterItems = [
   {
     id: 1,
     column: "firstColumn",
+    title: "About Us",
+    link: "/",
+  },
+  {
+    id: 22,
+    column: "firstColumn",
+    title: "Career",
+    link: "/",
+  },
+  {
+    id: 23,
     title: "Agents",
+    column: "firstColumn",
     link: "/",
   },
   {
@@ -13,15 +25,14 @@ const fakeFooterItems = [
   },
   {
     id: 3,
-    title: "Send a Message",
-    column: "firstColumn",
+    title: "Get In Touch with Us",
+    column: "thirdColumn",
     link: "/",
   },
-
   {
-    id: 5,
-    title: "Area Guide",
-    column: "firstColumn",
+    id: 11,
+    title: "FAQs",
+    column: "thirdColumn",
     link: "/",
   },
 
@@ -34,18 +45,6 @@ const fakeFooterItems = [
   {
     id: 10,
     title: "Privacy Policy",
-    column: "thirdColumn",
-    link: "/",
-  },
-  {
-    id: 11,
-    title: "FAQs",
-    column: "thirdColumn",
-    link: "/",
-  },
-  {
-    id: 12,
-    title: "About Us",
     column: "thirdColumn",
     link: "/",
   },

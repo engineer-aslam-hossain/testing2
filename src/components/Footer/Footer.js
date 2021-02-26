@@ -10,25 +10,6 @@ import { useRouter } from "next/router";
 
 const Footer = () => {
   const router = useRouter();
-  const handleScroll = () => {
-    if (
-      document.body.scrollTop > 20 ||
-      document.documentElement.scrollTop > 20
-    ) {
-      document.querySelector(".whatsapp").style.display = "block";
-    } else {
-      document.querySelector(".whatsapp").style.display = "none";
-    }
-  };
-
-  const scrollToTopbar = () => {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-  });
 
   // if (router.pathname === "/login" || router.pathname === "/sign-up") {
   //   return null;

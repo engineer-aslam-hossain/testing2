@@ -21,18 +21,18 @@ const blogPage = ({ blogs }) => {
 
   return (
     <section className="blog mb-5">
-      <section className="areaGuideHeaderMain">
+      <section className="blogHeaderMain">
         <div className="container h-100">
           <div className="row  areaGuideHeaderMain h-100  align-items-center">
             <div className="col-md-12 AreaGuideTitle d-flex flex-column align-items-center justify-content-between">
               <div className="col-md-6 d-flex flex-column align-items-center ">
                 <h1>Blogs</h1>
-                <p>
+                <p className="blogP">
                   A neighbourhood guide provides foundational information you
                   need to start your home search and dive into some of the
                   details that matter the most. Ready to get started?
                 </p>
-                <button className="updateBtn">get regular updates</button>
+                {/* <button className="updateBtn">get regular updates</button> */}
               </div>
             </div>
           </div>

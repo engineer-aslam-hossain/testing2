@@ -159,20 +159,20 @@ const Login = () => {
                     </div>
                     <div className="d-flex flex-column justify-content-around flex-wrap">
                       <button className="social-btn">
-                        Signin with Google
                         <img
                           src="/images/google.png"
                           className="img-fluid"
                           alt="#"
                         />
+                        Sign in with Google
                       </button>
                       <button className="social-btn">
-                        Continue with Facebook
                         <img
                           src="/images/fb.png"
                           className="img-fluid"
                           alt="#"
                         />
+                        Continue with Facebook
                       </button>
                     </div>
                   </Form>

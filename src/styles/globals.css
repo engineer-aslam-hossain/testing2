@@ -245,9 +245,9 @@ footer {
 }
 .whatsapp {
   position: fixed;
-  width: 3rem;
-  height: 3rem;
-  background-color: transparent;
+  width: 5rem;
+  height: 5rem;
+  background-color: rgb(8, 206, 1);
   bottom: 6rem;
   right: 2.5rem;
   margin-top: 0rem;
@@ -259,7 +259,7 @@ footer {
   align-items: center;
 }
 .whatsapp svg.MuiSvgIcon-root {
-  color: rgb(8, 206, 1);
+  color: white;
   font-size: 4rem;
 }
 .scrollToTop svg.MuiSvgIcon-root {
@@ -304,6 +304,15 @@ footer {
 @media (min-width: 768px) {
   .footerRightLink a {
     text-align: right;
+  }
+  .calculationRight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .getInTouchCard.card {
+    position: relative;
+    top: -6rem;
   }
 }
 
@@ -546,6 +555,9 @@ button.active {
   h5.text-white {
     text-align: center;
     margin: 2rem 0;
+  }
+  .calculationRight {
+    margin-top: 2rem;
   }
 }
 
@@ -1046,18 +1058,30 @@ button.seeAllBtn {
   font-weight: 700;
   color: #ffd200;
   line-height: 62px;
-  margin-bottom: 10rem;
+  margin-bottom: 5rem;
   text-align: center;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #696969;
 }
-.AreaGuideTitle p {
+p.AreaGuideP {
+  font-size: 14px;
+  font-weight: 400;
+  color: #fde23c;
+  margin-bottom: 5rem;
+  text-align: center;
+  line-height: 25px;
+  background-color: #474747;
+}
+
+p.blogP {
   font-size: 14px;
   font-weight: 400;
   color: white;
+  margin-bottom: 5rem;
   text-align: center;
   line-height: 25px;
 }
+
 .findPropertySearch1 {
   box-shadow: var(--box-shadow);
   padding: 1rem;
@@ -1084,8 +1108,17 @@ button.seeAllBtn {
   }
 }
 section.areaGuideHeaderMain {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url("../../public/images/AdobeStock_181034458.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 80vh;
+}
+
+section.blogHeaderMain {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("../../public/images/Blogs.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -1670,7 +1703,7 @@ p.userRole {
 
 @media (min-width: 576px) {
   .propertyCard.col-md-3.m-3.p-0.card {
-    max-width: 22% !important;
+    max-width: 21% !important;
   }
 }
 button.realEstateBtn {
@@ -1779,10 +1812,10 @@ section.CalCulationTopHeader {
   padding: 5rem 0;
   background-image: linear-gradient(
       0deg,
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
     ),
-    url("../../public/images/loanHeaderBackground.png");
+    url("../../public/images/LoanCalc.jpg");
 
   background-repeat: no-repeat;
   background-size: cover;
@@ -1853,13 +1886,14 @@ a.calculateAgain {
   color: #474747;
 }
 .calculationRight h6 {
-  font-size: 1.3rem;
+  font-size: 1rem;
   color: #474747;
   font-weight: 700;
-  margin: 0 0.5rem;
+  margin: 0;
+  text-transform: uppercase;
 }
 .calculationRight h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: #000000;
 }
@@ -2267,3 +2301,70 @@ body.plugin {
   display: flex;
   justify-content: flex-end;
 }
+
+/* about us styles start */
+button.getInTouch {
+  width: 14rem;
+  background-color: #ffd200;
+  color: #474747;
+  box-shadow: var(--box-shadow);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+img.img-fluid.teamImg {
+  width: 100%;
+}
+
+h2.aboutUsDetailsTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+/* about us styles end */
+
+/* get in touch styles start */
+h3.getIntouchCardTitle {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+}
+
+button.getInTouchSendBtn {
+  width: 100%;
+  border: 1px solid #bfbfbf;
+  outline: 0;
+  background-color: #ffd200;
+  padding: 0.5rem;
+  border-radius: 6px;
+  box-shadow: var(--box-shadow);
+}
+.getInTouchCard.card {
+  border-top: 6px solid #ffd200;
+  box-shadow: var(--box-shadow);
+}
+
+.getInTouchLeft h1 {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.getInTouchLeft p {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
+.getInTouchLeft p:last-child {
+  font-weight: 500;
+}
+.getInTouchLeft p img {
+  margin-right: 1rem;
+}
+
+.getInTouchLeft h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+/* get in touch styles end */

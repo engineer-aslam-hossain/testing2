@@ -3,14 +3,14 @@ const fakePropertyManagementData = [
     id: 1,
     icon: "icons/Profile_ListNewProperty.svg",
     title: "List a New Property",
-    route: "allListingRequest",
+    route: "list-a-new-property",
     details: "Post a new Property to Rent, Sell or Auction.",
   },
   {
     id: 2,
     icon: "icons/Profile_MyListedProperties.svg",
     title: "My Listed Properties",
-    route: "allListingRequest",
+    route: "myProperties",
     details: "Post a new Property to Rent, Sell or Auction.",
   },
   {
