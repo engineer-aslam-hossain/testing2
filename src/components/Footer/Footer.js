@@ -94,13 +94,7 @@ const Footer = () => {
               pageId="227159470741481"
               appId="687119211961427"
             />
-            <div
-              className="fb-customerchat"
-              attribution="setup_tool"
-              page_id="227159470741481"
-            ></div>
           </div>
-          <div className="col-md-12 d-flex justify-content-end position-relative"></div>
           {/* <div className="position-relative col-md-12 scrolling">
             <div className="scrollToTop" onClick={scrollToTopbar}>
               <ArrowUpwardIcon />

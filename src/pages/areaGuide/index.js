@@ -87,7 +87,7 @@ const AreaGuide = () => {
                     details that matter the most. Ready to get started?
                   </p> */}
               </div>
-              <div className="col-md-10 px-4 mx-auto mt-5 ">
+              <div className="col-md-12 px-4 mx-auto mt-5 ">
                 <div className="col-md-12 d-flex flex-wrap justify-content-around mx-auto areaGuideInputGroup">
                   <div className="col-md-6 d-flex justify-content-center areaGuideSearch">
                     <InputGroup className="">
