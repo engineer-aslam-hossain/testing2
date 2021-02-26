@@ -36,7 +36,14 @@ const HeaderMain = () => {
       border: 0,
       // This line disable the blue border
       boxShadow: "none",
+      fontSize: "12px",
     }),
+    option: (styles) => {
+      return {
+        ...styles,
+        fontSize: "12px",
+      };
+    },
   };
   return (
     <section className="header-main py-5" id="home">
@@ -91,7 +98,7 @@ const HeaderMain = () => {
                       options={fakeOptions}
                       className="basic-multi-select"
                       classNamePrefix="select"
-                      placeholder="Search by location for rent"
+                      placeholder={`Search by location for ${findProperty}`}
                       onChange={(e) =>
                         e.map((item) =>
                           SetSearchData({

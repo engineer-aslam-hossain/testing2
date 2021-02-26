@@ -79,7 +79,7 @@ const AreaGuide = () => {
         <div className="container h-100">
           <div className="row  areaGuideHeaderMain h-100  align-items-center">
             <div className="col-md-12 AreaGuideTitle d-flex flex-column align-items-center justify-content-between">
-              <div className="col-md-6 d-flex flex-column align-items-center mb-5">
+              <div className="col-md-6 d-flex flex-column align-items-center ">
                 <h1>Area Guide</h1>
                 {/* <p>
                     A neighbourhood guide provides foundational information you
@@ -87,7 +87,7 @@ const AreaGuide = () => {
                     details that matter the most. Ready to get started?
                   </p> */}
               </div>
-              <div className="col-md-12 px-4 mx-auto mt-5 ">
+              <div className="col-md-12 px-4 mx-auto ">
                 <div className="col-md-12 d-flex flex-wrap justify-content-around mx-auto areaGuideInputGroup">
                   <div className="col-md-6 d-flex justify-content-center areaGuideSearch">
                     <InputGroup className="">

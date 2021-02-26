@@ -236,7 +236,7 @@ const findProperties = () => {
                       options={fakeOptions}
                       className="basic-multi-select"
                       classNamePrefix="select"
-                      placeholder="Search by location for rent"
+                      placeholder={`Search by location for ${findProperty}`}
                       onChange={(e) =>
                         e.map((item) =>
                           SetSearchData({

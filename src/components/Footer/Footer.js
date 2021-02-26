@@ -6,7 +6,10 @@ import ArrowDropUpIcon from "@material-ui/icons/ArrowDropUp";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import MessengerCustomerChat from "react-messenger-customer-chat";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
+
 const Footer = () => {
+  const router = useRouter();
   const handleScroll = () => {
     if (
       document.body.scrollTop > 20 ||
@@ -26,6 +29,10 @@ const Footer = () => {
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
   });
+
+  // if (router.pathname === "/login" || router.pathname === "/sign-up") {
+  //   return null;
+  // }
   return (
     <footer style={{ background: "#263238" }}>
       <div className="container pt-5">

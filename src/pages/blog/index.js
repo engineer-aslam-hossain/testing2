@@ -21,91 +21,25 @@ const blogPage = ({ blogs }) => {
 
   return (
     <section className="blog mb-5">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-10 mx-auto my-3">
-            <div className="row justify-content-between align-items-center">
-              <div className="col-md-5">
-                <img
-                  src="/images/Blogging_bro_1.png"
-                  alt=""
-                  className="areaGuideImg"
-                />
-              </div>
-              <div className="col-md-6 AreaGuideTitle">
+      <section className="areaGuideHeaderMain">
+        <div className="container h-100">
+          <div className="row  areaGuideHeaderMain h-100  align-items-center">
+            <div className="col-md-12 AreaGuideTitle d-flex flex-column align-items-center justify-content-between">
+              <div className="col-md-6 d-flex flex-column align-items-center ">
                 <h1>Blogs</h1>
                 <p>
-                  Pariatur blanditiis dolorem fugit et illo omnis. Maxime animi
-                  eum temporibus autem. Quia dolorum exercitationem qui cum
-                  sequi laudantium nisi. Sit eum aliquid facere ut minus.
+                  A neighbourhood guide provides foundational information you
+                  need to start your home search and dive into some of the
+                  details that matter the most. Ready to get started?
                 </p>
                 <button className="updateBtn">get regular updates</button>
               </div>
             </div>
           </div>
-          {/* <div className="col-md-10 d-flex flex-wrap justify-content-around mx-auto areaGuideInputGroup mb-5">
-            <div className="col-md-6 d-flex justify-content-center">
-              <InputGroup className="">
-                <FormControl
-                  placeholder="Search for an area"
-                  className="areaSearch"
-                />
-                <InputGroup.Append>
-                  <InputGroup.Text className="searchIcon">
-                    <SearchIcon />
-                  </InputGroup.Text>
-                </InputGroup.Append>
-              </InputGroup>
-            </div>
-            <div className="col-md-3 d-flex justify-content-center districtDiv">
-              <Dropdown className="districtDropDow d-flex align-items-center">
-                <Dropdown.Toggle className="headerMain" drop="left">
-                  All
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu className="searchDropDownMenu">
-                  <div>
-                    <div>
-                      <div className="proTypeOptionsDiv">
-                        <div className="d-flex flex-column">
-                          {category.map((item) => (
-                            <Dropdown.Item key={item.id}>
-                              {item.title}
-                            </Dropdown.Item>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Dropdown.Menu>
-              </Dropdown>
-            </div>
-            <div className="col-md-3 d-flex justify-content-center">
-              <Dropdown className="d-flex align-items-center">
-                <Dropdown.Toggle className="headerMain" drop="left">
-                  Popularity
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu className="searchDropDownMenu">
-                  <div>
-                    <div>
-                      <div className="proTypeOptionsDiv">
-                        <div className="d-flex flex-column">
-                          {fakePopularity.map((item) => (
-                            <Dropdown.Item key={item.id}>
-                              {item.name}
-                            </Dropdown.Item>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Dropdown.Menu>
-              </Dropdown>
-            </div>
-          </div> */}
         </div>
-        <div className="row">
+      </section>
+      <div className="container">
+        <div className="row mt-5">
           {data_for_show.map((item) => (
             <Link href={`/blog/${[item._id]}`} key={item._id}>
               <div

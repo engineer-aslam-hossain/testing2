@@ -494,7 +494,7 @@ button.headerMain {
   justify-content: space-between;
   display: flex;
   align-items: center;
-  border: 1px solid #e7e7e7 !important;
+  border: 0 !important;
   box-shadow: none !important;
 }
 
@@ -1042,12 +1042,14 @@ button.seeAllBtn {
 }
 
 .AreaGuideTitle h1 {
-  font-size: 40px;
+  font-size: 60px;
   font-weight: 700;
   color: #ffd200;
   line-height: 62px;
   margin-bottom: 10rem;
   text-align: center;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #696969;
 }
 .AreaGuideTitle p {
   font-size: 14px;
