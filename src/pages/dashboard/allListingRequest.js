@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Table } from "react-bootstrap";
 import Link from "next/link";
-const AllListingRequest = () => {
+import { withRouter } from "next/router";
+
+const AllListingRequest = ({ router }) => {
   const [lists, setLists] = useState([]);
-  const [showListOf, setShowListOf] = useState("All");
+  const [showListOf, setShowListOf] = useState(router.query.show);
 
   const fetchLists = async () => {
     const getUser = JSON.parse(localStorage.getItem("dreamfinder_session"));
@@ -57,17 +59,18 @@ const AllListingRequest = () => {
                 SHOW ALL
               </button>
               <button
-                onClick={() => showHandler("Rent")}
-                className={`listReqBtn ${showListOf === "Rent" && "active"}`}
-              >
-                SHOW RENTS ONLY
-              </button>
-              <button
                 onClick={() => showHandler("Sell")}
                 className={`listReqBtn ${showListOf === "Sell" && "active"}`}
               >
                 SHOW SALES ONLY
               </button>
+              <button
+                onClick={() => showHandler("Rent")}
+                className={`listReqBtn ${showListOf === "Rent" && "active"}`}
+              >
+                SHOW RENTS ONLY
+              </button>
+
               <button
                 onClick={() => showHandler("Auction")}
                 className={`listReqBtn ${showListOf === "Auction" && "active"}`}
@@ -189,4 +192,4 @@ const AllListingRequest = () => {
   );
 };
 
-export default AllListingRequest;
+export default withRouter(AllListingRequest);

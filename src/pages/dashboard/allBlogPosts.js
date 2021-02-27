@@ -30,32 +30,21 @@ const AllBlogPosts = ({ blogs }) => {
                         <div className="proTypeOptionsDiv">
                           <div className="d-flex flex-column">
                             <Dropdown.Item
-                            //   onClick={() =>
-                            //     setAddListDetails({
-                            //       ...addListDetails,
-                            //       purpose: "Sell",
-                            //     })
-                            //   }
+                              onClick={() => setShowVisibility("Show All")}
                             >
                               Show All
                             </Dropdown.Item>
                             <Dropdown.Item
-                            //   onClick={() =>
-                            //     setAddListDetails({
-                            //       ...addListDetails,
-                            //       purpose: "Rent",
-                            //     })
-                            //   }
+                              onClick={() =>
+                                setShowVisibility("Show 'ON' Only")
+                              }
                             >
                               Show "ON" Only
                             </Dropdown.Item>
                             <Dropdown.Item
-                            //   onClick={() =>
-                            //     setAddListDetails({
-                            //       ...addListDetails,
-                            //       purpose: "Auction",
-                            //     })
-                            //   }
+                              onClick={() =>
+                                setShowVisibility("Show 'OFF' Only")
+                              }
                             >
                               Show "OFF" Only
                             </Dropdown.Item>
@@ -85,22 +74,60 @@ const AllBlogPosts = ({ blogs }) => {
                 </tr>
               </thead>
               <tbody className="">
-                {data.map((item) => (
-                  <tr key={item._id}>
-                    <td className="">
-                      {new Date(item.createdAt).toLocaleString()}
-                    </td>
-                    <td>{new Date(item.updatedAt).toLocaleString()}</td>
-                    <td>{item.is_disable ? "Off" : "On"}</td>
-                    <td>{item.title}</td>
-                    <td>
-                      <div className="d-flex justify-content-around align-items-center">
-                        <button className="showRequest">EDIT BLOG</button>
-                        <button className="showRequest">SEE PUBLISHED</button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
+                {data.map((item) =>
+                  showVisibility === "Show 'ON' Only" &&
+                  item.is_disable === true ? (
+                    <tr key={item._id}>
+                      <td className="">
+                        {new Date(item.createdAt).toLocaleString()}
+                      </td>
+                      <td>{new Date(item.updatedAt).toLocaleString()}</td>
+                      <td>{item.is_disable ? "On" : "Off"}</td>
+                      <td>{item.title}</td>
+                      <td>
+                        <div className="d-flex justify-content-around align-items-center">
+                          <button className="showRequest">EDIT BLOG</button>
+                          <button className="showRequest">SEE PUBLISHED</button>
+                        </div>
+                      </td>
+                    </tr>
+                  ) : showVisibility === "Show 'Off' Only" &&
+                    item.is_disable === false ? (
+                    <tr key={item._id}>
+                      <td className="">
+                        {new Date(item.createdAt).toLocaleString()}
+                      </td>
+                      <td>{new Date(item.updatedAt).toLocaleString()}</td>
+                      <td>{item.is_disable ? "On" : "Off"}</td>
+                      <td>{item.title}</td>
+                      <td>
+                        <div className="d-flex justify-content-around align-items-center">
+                          <button className="showRequest">EDIT BLOG</button>
+                          <button className="showRequest">SEE PUBLISHED</button>
+                        </div>
+                      </td>
+                    </tr>
+                  ) : (
+                    showVisibility === "Show All" && (
+                      <tr key={item._id}>
+                        <td className="">
+                          {new Date(item.createdAt).toLocaleString()}
+                        </td>
+                        <td>{new Date(item.updatedAt).toLocaleString()}</td>
+                        <td>{item.is_disable ? "On" : "Off"}</td>
+                        <td>{item.title}</td>
+                        <td>
+                          <div className="d-flex justify-content-around align-items-center">
+                            <button className="showRequest">EDIT BLOG</button>
+                            <button className="showRequest">
+                              SEE PUBLISHED
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    )
+                  )
+                )}
               </tbody>
             </Table>
           </div>

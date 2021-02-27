@@ -48,7 +48,7 @@ const Footer = () => {
                 {fakeFooterItems.map(
                   (item) =>
                     item.column === "firstColumn" && (
-                      <Link href="/" key={item.id}>
+                      <Link href={`/${item.link}`} key={item.id}>
                         <a>{item.title}</a>
                       </Link>
                     )
@@ -59,7 +59,7 @@ const Footer = () => {
                 {fakeFooterItems.map(
                   (item) =>
                     item.column === "thirdColumn" && (
-                      <Link href="/" key={item.id}>
+                      <Link href={`/${item.link}`} key={item.id}>
                         <a>{item.title}</a>
                       </Link>
                     )
@@ -69,7 +69,7 @@ const Footer = () => {
           </div>
           <div className="whatsapp">
             <a
-              href="https://wa.me/+8801681845722"
+              href="https://wa.me/+8801406607080"
               className="whatsapp_float"
               target="_blank"
               rel="noopener noreferrer"
@@ -79,7 +79,7 @@ const Footer = () => {
           </div>
           <div className="col-md-12">
             <MessengerCustomerChat
-              pageId="227159470741481"
+              pageId="105598108083286"
               appId="687119211961427"
             />
           </div>

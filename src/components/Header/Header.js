@@ -41,7 +41,7 @@ const Header = () => {
         <Link href="/">
           <a>
             <img
-              src="/images/DreamFinderLogo.png"
+              src="/images/Output_Dream_Finder_logo.jpg"
               alt="me"
               className="logoImg"
             />

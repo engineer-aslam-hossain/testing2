@@ -10,6 +10,8 @@ import "../../node_modules/slick-carousel/slick/slick.css";
 import "../../node_modules/slick-carousel/slick/slick-theme.css";
 import Layout from "../components/Layout/Layout";
 import { ContextProvider } from "../components/Context/Context";
+// import Instagram from "instagram-web-api";
+
 // import "swiper/swiper-bundle.css";
 // import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 

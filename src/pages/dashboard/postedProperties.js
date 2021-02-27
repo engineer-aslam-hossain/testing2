@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Dropdown, Modal, Table } from "react-bootstrap";
 import Link from "next/link";
+import { withRouter } from "next/router";
 import DreamFinderContext from "../../components/Context/Context";
-const PostedProperties = () => {
+const PostedProperties = ({ router }) => {
   const { allProperty } = useContext(DreamFinderContext);
   const [lists, setLists] = useState([]);
-  const [showListOf, setShowListOf] = useState("All");
+  const [showListOf, setShowListOf] = useState(router.query.show);
   const [showVisibility, setShowVisibility] = useState("Show All");
   console.log(allProperty);
   const fetchLists = async () => {
@@ -64,17 +65,18 @@ const PostedProperties = () => {
                   SHOW All
                 </button>
                 <button
-                  onClick={() => showHandler("Rent")}
-                  className={`listReqBtn ${showListOf === "Rent" && "active"}`}
-                >
-                  SHOW RENTS ONLY
-                </button>
-                <button
                   onClick={() => showHandler("Sell")}
                   className={`listReqBtn ${showListOf === "Sell" && "active"}`}
                 >
                   SHOW SALES ONLY
                 </button>
+                <button
+                  onClick={() => showHandler("Rent")}
+                  className={`listReqBtn ${showListOf === "Rent" && "active"}`}
+                >
+                  SHOW RENTS ONLY
+                </button>
+
                 <button
                   onClick={() => showHandler("Auction")}
                   className={`listReqBtn ${
@@ -335,4 +337,4 @@ const PostedProperties = () => {
   );
 };
 
-export default PostedProperties;
+export default withRouter(PostedProperties);

@@ -23,7 +23,13 @@ const Dashboard = () => {
                 {adminPanelData.map(
                   (item) =>
                     item.id <= 5 && (
-                      <Link href={`/dashboard/${item.route}`} key={item.id}>
+                      <Link
+                        href={{
+                          pathname: `/dashboard/${item.route}`,
+                          query: { show: item.query },
+                        }}
+                        key={item.id}
+                      >
                         <div className="col-md-3 singlePropertyCard">
                           <div className="mb-3">
                             <img src={item.icon} alt="icons" />
@@ -45,7 +51,13 @@ const Dashboard = () => {
                   (item) =>
                     item.id > 5 &&
                     item.id <= 9 && (
-                      <Link href={`/dashboard/${item.route}`} key={item.id}>
+                      <Link
+                        href={{
+                          pathname: `/dashboard/${item.route}`,
+                          query: { show: item.query },
+                        }}
+                        key={item.id}
+                      >
                         <div className="col-md-3 singlePropertyCard">
                           <div className="mb-3">
                             <img src={item.icon} alt="icons" />
@@ -67,7 +79,13 @@ const Dashboard = () => {
                   (item) =>
                     item.id > 9 &&
                     item.id <= 13 && (
-                      <Link href={`/dashboard/${item.route}`} key={item.id}>
+                      <Link
+                        href={{
+                          pathname: `/dashboard/${item.route}`,
+                          query: { show: item.query },
+                        }}
+                        key={item.id}
+                      >
                         <div
                           key={item.id}
                           className="col-md-3 singlePropertyCard"

@@ -3,50 +3,50 @@ const fakeFooterItems = [
     id: 1,
     column: "firstColumn",
     title: "About Us",
-    link: "/",
+    link: "aboutUs",
   },
   {
     id: 22,
     column: "firstColumn",
     title: "Career",
-    link: "/",
+    link: "",
   },
   {
     id: 23,
     title: "Agents",
     column: "firstColumn",
-    link: "/",
+    link: "",
   },
   {
     id: 2,
     title: "Become an Agent",
     column: "firstColumn",
-    link: "/",
+    link: "",
   },
   {
     id: 3,
     title: "Get In Touch with Us",
     column: "thirdColumn",
-    link: "/",
+    link: "getInTouch",
   },
   {
     id: 11,
     title: "FAQs",
     column: "thirdColumn",
-    link: "/",
+    link: "",
   },
 
   {
     id: 9,
     title: "Teams & Conditions",
     column: "thirdColumn",
-    link: "/",
+    link: "",
   },
   {
     id: 10,
     title: "Privacy Policy",
     column: "thirdColumn",
-    link: "/",
+    link: "",
   },
 ];
 

@@ -245,11 +245,11 @@ footer {
 }
 .whatsapp {
   position: fixed;
-  width: 5rem;
-  height: 5rem;
+  width: 4rem;
+  height: 4rem;
   background-color: rgb(8, 206, 1);
-  bottom: 6rem;
-  right: 2.5rem;
+  bottom: 5rem;
+  right: 2rem;
   margin-top: 0rem;
   border-radius: 100%;
   cursor: pointer;
@@ -260,7 +260,7 @@ footer {
 }
 .whatsapp svg.MuiSvgIcon-root {
   color: white;
-  font-size: 4rem;
+  font-size: 3.5rem;
 }
 .scrollToTop svg.MuiSvgIcon-root {
   animation-name: bounce-2;
@@ -554,6 +554,7 @@ button.active {
   }
   h5.text-white {
     text-align: center;
+    cursor: pointer;
     margin: 2rem 0;
   }
   .calculationRight {
@@ -860,6 +861,7 @@ section.socailMedia {
   }
   h5.text-white {
     text-align: center;
+    cursor: pointer;
     margin: 1rem 0;
   }
 }
@@ -2353,6 +2355,13 @@ button.getInTouchSendBtn {
   display: flex;
   align-items: center;
   font-weight: 600;
+}
+
+.getInTouchLeft p span {
+  font-weight: 400;
+  font-size: 12px;
+  margin-left: 1rem;
+  color: #696969;
 }
 
 .getInTouchLeft p:last-child {
