@@ -503,7 +503,7 @@ const NewPropertyListing = () => {
                         })
                       }
                     />
-                    <h6 className="ml-3">Katha</h6>
+                    <h6 className="ml-3">Sqr.Ft</h6>
                   </Form.Group>
                   <Form.Group controlId="formBasicEmail">
                     <h5>Land Size</h5>
@@ -520,7 +520,7 @@ const NewPropertyListing = () => {
                         })
                       }
                     />
-                    <h6 className="ml-3">Sqr.Ft</h6>
+                    <h6 className="ml-3">Katha</h6>
                   </Form.Group>
 
                   <Form.Group controlId="formBasicEmail">
