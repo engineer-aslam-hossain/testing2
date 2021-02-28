@@ -9,25 +9,22 @@ const Partner = () => {
             <div className="d-flex flex-wrap px-4">
               <div className="col-md-3">
                 <img
-                  src="/images/Juwai.png"
+                  src="/images/iqi_global.png"
                   alt=""
                   className="partnerImg img-fluid"
                 />
               </div>
               <div className="col-md-9 d-flex flex-column ">
-                <h1 className="partnerName">Juwai IQI Limited</h1>
+                <h1 className="iqiGlobal">
+                  IQI Global : Asia’s Global Real Estate
+                </h1>
+                <h1 className="partnerName">A Member of Juwaii IQI</h1>
+                <p> Asia's largest real estate firm in the world. </p>
                 <p>
-                  Juwai IQI is the Asian Real Estate Technology Group that
-                  empowers residents of Asia to become residents of the world.
-                </p>
-                <p>
-                  The company offers real estate marketers an end-to-end
-                  marketing and sales solution that integrates is super-app, its
-                  IQI Global network of more than 15,000 real estate agents, and
-                  its market-leading property marketplaces. Juwai IQI has sold
-                  and rented over 17,000 properties worth US$1 billion in 2020,
-                  engages 5.5 million monthly active users, and advertises US$4
-                  trillion of property from 111 countries every year.
+                  This is a company that is proud of its ability to combine
+                  global insights and industry practices with local knowledge,
+                  creating a unique sales technique which is both friendly and
+                  professional.
                 </p>
               </div>
             </div>

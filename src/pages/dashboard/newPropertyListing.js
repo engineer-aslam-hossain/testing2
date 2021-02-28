@@ -92,16 +92,23 @@ const NewPropertyListing = () => {
     setAmenist("");
   };
 
+  const [extraPropertyDetails, setExtraPropertyDetails] = useState([]);
   const [propertyDetail, setpropertyDetail] = useState("");
   const propertyDetailHandler = () => {
-    setAddListDetails({
-      ...addListDetails,
-      detail: addListDetails.detail
-        ? [...addListDetails.detail, propertyDetail]
-        : [propertyDetail],
-    });
+    setExtraPropertyDetails([...extraPropertyDetails, propertyDetail]);
     setpropertyDetail("");
   };
+  console.log(extraPropertyDetails);
+
+  useEffect(() => {
+    setAddListDetails({
+      ...addListDetails,
+      detail: {
+        ...addListDetails.detail,
+        extra_details: extraPropertyDetails,
+      },
+    });
+  }, [extraPropertyDetails]);
 
   const propertySubmitHandler = async (e) => {
     e.preventDefault();
@@ -142,9 +149,10 @@ const NewPropertyListing = () => {
     } catch (err) {
       console.log(err);
     }
+    setAddListDetails({ currency: "BDT", category: "Residential" });
   };
 
-  // console.log(addListDetails);
+  console.log(addListDetails);
 
   return (
     <section>
@@ -467,6 +475,23 @@ const NewPropertyListing = () => {
                     <h6 className="ml-3">BDT</h6>
                   </Form.Group>
                   <Form.Group controlId="formBasicEmail">
+                    <h5>Service Charge</h5>
+                    <Form.Control
+                      type="number"
+                      placeholder="Service Charge"
+                      onChange={(e) =>
+                        setAddListDetails({
+                          ...addListDetails,
+                          detail: {
+                            ...addListDetails.detail,
+                            service_charge: e.target.value,
+                          },
+                        })
+                      }
+                    />
+                    <h6 className="ml-3">BDT</h6>
+                  </Form.Group>
+                  <Form.Group controlId="formBasicEmail">
                     <h5>Area</h5>
                     <Form.Control
                       type="number"
@@ -479,6 +504,57 @@ const NewPropertyListing = () => {
                       }
                     />
                     <h6 className="ml-3">Sqr.Ft</h6>
+                  </Form.Group>
+                  <Form.Group controlId="formBasicEmail">
+                    <h5>Land Size</h5>
+                    <Form.Control
+                      type="number"
+                      placeholder="Land Size"
+                      onChange={(e) =>
+                        setAddListDetails({
+                          ...addListDetails,
+                          detail: {
+                            ...addListDetails.detail,
+                            land_size: e.target.value,
+                          },
+                        })
+                      }
+                    />
+                    <h6 className="ml-3">Sqr.Ft</h6>
+                  </Form.Group>
+
+                  <Form.Group controlId="formBasicEmail">
+                    <h5>Floor</h5>
+                    <Form.Control
+                      type="text"
+                      placeholder="Floor"
+                      onChange={(e) =>
+                        setAddListDetails({
+                          ...addListDetails,
+                          detail: {
+                            ...addListDetails.detail,
+                            floor: e.target.value,
+                          },
+                        })
+                      }
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="formBasicEmail">
+                    <h5>Unit</h5>
+                    <Form.Control
+                      type="text"
+                      placeholder="Unit"
+                      onChange={(e) =>
+                        setAddListDetails({
+                          ...addListDetails,
+                          detail: {
+                            ...addListDetails.detail,
+                            unit: e.target.value,
+                          },
+                        })
+                      }
+                    />
                   </Form.Group>
                   <Form.Group controlId="formBasicEmail">
                     <h5>Beds</h5>
@@ -502,6 +578,22 @@ const NewPropertyListing = () => {
                         setAddListDetails({
                           ...addListDetails,
                           bath: Math.floor(e.target.value),
+                        })
+                      }
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="formBasicEmail">
+                    <h5>Belcony</h5>
+                    <Form.Control
+                      type="number"
+                      placeholder="Belcony"
+                      onChange={(e) =>
+                        setAddListDetails({
+                          ...addListDetails,
+                          detail: {
+                            ...addListDetails.detail,
+                            belcony: e.target.value,
+                          },
                         })
                       }
                     />
@@ -558,11 +650,14 @@ const NewPropertyListing = () => {
                     </Form.Group>
                     <div className="d-flex flex-column justify-content-center align-items-center my-3">
                       {addListDetails.detail &&
-                        addListDetails.detail.map((item, index) => (
-                          <h5 key={index} className="mb-0">
-                            {index + 1}-{item}
-                          </h5>
-                        ))}
+                        addListDetails.detail.extra_details &&
+                        addListDetails.detail.extra_details.map(
+                          (item, index) => (
+                            <h5 key={index} className="mb-0">
+                              {index + 1}-{item}
+                            </h5>
+                          )
+                        )}
                     </div>
                   </div>
 
@@ -573,6 +668,104 @@ const NewPropertyListing = () => {
                       <AddIcon />
                     </button>
                   </Form.Group> */}
+
+                  <Form.Group controlId="formBasicEmail">
+                    <h5>Developer Name</h5>
+                    <Form.Control
+                      type="text"
+                      placeholder="Developer Name"
+                      onChange={(e) =>
+                        setAddListDetails({
+                          ...addListDetails,
+                          detail: {
+                            ...addListDetails.detail,
+                            developer_name: e.target.value,
+                          },
+                        })
+                      }
+                    />
+                  </Form.Group>
+
+                  <Form.Group controlId="formBasicEmail">
+                    <h5>Handover Date</h5>
+                    <Form.Control
+                      type="date"
+                      placeholder="Handover Date"
+                      onChange={(e) =>
+                        setAddListDetails({
+                          ...addListDetails,
+                          detail: {
+                            ...addListDetails.detail,
+                            handover_date: e.target.value,
+                          },
+                        })
+                      }
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="formBasicEmail">
+                    <h5>Manager Name</h5>
+                    <Form.Control
+                      type="text"
+                      placeholder="Manager Name"
+                      onChange={(e) =>
+                        setAddListDetails({
+                          ...addListDetails,
+                          detail: {
+                            ...addListDetails.detail,
+                            manager_name: e.target.value,
+                          },
+                        })
+                      }
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="formBasicEmail">
+                    <h5>Manager Number</h5>
+                    <Form.Control
+                      type="number"
+                      placeholder="Manager Number"
+                      onChange={(e) =>
+                        setAddListDetails({
+                          ...addListDetails,
+                          detail: {
+                            ...addListDetails.detail,
+                            manager_number: e.target.value,
+                          },
+                        })
+                      }
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="formBasicEmail">
+                    <h5>Landlord Name</h5>
+                    <Form.Control
+                      type="text"
+                      placeholder="Landlord Name"
+                      onChange={(e) =>
+                        setAddListDetails({
+                          ...addListDetails,
+                          detail: {
+                            ...addListDetails.detail,
+                            landlord_name: e.target.value,
+                          },
+                        })
+                      }
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="formBasicEmail">
+                    <h5>Landlord Number</h5>
+                    <Form.Control
+                      type="number"
+                      placeholder="Landlord Number"
+                      onChange={(e) =>
+                        setAddListDetails({
+                          ...addListDetails,
+                          detail: {
+                            ...addListDetails.detail,
+                            landlord_number: e.target.value,
+                          },
+                        })
+                      }
+                    />
+                  </Form.Group>
                 </div>
 
                 <div className="col-md-6 d-flex  justify-content-between my-5 px-0">

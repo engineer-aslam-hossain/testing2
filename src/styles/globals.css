@@ -789,10 +789,13 @@ img.partnerImg {
 .partnerName {
   font-weight: 700;
   color: #ff0000;
-  font-size: 20px;
+  font-size: 1rem;
   margin-bottom: 1rem;
 }
-
+.iqiGlobal {
+  font-size: 28px;
+  font-weight: 700;
+}
 .imfoAboutPartner li {
   line-height: 40px;
 }
@@ -857,7 +860,7 @@ section.socailMedia {
     font-size: 26px;
   }
   .partnerName {
-    font-size: 28px;
+    font-size: 24px;
   }
 }
 
