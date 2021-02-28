@@ -23,6 +23,20 @@ const SinglePropertyInfoDetails = ({ data }) => {
     ref_code,
   } = data.data;
 
+  const {
+    extra_details,
+    belcony,
+    unit,
+    developer_name,
+    floor,
+    land_size,
+    landlord_name,
+    landlord_number,
+    manager_name,
+    manager_number,
+    service_charge,
+  } = detail;
+
   const { allProperty, loggedInUser } = useContext(DreamFinderContext);
   const similarProperty = allProperty.filter(
     (item) => item.address_district === address_district
@@ -37,7 +51,7 @@ const SinglePropertyInfoDetails = ({ data }) => {
     `,
   });
 
-  // console.log(allProperty);
+  console.log(data.data);
 
   const getInTouchSubmitHandler = async (e) => {
     e.preventDefault();
@@ -127,9 +141,20 @@ const SinglePropertyInfoDetails = ({ data }) => {
 
                       <div className="FindedPropertyDetails mb-4">
                         <h5>property details</h5>
+                        <p>Floor : {floor} </p>
+                        <p>Unit : {unit} </p>
+                        <p>Belcony : {belcony} </p>
+                        <p>Land Size : {land_size} Katha </p>
+                        <p>Service Charge : {service_charge} </p>
+                        <p>Manager Name : {manager_name} </p>
+                        <p>Manager Number : {manager_number} </p>
+                        <p>Land Lord Name : {landlord_name} </p>
+                        <p>Land Lord Number : {landlord_number} </p>
+                        <p>Developer Name : {developer_name} </p>
+
                         <ul>
-                          {detail &&
-                            detail.map((item, index) => (
+                          {extra_details &&
+                            extra_details.map((item, index) => (
                               <li key={index}>{item}</li>
                             ))}
                         </ul>

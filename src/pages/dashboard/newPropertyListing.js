@@ -112,7 +112,6 @@ const NewPropertyListing = () => {
 
   const propertySubmitHandler = async (e) => {
     e.preventDefault();
-    e.target.reset();
 
     try {
       const token = JSON.parse(localStorage.getItem("dreamfinder_session"));
@@ -139,6 +138,7 @@ const NewPropertyListing = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        e.target.reset();
       }
       if (data.success === "no") {
         Swal.fire({
@@ -421,7 +421,7 @@ const NewPropertyListing = () => {
                   </Dropdown>
                 </div>
                 <Form.Group controlId="formBasicEmail">
-                  <h5>CIty / Area</h5>
+                  <h5>City / Area</h5>
                   <Form.Control
                     type="text"
                     placeholder="CIty / Area"
@@ -503,7 +503,7 @@ const NewPropertyListing = () => {
                         })
                       }
                     />
-                    <h6 className="ml-3">Sqr.Ft</h6>
+                    <h6 className="ml-3">Katha</h6>
                   </Form.Group>
                   <Form.Group controlId="formBasicEmail">
                     <h5>Land Size</h5>
