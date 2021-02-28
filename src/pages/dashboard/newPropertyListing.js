@@ -131,6 +131,7 @@ const NewPropertyListing = () => {
       console.log(data);
 
       if (data.success === "yes") {
+        e.target.reset();
         Swal.fire({
           position: "top-center",
           icon: "success",
@@ -138,7 +139,6 @@ const NewPropertyListing = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        e.target.reset();
       }
       if (data.success === "no") {
         Swal.fire({
