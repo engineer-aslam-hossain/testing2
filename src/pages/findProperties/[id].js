@@ -6,8 +6,9 @@ import ZoomOutMapIcon from "@material-ui/icons/ZoomOutMap";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 import SingleProperty from "../../components/SingleProperty/SingleProperty";
 import DreamFinderContext from "../../components/Context/Context";
+import Swal from "sweetalert2";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const SinglePropertyInfoDetails = ({ data }) => {
   const {
@@ -26,6 +27,55 @@ const SinglePropertyInfoDetails = ({ data }) => {
   const similarProperty = allProperty.filter(
     (item) => item.address_district === address_district
   );
+
+  const [getInTouch, setGetInTouch] = useState({
+    type: "Get In Touch",
+    name: loggedInUser.name ? loggedInUser.name : "",
+    email: loggedInUser.email ? loggedInUser.email : "",
+    phone_number: loggedInUser.phone_number ? loggedInUser.phone_number : "",
+    message: `I am interested to inquire about your property in Dreamfinder: ID-${ref_code}. Please contact me according to your convenience
+    `,
+  });
+
+  // console.log(allProperty);
+
+  const getInTouchSubmitHandler = async (e) => {
+    e.preventDefault();
+    e.target.reset();
+
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/message/send`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(getInTouch),
+        }
+      );
+      const data = await res.json();
+      // console.log(data);
+
+      if (data.success === "yes") {
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Send Message SuccessFully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+      if (data.success === "no") {
+        Swal.fire({
+          icon: "error",
+          title: data.message,
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   if (data) {
     return (
@@ -105,7 +155,7 @@ const SinglePropertyInfoDetails = ({ data }) => {
                         <p>GET IN TOUCH WITH US</p>
                       </div>
                       <Card style={{ padding: "1rem" }} className="signUpCard">
-                        <Form>
+                        <Form noValidate onSubmit={getInTouchSubmitHandler}>
                           <div className="formHeading">
                             {/* <p>Property ID: 12144141</p>
                             <h1>A1B2C3D4</h1> */}
@@ -116,6 +166,12 @@ const SinglePropertyInfoDetails = ({ data }) => {
                               type="text"
                               defaultValue={loggedInUser.name}
                               placeholder="Enter Your Full Name"
+                              onChange={(e) =>
+                                setGetInTouch({
+                                  ...getInTouch,
+                                  name: e.target.value,
+                                })
+                              }
                             />
                           </Form.Group>
                           <Form.Group controlId="formBasicEmail">
@@ -123,6 +179,12 @@ const SinglePropertyInfoDetails = ({ data }) => {
                             <Form.Control
                               type="email"
                               defaultValue={loggedInUser.email}
+                              onChange={(e) =>
+                                setGetInTouch({
+                                  ...getInTouch,
+                                  email: e.target.value,
+                                })
+                              }
                               placeholder="Enter email address"
                             />
                           </Form.Group>
@@ -131,6 +193,12 @@ const SinglePropertyInfoDetails = ({ data }) => {
                             <Form.Control
                               type="number"
                               defaultValue={loggedInUser.phone_number}
+                              onChange={(e) =>
+                                setGetInTouch({
+                                  ...getInTouch,
+                                  phone_number: e.target.value,
+                                })
+                              }
                               placeholder="Phone Number"
                             />
                           </Form.Group>
@@ -138,13 +206,18 @@ const SinglePropertyInfoDetails = ({ data }) => {
                             <Form.Label>Message</Form.Label>
                             <Form.Control
                               as="textarea"
-                              defaultValue={`I am interested to inquire about your property in Dreamfinder: ID-${ref_code}. Please contact me according to your convenience
-                              `}
+                              defaultValue={getInTouch.message}
                               placeholder="write your message here"
                               rows={3}
+                              onChange={(e) =>
+                                setGetInTouch({
+                                  ...getInTouch,
+                                  message: e.target.value,
+                                })
+                              }
                             />
                           </Form.Group>
-                          <button className="messageSendBtn">
+                          <button className="messageSendBtn" type="submit">
                             GET IN TOUCH
                           </button>
                         </Form>

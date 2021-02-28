@@ -3,7 +3,30 @@ import SingleArea from "../SingleArea/SingleArea";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import CommonHeader from "../CommonHeader/CommonHeader";
+import { useEffect, useState } from "react";
 const PopularArea = () => {
+  const [location, setLocation] = useState({});
+  const getAllProperty = async () => {
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/config/`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const { data } = await res.json();
+      // console.log(data);
+      setLocation(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getAllProperty();
+  }, []);
+
+  // console.log(data);
   return (
     <section className="popular-area pb-5">
       <div className="container">

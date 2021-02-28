@@ -5,7 +5,7 @@ const adminPanelData = [
     title: "All Listing Requests",
     query: "All",
     route: "allListingRequest",
-    details: "Post a new Property to Rent, Sell or Auction.",
+    details: "New Property Listing requests yet to be posted.",
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ const adminPanelData = [
     title: "Sale Requests",
     query: "Sell",
     route: "allListingRequest",
-    details: "Post a new Property to Rent, Sell or Auction.",
+    details: "All The properties for Sale that are now live on DreamFinder.",
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const adminPanelData = [
     title: "Rent Requests",
     query: "Rent",
     route: "allListingRequest",
-    details: "Post a new Property to Rent, Sell or Auction.",
+    details: "All The properties for Rent that are now live on DreamFinder.",
   },
   {
     id: 4,
@@ -29,7 +29,8 @@ const adminPanelData = [
     title: "Auction Requests",
     query: "Auction",
     route: "allListingRequest",
-    details: "Post a new Property to Rent, Sell or Auction.",
+    details:
+      "Everything related to auctions one place, according to your convenience.",
   },
   {
     id: 5,
@@ -37,7 +38,7 @@ const adminPanelData = [
     title: "Post NEW Property",
     query: "All",
     route: "newPropertyListing",
-    details: "Post a new Property to Rent, Sell or Auction.",
+    details: "New Property Listing requests yet to be posted.",
   },
   {
     id: 6,
@@ -45,7 +46,7 @@ const adminPanelData = [
     title: "All Property Listings",
     query: "All",
     route: "postedProperties",
-    details: "Post a new Property to Rent, Sell or Auction.",
+    details: "All The properties that are now live on DreamFinder",
   },
   {
     id: 7,
@@ -53,7 +54,7 @@ const adminPanelData = [
     title: "Listed for Sale",
     query: "Sell",
     route: "postedProperties",
-    details: "Post a new Property to Rent, Sell or Auction.",
+    details: "All The properties for Sale that are now live on DreamFinder.",
   },
   {
     id: 8,
@@ -61,7 +62,7 @@ const adminPanelData = [
     title: "Listed for Rent",
     query: "Rent",
     route: "postedProperties",
-    details: "Post a new Property to Rent, Sell or Auction.",
+    details: "All The properties for Rent that are now live on DreamFinder.",
   },
   {
     id: 9,
@@ -69,7 +70,8 @@ const adminPanelData = [
     title: "Listed for Auctions",
     query: "Auction",
     route: "postedProperties",
-    details: "Post a new Property to Rent, Sell or Auction.",
+    details:
+      "Everything related to auctions one place, according to your convenience.",
   },
   {
     id: 10,
@@ -77,7 +79,7 @@ const adminPanelData = [
     title: "Area Guides",
     query: "All",
     route: "allAreaGuides",
-    details: "Post a new Property to Rent, Sell or Auction.",
+    details: "Create, Update, Remove and View all Area Guides",
   },
   {
     id: 11,
@@ -85,7 +87,7 @@ const adminPanelData = [
     title: "Blogs",
     query: "All",
     route: "allBlogPosts",
-    details: "Post a new Property to Rent, Sell or Auction.",
+    details: "Search Filters you’ve saved for later queries.",
   },
   {
     id: 12,
@@ -93,7 +95,7 @@ const adminPanelData = [
     title: "Manage Agents",
     query: "All",
     route: "",
-    details: "Post a new Property to Rent, Sell or Auction.",
+    details: "Manage payment for properties you’ve rented.",
   },
 
   {
@@ -102,7 +104,31 @@ const adminPanelData = [
     title: "Surveying",
     query: "All",
     route: "",
-    details: "Post a new Property to Rent, Sell or Auction.",
+    details: "Manage payment for properties you’ve rented.",
+  },
+  {
+    id: 33,
+    icon: "icons/admin/career.svg",
+    title: "Careers & Jobs",
+    query: "All",
+    route: "allJobPosts",
+    details: "Post Jobs and See Incoming Job Requests",
+  },
+  {
+    id: 34,
+    icon: "icons/admin/bank.svg",
+    title: "Bank Loan Info",
+    query: "All",
+    route: "",
+    details: "List of all users and managing options",
+  },
+  {
+    id: 35,
+    icon: "icons/admin/location.svg",
+    title: "Popular Locations",
+    query: "All",
+    route: "postPopularLocations",
+    details: "Post Jobs and See Incoming Job Requests",
   },
   {
     id: 14,
@@ -110,7 +136,7 @@ const adminPanelData = [
     title: "Users",
     query: "All",
     route: "profile",
-    details: "Post a new Property to Rent, Sell or Auction.",
+    details: "List of all users and managing options",
   },
   {
     id: 15,
@@ -118,7 +144,7 @@ const adminPanelData = [
     title: "Manage Admins",
     route: "",
     query: "All",
-    details: "Post a new Property to Rent, Sell or Auction.",
+    details: "Manage Payments from renters of your property ",
   },
   {
     id: 16,
@@ -126,7 +152,7 @@ const adminPanelData = [
     title: "Site Settings",
     route: "",
     query: "All",
-    details: "Post a new Property to Rent, Sell or Auction.",
+    details: "Change Site Settings an Preferences",
   },
 ];
 

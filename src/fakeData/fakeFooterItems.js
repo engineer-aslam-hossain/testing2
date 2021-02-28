@@ -9,7 +9,7 @@ const fakeFooterItems = [
     id: 22,
     column: "firstColumn",
     title: "Career",
-    link: "",
+    link: "careers",
   },
   {
     id: 23,

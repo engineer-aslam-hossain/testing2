@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Card, Col, Dropdown, Form, Row, Table } from "react-bootstrap";
+import { Card, Col, Dropdown, Form, Modal, Row, Table } from "react-bootstrap";
 import { Range } from "react-range";
 import fakeHomeLoanFaq from "../fakeData/fakeHomeLoanFaq";
 import Link from "next/link";
 import loanPeriod from "../fakeData/LoanPeriod";
+import Swal from "sweetalert2";
+
 const loanCalculator = () => {
   const [loanCalculation, setLoanCalculation] = useState({
     price: "0",
@@ -11,7 +13,11 @@ const loanCalculator = () => {
     down_Payment: "0",
     interest_rate: "0",
   });
+  const [applyInfo, setApplyInfo] = useState({
+    type: "Home Loan",
+  });
 
+  console.log(applyInfo);
   const downPayment = [
     {
       id: 1,
@@ -92,6 +98,49 @@ const loanCalculator = () => {
     setDownPaymentRate("5");
     setInterestRate([5]);
   };
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const applyForLoan = async (e) => {
+    e.preventDefault();
+    e.target.reset();
+
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/message/send`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(applyInfo),
+        }
+      );
+      const data = await res.json();
+      // console.log(data);
+
+      if (data.success === "yes") {
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "SuccessFully Applied For Loan",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+      if (data.success === "no") {
+        Swal.fire({
+          icon: "error",
+          title: data.message,
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <section className="loanCalculator" id="calculate">
       <section className="CalCulationTopHeader">
@@ -356,7 +405,9 @@ const loanCalculator = () => {
                       {/* <h3>BDT 79,533</h3> */}
                     </td>
                     <td>
-                      <button className="applyNowBtn">Apply Now</button>
+                      <button className="applyNowBtn" onClick={handleShow}>
+                        Apply Now
+                      </button>
                     </td>
                   </tr>
                 </tbody>
@@ -381,6 +432,78 @@ const loanCalculator = () => {
               ))}
             </div>
           </div>
+          <Modal show={show} onHide={handleClose}>
+            <div className="">
+              <Card style={{ padding: "3rem" }} className="">
+                <div className="my-4">
+                  <h3 className="getIntouchCardTitle">Apply for Loan</h3>
+                </div>
+                <Form noValidate onSubmit={applyForLoan}>
+                  <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control
+                      type="text"
+                      // defaultValue={loggedInUser.name}
+                      onChange={(e) =>
+                        setApplyInfo({
+                          ...applyInfo,
+                          name: e.target.value,
+                        })
+                      }
+                      placeholder="Enter Your Full Name"
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Email ID</Form.Label>
+                    <Form.Control
+                      type="email"
+                      // defaultValue={loggedInUser.email}
+                      onChange={(e) =>
+                        setApplyInfo({
+                          ...applyInfo,
+                          email: e.target.value,
+                        })
+                      }
+                      placeholder="Enter email address"
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="formBasicPassword">
+                    <Form.Label>Phone No.</Form.Label>
+                    <Form.Control
+                      type="number"
+                      // defaultValue={loggedInUser.phone_number}
+                      onChange={(e) =>
+                        setApplyInfo({
+                          ...applyInfo,
+                          phone_number: e.target.value,
+                        })
+                      }
+                      placeholder="Phone Number"
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="exampleForm.ControlTextarea1">
+                    <Form.Label>Message</Form.Label>
+                    <Form.Control
+                      as="textarea"
+                      // defaultValue={`I am interested to inquire about your property in Dreamfinder: ID-${ref_code}. Please contact me according to your convenience
+                      //           `}
+                      onChange={(e) =>
+                        setApplyInfo({
+                          ...applyInfo,
+                          message: e.target.value,
+                        })
+                      }
+                      placeholder=""
+                      rows={4}
+                    />
+                  </Form.Group>
+                  <button className="applyNow" type="submit">
+                    Submit
+                  </button>
+                </Form>
+              </Card>
+            </div>
+          </Modal>
         </div>
       </div>
     </section>

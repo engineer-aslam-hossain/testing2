@@ -2,9 +2,11 @@ import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import { useEffect, useState } from "react";
 import CommonHeader from "../components/CommonHeader/CommonHeader";
 import aboutUsDetails from "../fakeData/aboutUsDetails";
+import { useRouter } from "next/router";
 
 const AboutUs = () => {
   const [windowSize, setWindowSize] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     // window.addEventListener("resize", () => {
@@ -26,7 +28,9 @@ const AboutUs = () => {
             <div className="">
               <button className="getInTouch d-flex justify-content-between align-items-center">
                 <MailOutlineIcon />
-                <p className="mb-1">Get in Touch with us</p>
+                <p className="mb-1" onClick={() => router.push("/getInTouch")}>
+                  Get in Touch with us
+                </p>
               </button>
             </div>
           </div>
@@ -35,7 +39,7 @@ const AboutUs = () => {
 
             <div>
               <img
-                src="/images/Ahsan_Manzil.png"
+                src="/images/aboutUs.jpg"
                 alt="teamImg"
                 className="img-fluid teamImg"
               />

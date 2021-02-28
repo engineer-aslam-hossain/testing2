@@ -1,6 +1,54 @@
+import { useState } from "react";
 import { Card, Form } from "react-bootstrap";
+import Swal from "sweetalert2";
+import { useRouter } from "next/router";
 
 const GetInTouch = () => {
+  const [getInTouch, setGetInTouch] = useState({
+    type: "Get In Touch",
+  });
+
+  const router = useRouter();
+
+  const getInTouchSubmitHandler = async (e) => {
+    e.preventDefault();
+    e.target.reset();
+
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/message/send`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(getInTouch),
+        }
+      );
+      const data = await res.json();
+      // console.log(data);
+
+      if (data.success === "yes") {
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Send Message SuccessFully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+      if (data.success === "no") {
+        Swal.fire({
+          icon: "error",
+          title: data.message,
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // console.log(getInTouch);
   return (
     <section>
       <section className="">
@@ -61,7 +109,12 @@ const GetInTouch = () => {
             </div>
             <div>
               <h4>Want to know more?</h4>
-              <button className="getInTouchSendBtn">ABOUT US</button>
+              <button
+                className="getInTouchSendBtn"
+                onClick={() => router.push("/aboutUs")}
+              >
+                ABOUT US
+              </button>
               <button className="getInTouchSendBtn my-4">
                 CAREER OPPORTUNITIES
               </button>
@@ -73,16 +126,18 @@ const GetInTouch = () => {
               <div className="my-4">
                 <h3 className="getIntouchCardTitle">Write Anything to Us</h3>
               </div>
-              <Form>
-                <div className="formHeading">
-                  {/* <p>Property ID: 12144141</p>
-                            <h1>A1B2C3D4</h1> */}
-                </div>
+              <Form noValidate onSubmit={getInTouchSubmitHandler}>
                 <Form.Group controlId="formBasicEmail">
                   <Form.Label>Name</Form.Label>
                   <Form.Control
                     type="text"
                     // defaultValue={loggedInUser.name}
+                    onChange={(e) =>
+                      setGetInTouch({
+                        ...getInTouch,
+                        name: e.target.value,
+                      })
+                    }
                     placeholder="Enter Your Full Name"
                   />
                 </Form.Group>
@@ -91,6 +146,12 @@ const GetInTouch = () => {
                   <Form.Control
                     type="email"
                     // defaultValue={loggedInUser.email}
+                    onChange={(e) =>
+                      setGetInTouch({
+                        ...getInTouch,
+                        email: e.target.value,
+                      })
+                    }
                     placeholder="Enter email address"
                   />
                 </Form.Group>
@@ -99,17 +160,29 @@ const GetInTouch = () => {
                   <Form.Control
                     type="number"
                     // defaultValue={loggedInUser.phone_number}
+                    onChange={(e) =>
+                      setGetInTouch({
+                        ...getInTouch,
+                        phone_number: e.target.value,
+                      })
+                    }
                     placeholder="Phone Number"
                   />
                 </Form.Group>
-                <Form.Group controlId="formBasicPassword">
+                {/* <Form.Group controlId="formBasicPassword">
                   <Form.Label>Subject</Form.Label>
                   <Form.Control
                     type="text"
                     // defaultValue={loggedInUser.phone_number}
+                    onChange={(e) =>
+                      setGetInTouch({
+                        ...getInTouch,
+                        type: e.target.value,
+                      })
+                    }
                     placeholder="Subject"
                   />
-                </Form.Group>
+                </Form.Group> */}
                 <Form.Group controlId="exampleForm.ControlTextarea1">
                   <Form.Label>Message</Form.Label>
                   <Form.Control
@@ -118,9 +191,17 @@ const GetInTouch = () => {
                     //           `}
                     placeholder="write your message here"
                     rows={3}
+                    onChange={(e) =>
+                      setGetInTouch({
+                        ...getInTouch,
+                        message: e.target.value,
+                      })
+                    }
                   />
                 </Form.Group>
-                <button className="getInTouchSendBtn">SEND MESSAGE</button>
+                <button className="getInTouchSendBtn" type="submit">
+                  SEND MESSAGE
+                </button>
               </Form>
             </Card>
           </div>
