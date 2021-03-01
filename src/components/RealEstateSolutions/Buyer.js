@@ -1,5 +1,4 @@
 import fakeBuyerData from "../../fakeData/fakeBuyerData";
-import ReactFullpage from "@fullpage/react-fullpage";
 
 const Buyer = () => {
   return (
