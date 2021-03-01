@@ -1,4 +1,3 @@
-import React from "react";
 import { CardDeck } from "react-bootstrap";
 import fakeBlog from "../../fakeData/fakeBlog";
 import CommonHeader from "../CommonHeader/CommonHeader";

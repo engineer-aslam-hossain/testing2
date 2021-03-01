@@ -392,6 +392,11 @@ img.d-block.w-100 {
   padding-bottom: 0.25rem;
   border-radius: 8px;
 }
+
+.searchDiv button.headerMain {
+  width: 9.4rem;
+}
+
 .searchDiv input {
   /* border: 1px solid #797979;
   border-radius: 8px;
@@ -510,6 +515,9 @@ button.headerMain {
 @media (min-width: 1600px) {
   button.headerMain {
     width: 17rem;
+  }
+  .searchDiv button.headerMain {
+    width: 11.8rem;
   }
 }
 
@@ -744,6 +752,7 @@ a.mb-1.placeName {
 
 .propertyCard {
   box-shadow: var(--box-shadow);
+  height: 100%;
 }
 .propertyName {
   font-size: 18px;
@@ -2551,3 +2560,20 @@ label.cvLabel {
   cursor: pointer;
 }
 /* careers styles end */
+
+/* termsAndConditions styles start */
+
+.termsAndConditions p,
+.privacyPolicy p {
+  line-height: 25px;
+  text-align: justify;
+}
+
+.termsAndConditions h4,
+.privacyPolicy h4 {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 1rem;
+}
+
+/* termsAndConditions styles end */

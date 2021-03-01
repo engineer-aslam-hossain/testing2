@@ -1,4 +1,3 @@
-import React from "react";
 import { Dropdown, FormControl, InputGroup } from "react-bootstrap";
 import fakeBlog from "../../fakeData/fakeBlog";
 import SearchIcon from "@material-ui/icons/Search";

@@ -49,7 +49,7 @@ const HeaderMain = () => {
     <section className="header-main py-5" id="home">
       <div className="container pt-5">
         <div className="row">
-          <div className="col-md-10 d-flex flex-column  justify-content-center mx-auto py-4">
+          <div className="col-md-7 d-flex flex-column  justify-content-center mx-auto py-4">
             <div className="colorText">
               <h1 className="headerMainTitle">
                 Wondering where to live? <br />

@@ -40,13 +40,13 @@ const fakeFooterItems = [
     id: 9,
     title: "Teams & Conditions",
     column: "thirdColumn",
-    link: "",
+    link: "termsAndConditions",
   },
   {
     id: 10,
     title: "Privacy Policy",
     column: "thirdColumn",
-    link: "",
+    link: "privacyPolicy",
   },
 ];
 
