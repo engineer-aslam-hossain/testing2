@@ -7,7 +7,7 @@ import Custom404 from "../../pages/404";
 const Dashboard = () => {
   const { loggedInUser, setLoggedInUser } = useContext(DreamFinderContext);
 
-  const type = loggedInUser.role.includes("ADMIN");
+  const type = loggedInUser.role && loggedInUser.role.includes("ADMIN");
 
   if (type) {
     return (
