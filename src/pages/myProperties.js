@@ -16,7 +16,6 @@ import DreamFinderContext from "../components/Context/Context";
 import { useContext, useEffect, useState } from "react";
 import Select from "react-select";
 import fakeOptions from "../fakeData/fakeOptions";
-import useSwr from "swr";
 import Badge from "@material-ui/core/Badge";
 import { withStyles } from "@material-ui/core/styles";
 import SortIcon from "@material-ui/icons/Sort";
