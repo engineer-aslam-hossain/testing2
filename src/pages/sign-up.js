@@ -90,6 +90,8 @@ const SignUp = () => {
     }
   };
 
+  const gooogleSignIn = () => {};
+
   return (
     <section className="sign-up py-5">
       <div className="container">
@@ -259,14 +261,16 @@ const SignUp = () => {
                       <p className="text-secondary">Or Sign Up with...</p>
                     </div>
                     <div className="d-flex flex-column justify-content-around flex-wrap">
-                      <button className="social-btn">
-                        <img
-                          src="/images/google.png"
-                          className="img-fluid"
-                          alt="#"
-                        />
-                        Sign in with Google
-                      </button>
+                      <Link href="https://dreamfinder.com.bd/api/auth/google">
+                        <a className="social-btn">
+                          <img
+                            src="/images/google.png"
+                            className="img-fluid"
+                            alt="#"
+                          />
+                          Sign in with Google
+                        </a>
+                      </Link>
                       <button className="social-btn">
                         <img
                           src="/images/fb.png"

@@ -920,7 +920,8 @@ h1.signUpTitle {
   width: 425px;
   opacity: 0.5;
 }
-button.social-btn {
+button.social-btn,
+a.social-btn {
   border: none;
   outline: none !important;
   padding: 0.5rem 1rem;
@@ -930,9 +931,10 @@ button.social-btn {
   justify-content: space-between;
   font-size: 1.2rem;
   font-weight: 600;
-  color: gray;
+  color: gray !important;
   background: transparent;
   border-radius: 8px;
+  text-decoration: none !important;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.4);
 }
 

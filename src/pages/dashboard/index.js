@@ -7,7 +7,7 @@ import Custom404 from "../../pages/404";
 const Dashboard = () => {
   const { loggedInUser, setLoggedInUser } = useContext(DreamFinderContext);
 
-  if (loggedInUser.email) {
+  if (loggedInUser.role && loggedInUser.role.includes("ADMIN")) {
     return (
       <section>
         <div className="container pb-5">
