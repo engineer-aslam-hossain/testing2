@@ -1,19 +1,14 @@
 import { Dropdown, Form } from "react-bootstrap";
 import AddIcon from "@material-ui/icons/Add";
-import { useContext, useEffect, useState } from "react";
-import DreamFinderContext from "../../components/Context/Context";
+import { useEffect, useState } from "react";
 import fakeProperty from "../../fakeData/fakeProperty";
 import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 import Swal from "sweetalert2";
+import { useRouter } from "next/router";
 
 const NewPropertyListing = () => {
-  const {
-    searchData,
-    SetSearchData,
-    findProperty,
-    setFindProperty,
-  } = useContext(DreamFinderContext);
+  const router = useRouter();
 
   const [addListDetails, setAddListDetails] = useState({
     currency: "BDT",
@@ -82,6 +77,20 @@ const NewPropertyListing = () => {
   };
 
   const [amenist, setAmenist] = useState("");
+  const [extraAmenities, SetExtraAmenities] = useState({
+    cctv: false,
+    security: false,
+    lift: false,
+    gas: false,
+    tiles: false,
+    pool: false,
+    gym: false,
+    prayer_room: false,
+    exit: false,
+    stair: false,
+    parking: false,
+  });
+  // console.log(extraAmenities);
   const amenistHandler = () => {
     setAddListDetails({
       ...addListDetails,
@@ -98,7 +107,30 @@ const NewPropertyListing = () => {
     setExtraPropertyDetails([...extraPropertyDetails, propertyDetail]);
     setpropertyDetail("");
   };
-  console.log(extraPropertyDetails);
+
+  const amenityHandler = (item) => {
+    const itemIndex =
+      addListDetails.amenity && addListDetails.amenity.indexOf(item);
+    addListDetails.amenity && addListDetails.amenity.includes(item)
+      ? addListDetails.amenity.splice(itemIndex, 1)
+      : setAddListDetails({
+          ...addListDetails,
+          amenity: addListDetails.amenity
+            ? [...addListDetails.amenity, item]
+            : [item],
+        });
+  };
+
+  console.log(addListDetails);
+
+  useEffect(() => {
+    setAddListDetails({
+      ...addListDetails,
+      amenity: addListDetails.amenity
+        ? [...addListDetails.amenity, extraAmenities]
+        : [extraAmenities],
+    });
+  }, [extraAmenities]);
 
   useEffect(() => {
     setAddListDetails({
@@ -131,7 +163,6 @@ const NewPropertyListing = () => {
       console.log(data);
 
       if (data.success === "yes") {
-        e.target.reset();
         Swal.fire({
           position: "top-center",
           icon: "success",
@@ -152,7 +183,7 @@ const NewPropertyListing = () => {
     setAddListDetails({ currency: "BDT", category: "Residential" });
   };
 
-  console.log(addListDetails);
+  // console.log(addListDetails);
 
   return (
     <section>
@@ -175,7 +206,7 @@ const NewPropertyListing = () => {
                 className="newPropertyListingForm"
                 onSubmit={propertySubmitHandler}
               >
-                <Form.Group controlId="formBasicEmail">
+                <Form.Group>
                   <h5>Property Name</h5>
                   <Form.Control
                     type="text"
@@ -420,7 +451,7 @@ const NewPropertyListing = () => {
                     </Dropdown.Menu>
                   </Dropdown>
                 </div>
-                <Form.Group controlId="formBasicEmail">
+                <Form.Group>
                   <h5>City / Area</h5>
                   <Form.Control
                     type="text"
@@ -433,7 +464,7 @@ const NewPropertyListing = () => {
                     }
                   />
                 </Form.Group>
-                <Form.Group controlId="formBasicEmail">
+                <Form.Group>
                   <h5>Detailed Address</h5>
                   <Form.Control
                     type="text"
@@ -446,7 +477,7 @@ const NewPropertyListing = () => {
                     }
                   />
                 </Form.Group>
-                {/* <Form.Group controlId="formBasicEmail">
+                {/* <Form.Group >
                   <h5>Maps Location</h5>
                   <Form.Control
                     type="text"
@@ -460,7 +491,7 @@ const NewPropertyListing = () => {
                   />
                 </Form.Group> */}
                 <div className="col-md-8 px-0">
-                  <Form.Group controlId="formBasicEmail">
+                  <Form.Group>
                     <h5>Price</h5>
                     <Form.Control
                       type="number"
@@ -474,7 +505,7 @@ const NewPropertyListing = () => {
                     />
                     <h6 className="ml-3">BDT</h6>
                   </Form.Group>
-                  <Form.Group controlId="formBasicEmail">
+                  <Form.Group>
                     <h5>Service Charge</h5>
                     <Form.Control
                       type="number"
@@ -491,7 +522,7 @@ const NewPropertyListing = () => {
                     />
                     <h6 className="ml-3">BDT</h6>
                   </Form.Group>
-                  <Form.Group controlId="formBasicEmail">
+                  <Form.Group>
                     <h5>Area</h5>
                     <Form.Control
                       type="number"
@@ -505,7 +536,7 @@ const NewPropertyListing = () => {
                     />
                     <h6 className="ml-3">Sqr.Ft</h6>
                   </Form.Group>
-                  <Form.Group controlId="formBasicEmail">
+                  <Form.Group>
                     <h5>Land Size</h5>
                     <Form.Control
                       type="number"
@@ -523,7 +554,7 @@ const NewPropertyListing = () => {
                     <h6 className="ml-3">Katha</h6>
                   </Form.Group>
 
-                  <Form.Group controlId="formBasicEmail">
+                  <Form.Group>
                     <h5>Floor</h5>
                     <Form.Control
                       type="text"
@@ -540,7 +571,7 @@ const NewPropertyListing = () => {
                     />
                   </Form.Group>
 
-                  <Form.Group controlId="formBasicEmail">
+                  <Form.Group>
                     <h5>Unit</h5>
                     <Form.Control
                       type="text"
@@ -556,7 +587,7 @@ const NewPropertyListing = () => {
                       }
                     />
                   </Form.Group>
-                  <Form.Group controlId="formBasicEmail">
+                  <Form.Group>
                     <h5>Beds</h5>
                     <Form.Control
                       type="number"
@@ -569,7 +600,7 @@ const NewPropertyListing = () => {
                       }
                     />
                   </Form.Group>
-                  <Form.Group controlId="formBasicEmail">
+                  <Form.Group>
                     <h5>Baths</h5>
                     <Form.Control
                       type="number"
@@ -582,7 +613,7 @@ const NewPropertyListing = () => {
                       }
                     />
                   </Form.Group>
-                  <Form.Group controlId="formBasicEmail">
+                  <Form.Group>
                     <h5>Belcony</h5>
                     <Form.Control
                       type="number"
@@ -614,7 +645,7 @@ const NewPropertyListing = () => {
                 </Form.Group>
                 <div className="col-md-8 pb-5 px-0 addingDiv">
                   <div>
-                    <Form.Group controlId="formBasicEmail">
+                    <Form.Group>
                       <h5>Amenities List</h5>
                       <Form.Control
                         type="text"
@@ -626,17 +657,108 @@ const NewPropertyListing = () => {
                         <AddIcon />
                       </button>
                     </Form.Group>
-                    <div className="d-flex flex-column justify-content-center align-items-center my-3">
+                    <Form.Group controlId="formBasicCheckbox1">
+                      <h5>CCTV</h5>
+                      <Form.Check
+                        type="checkbox"
+                        onChange={() => amenityHandler("CCTV")}
+                        label="CCTV ?"
+                      />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicCheckbox2">
+                      <h5>Security</h5>
+                      <Form.Check
+                        type="checkbox"
+                        onChange={() => amenityHandler("Security")}
+                        label="Security ?"
+                      />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicCheckbox3">
+                      <h5>Lift</h5>
+                      <Form.Check
+                        type="checkbox"
+                        onChange={() => amenityHandler("Lift")}
+                        label="Lift ?"
+                      />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicCheckbox4">
+                      <h5>Gas</h5>
+                      <Form.Check
+                        type="checkbox"
+                        onChange={() => amenityHandler("Gas")}
+                        label="Gas ?"
+                      />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicCheckbox5">
+                      <h5>Tiles</h5>
+                      <Form.Check
+                        type="checkbox"
+                        onChange={() => amenityHandler("Tiles")}
+                        label="Tiles ?"
+                      />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicCheckbox6">
+                      <h5>Swimming Pool</h5>
+                      <Form.Check
+                        type="checkbox"
+                        onChange={() => amenityHandler("Swimming Pool")}
+                        label="Swimming Pool ?"
+                      />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicCheckbox7">
+                      <h5>Gym</h5>
+                      <Form.Check
+                        type="checkbox"
+                        onChange={() => amenityHandler("Gym")}
+                        label="Gym ?"
+                      />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicCheckbox8">
+                      <h5>Prayer Room</h5>
+                      <Form.Check
+                        type="checkbox"
+                        onChange={() => amenityHandler("Prayer Room")}
+                        label="Prayer Room ?"
+                      />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicCheckbox9">
+                      <h5>Emergency Exit</h5>
+                      <Form.Check
+                        type="checkbox"
+                        onChange={() => amenityHandler("Emergency Exit")}
+                        label="Emergency Exit ?"
+                      />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicCheckbox10">
+                      <h5>Stair</h5>
+                      <Form.Check
+                        type="checkbox"
+                        onChange={() => amenityHandler("Stair")}
+                        label="Stair ?"
+                      />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicCheckbox11">
+                      <h5>Parking</h5>
+                      <Form.Check
+                        type="checkbox"
+                        onChange={() => amenityHandler("Parking")}
+                        label="Parking ?"
+                      />
+                    </Form.Group>
+                    {/* <div className="d-flex flex-column justify-content-center align-items-center my-3">
                       {addListDetails.amenity &&
-                        addListDetails.amenity.map((item, index) => (
-                          <h5 key={index} className="mb-0">
-                            {index + 1}-{item}
-                          </h5>
-                        ))}
-                    </div>
+                        addListDetails.amenity.map(
+                          (item, index) =>
+                            item !== extraAmenities && (
+                              <h5 key={index} className="mb-0">
+                                {index + 1}-{item}
+                              </h5>
+                            )
+                        )}
+                    </div> */}
                   </div>
                   <div>
-                    <Form.Group controlId="formBasicEmail">
+                    <Form.Group>
                       <h5>Property Details List</h5>
                       <Form.Control
                         type="text"
@@ -661,7 +783,7 @@ const NewPropertyListing = () => {
                     </div>
                   </div>
 
-                  {/* <Form.Group controlId="formBasicEmail">
+                  {/* <Form.Group >
                     <h5>Images</h5>
                     <Form.Control type="file" placeholder="Images" />
                     <button type="button">
@@ -669,7 +791,7 @@ const NewPropertyListing = () => {
                     </button>
                   </Form.Group> */}
 
-                  <Form.Group controlId="formBasicEmail">
+                  <Form.Group>
                     <h5>Developer Name</h5>
                     <Form.Control
                       type="text"
@@ -686,7 +808,7 @@ const NewPropertyListing = () => {
                     />
                   </Form.Group>
 
-                  <Form.Group controlId="formBasicEmail">
+                  <Form.Group>
                     <h5>Handover Date</h5>
                     <Form.Control
                       type="date"
@@ -702,7 +824,7 @@ const NewPropertyListing = () => {
                       }
                     />
                   </Form.Group>
-                  <Form.Group controlId="formBasicEmail">
+                  <Form.Group>
                     <h5>Manager Name</h5>
                     <Form.Control
                       type="text"
@@ -718,7 +840,7 @@ const NewPropertyListing = () => {
                       }
                     />
                   </Form.Group>
-                  <Form.Group controlId="formBasicEmail">
+                  <Form.Group>
                     <h5>Manager Number</h5>
                     <Form.Control
                       type="number"
@@ -734,7 +856,7 @@ const NewPropertyListing = () => {
                       }
                     />
                   </Form.Group>
-                  <Form.Group controlId="formBasicEmail">
+                  <Form.Group>
                     <h5>Landlord Name</h5>
                     <Form.Control
                       type="text"
@@ -750,7 +872,7 @@ const NewPropertyListing = () => {
                       }
                     />
                   </Form.Group>
-                  <Form.Group controlId="formBasicEmail">
+                  <Form.Group>
                     <h5>Landlord Number</h5>
                     <Form.Control
                       type="number"
@@ -772,7 +894,11 @@ const NewPropertyListing = () => {
                   <button className="postPropertyBtn" type="submit">
                     POST THIS PROPERTY
                   </button>
-                  <button className="showRequest" type="button">
+                  <button
+                    className="showRequest"
+                    type="button"
+                    onClick={() => router.push("/dashboard")}
+                  >
                     CANCEL
                   </button>
                 </div>

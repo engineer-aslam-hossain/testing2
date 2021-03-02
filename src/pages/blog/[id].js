@@ -5,7 +5,7 @@ import RedditIcon from "@material-ui/icons/Reddit";
 import Link from "next/link";
 import { Form } from "react-bootstrap";
 const SingleBlogPage = ({ data }) => {
-  console.log(data.data);
+  // console.log(data.data);
 
   const { img, title, content } = data.data;
   const {

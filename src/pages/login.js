@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import DreamFinderContext from "../components/Context/Context";
 import { useRouter } from "next/router";
 import axios from "axios";
-
+import Swal from "sweetalert2";
 const Login = () => {
   const { loggedInUser, setLoggedInUser } = useContext(DreamFinderContext);
 
@@ -45,38 +45,55 @@ const Login = () => {
     e.preventDefault();
     e.target.reset();
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user/signin`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/user/signin`,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
 
-      body: JSON.stringify(loginUser),
-    });
-    const data = await res.json();
-    if (data.data) {
-      localStorage.setItem("dreamfinder_session", JSON.stringify(data.data));
-      try {
-        const getToken = JSON.parse(
-          localStorage.getItem("dreamfinder_session")
-        );
-        console.log(getToken);
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user`, {
-          method: "GET",
-          headers: { dreamfinder: getToken },
-        });
-        const data = await res.json();
-        // console.log(data);
-        setLoggedInUser(data.data);
-        if (data.data.name) {
-          router.push("/profile");
+          body: JSON.stringify(loginUser),
         }
-      } catch (err) {
-        console.log(err);
+      );
+      const data = await res.json();
+
+      if (data.data) {
+        localStorage.setItem("dreamfinder_session", JSON.stringify(data.data));
+        try {
+          const getToken = JSON.parse(
+            localStorage.getItem("dreamfinder_session")
+          );
+          console.log(getToken);
+          const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user`, {
+            method: "GET",
+            headers: { dreamfinder: getToken },
+          });
+          const data = await res.json();
+          // console.log(data);
+          setLoggedInUser(data.data);
+          if (data.data.name) {
+            router.push("/profile");
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      } else if ((data.success = "no")) {
+        // setLoggedInUser(data);
+        // console.log(data);
+        Swal.fire({
+          icon: "error",
+          title: "password or email was wrong",
+        });
       }
-    } else if ((data.success = "no")) {
-      setLoggedInUser(data);
+    } catch (err) {
+      console.log(err);
+      Swal.fire({
+        icon: "error",
+        title: "something went wrong",
+      });
     }
   };
 

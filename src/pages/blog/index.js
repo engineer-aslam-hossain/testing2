@@ -1,12 +1,15 @@
-import { Dropdown, FormControl, InputGroup } from "react-bootstrap";
+import { Dropdown, FormControl, InputGroup, Pagination } from "react-bootstrap";
 import fakeBlog from "../../fakeData/fakeBlog";
 import SearchIcon from "@material-ui/icons/Search";
 import fakePopularity from "../../fakeData/fakePopularity";
 import Link from "next/link";
-const blogPage = ({ blogs }) => {
-  const allBlogs = blogs.data;
+import { useEffect, useState } from "react";
+const blogPage = () => {
+  const [pageNo, setPageNo] = useState(1);
+  const [allBlogs, setAllBlogs] = useState([]);
+
   // console.log(allBlogs);
-  const data_for_show = allBlogs.slice(0, 3);
+
   const category = [
     {
       id: 1,
@@ -17,6 +20,39 @@ const blogPage = ({ blogs }) => {
       title: "Commercial",
     },
   ];
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    e.target.reset();
+    SetSearchData({
+      ...searchData,
+      area_sqft_min: Math.floor(minArea),
+      area_sqft_max: Math.floor(maxArea),
+    });
+  };
+
+  const searchLoadData = async () => {
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/blog/all?page=${pageNo}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await res.json();
+      setAllBlogs(data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    searchLoadData();
+  }, [pageNo]);
+
+  // console.log(allBlogs);
 
   return (
     <section className="blog mb-5">
@@ -39,7 +75,7 @@ const blogPage = ({ blogs }) => {
       </section>
       <div className="container">
         <div className="row mt-5">
-          {data_for_show.map((item) => (
+          {allBlogs.map((item) => (
             <Link href={`/blog/${[item._id]}`} key={item._id}>
               <div
                 key={item._id}
@@ -76,6 +112,15 @@ const blogPage = ({ blogs }) => {
               </div>
             </Link>
           ))}
+          <div className="col-md-12 d-flex justify-content-center mt-5">
+            <Pagination>
+              <Pagination.Prev
+                onClick={() => pageNo > 1 && setPageNo(pageNo - 1)}
+              />
+              <Pagination.Item active>{pageNo}</Pagination.Item>
+              <Pagination.Next onClick={() => setPageNo(pageNo + 1)} />
+            </Pagination>
+          </div>
         </div>
       </div>
     </section>
@@ -83,38 +128,20 @@ const blogPage = ({ blogs }) => {
 };
 
 export default blogPage;
-// export async function getStaticPaths() {
-//   // Call an external API endpoint to get posts
-//   const res = await fetch(`${process.env.API_BASE_URL}/blog/all`);
-//   const posts = await res.json();
-
-//   // Get the paths we want to pre-render based on posts
-//   const paths = [
-//     {
-//       params: {
-//         name: "1",
-//       },
-//     },
-//   ];
-
-//   // We'll pre-render only these paths at build time.
-//   // { fallback: false } means other routes should 404.
-//   return { paths, fallback: true };
-// }602ca33140fc4f05382471a4
 
 // This also gets called at build time
-export async function getStaticProps({ params }) {
-  // params contains the post `id`.
-  // If the route is like /posts/1, then params.id is 1
-  const res = await fetch(`${process.env.API_BASE_URL}/blog/all`, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-  });
-  const blogs = await res.json();
-  console.log(blogs);
-  // Pass blogs data to the page via props
-  return { props: { blogs } };
-}
+// export async function getStaticProps({ params }) {
+//   // params contains the post `id`.
+//   // If the route is like /posts/1, then params.id is 1
+//   const res = await fetch(`${process.env.API_BASE_URL}/blog/all`, {
+//     method: "POST",
+//     headers: {
+//       Accept: "application/json",
+//       "Content-Type": "application/json",
+//     },
+//   });
+//   const blogs = await res.json();
+//   console.log(blogs);
+//   // Pass blogs data to the page via props
+//   return { props: { blogs } };
+// }

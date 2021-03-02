@@ -18,7 +18,7 @@ const Partner = () => {
                 <h1 className="iqiGlobal">
                   IQI Global : Asia’s Global Real Estate
                 </h1>
-                <h1 className="partnerName">A Member of Juwaii IQI</h1>
+                <h1 className="partnerName">A Member of Juwai IQI</h1>
                 <p> Asia's largest real estate firm in the world. </p>
                 <p>
                   This is a company that is proud of its ability to combine

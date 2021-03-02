@@ -1,5 +1,33 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Pagination } from "react-bootstrap";
 const Careers = () => {
+  const [pageNo, setPageNo] = useState(1);
+  const [allJobPosts, setAllJobPosts] = useState([]);
+
+  const searchLoadData = async () => {
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/job/all?page=${pageNo}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await res.json();
+      setAllJobPosts(data.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    searchLoadData();
+  }, [pageNo]);
+
+  // console.log(allJobPosts);
+
   return (
     <section>
       <div className="container">
@@ -67,39 +95,40 @@ const Careers = () => {
             <div className="my-5 availablePost">
               <h3>Available Job Posts</h3>
             </div>
-            <div className="col-md-12 jobPost p-4 my-4">
-              <div>
-                <h4>Job Post Title</h4>
-                <p>Posted on 17 Feb, 2021</p>
-              </div>
-              <div className="my-4">
-                <h5>
-                  Job Post Description Architecto excepturi quia voluptatibus ex
-                  est numquam ut non. Repellat qui inventore corrupti voluptatem
-                  modi nihil inventore vero. Odit sint natus animi modi eius
-                  quibusdam. Enim possimus soluta nisi aperiam in sit. Tepturi
-                  quia voluptatibus ex est numquam ut non. Repellat qui
-                  inventore corrupti voluptatem modi nihil inventore vero. Odit
-                  sint natus animi modi eius quibusdam. Enim possimus soluta
-                  nisi ... ... ...
-                </h5>
-              </div>
-              <div className="d-flex flex-wrap justify-content-between align-items-center">
+            {allJobPosts.map((item) => (
+              <div className="col-md-12 jobPost p-4 my-4" key={item._id}>
                 <div>
-                  <h6>EMPLOYMENTTYPE | JOBFUNCTIONS</h6>
+                  <h4>{item.title}</h4>
+                  <p>Posted on : {new Date(item.createdAt).toLocaleString()}</p>
                 </div>
-                <div>
-                  <Link
-                    href={{
-                      pathname: `/careers/jobPost`,
-                      query: { id: "602a3e1340fc4f05382471a0" },
-                    }}
-                  >
-                    <a className="applyNow">APPLY NOW</a>
-                  </Link>
+                <div className="my-4">
+                  <h5>{item.description}</h5>
+                </div>
+                <div className="d-flex flex-wrap justify-content-between align-items-center">
+                  <div>
+                    <h6>
+                      {item.type} |{" "}
+                      {item.functions &&
+                        item.functions.map((item) => `${item}, `)}
+                    </h6>
+                  </div>
+                  <div>
+                    <Link href={`/careers/${[item._id]}`}>
+                      <a className="applyNow">APPLY NOW</a>
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
+          </div>
+          <div className="col-md-12 d-flex justify-content-center mb-5">
+            <Pagination>
+              <Pagination.Prev
+                onClick={() => pageNo > 1 && setPageNo(pageNo - 1)}
+              />
+              <Pagination.Item active>{pageNo}</Pagination.Item>
+              <Pagination.Next onClick={() => setPageNo(pageNo + 1)} />
+            </Pagination>
           </div>
         </div>
       </div>

@@ -51,7 +51,7 @@ const SinglePropertyInfoDetails = ({ data }) => {
     `,
   });
 
-  console.log(data.data);
+  // console.log(data.data);
 
   const getInTouchSubmitHandler = async (e) => {
     e.preventDefault();
@@ -100,10 +100,7 @@ const SinglePropertyInfoDetails = ({ data }) => {
               <div className="findedPropertyHeader">
                 <h1>Property in {address_area}</h1>
                 <Link href="/">
-                  <a>
-                    Search more properties in
-                    {address_district}
-                  </a>
+                  <a>Search more properties in {address_district}</a>
                 </Link>
               </div>
               <h3>

@@ -135,7 +135,7 @@ const adminPanelData = [
     icon: "icons/admin/Users.svg",
     title: "Users",
     query: "All",
-    route: "profile",
+    route: "allUsers",
     details: "List of all users and managing options",
   },
   {

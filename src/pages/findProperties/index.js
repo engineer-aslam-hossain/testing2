@@ -4,6 +4,7 @@ import {
   Form,
   FormControl,
   InputGroup,
+  Pagination,
   Spinner,
 } from "react-bootstrap";
 import MyLocationIcon from "@material-ui/icons/MyLocation";
@@ -56,9 +57,12 @@ const findProperties = () => {
     setFindProperty,
   } = useContext(DreamFinderContext);
   const [keywords, setKeyWords] = useState([]);
-
+  const [pageNo, setPageNo] = useState(1);
   const [minArea, setMinArea] = useState(null);
   const [maxArea, setMaxArea] = useState(null);
+
+  // console.log(searchResult);
+
   const submitHandler = (e) => {
     e.preventDefault();
     e.target.reset();
@@ -71,7 +75,6 @@ const findProperties = () => {
 
   const searchLoadData = async () => {
     try {
-      const getToken = JSON.parse(localStorage.getItem("dreamfinder_session"));
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/property/search`,
         {
@@ -79,9 +82,12 @@ const findProperties = () => {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            dreamfinder: getToken,
           },
-          body: JSON.stringify({ ...searchData, purpose: findProperty }),
+          body: JSON.stringify({
+            ...searchData,
+            purpose: findProperty,
+            page: parseInt(pageNo),
+          }),
         }
       );
       const data = await res.json();
@@ -92,7 +98,7 @@ const findProperties = () => {
   };
   useEffect(() => {
     searchLoadData();
-  }, []);
+  }, [pageNo]);
 
   // console.log(searchData);
   return (
@@ -364,6 +370,15 @@ const findProperties = () => {
                 </div>
               )}
             </CardDeck>
+          </div>
+          <div className="col-md-12 d-flex justify-content-center mt-5">
+            <Pagination>
+              <Pagination.Prev
+                onClick={() => pageNo > 1 && setPageNo(pageNo - 1)}
+              />
+              <Pagination.Item active>{pageNo}</Pagination.Item>
+              <Pagination.Next onClick={() => setPageNo(pageNo + 1)} />
+            </Pagination>
           </div>
         </div>
       </div>

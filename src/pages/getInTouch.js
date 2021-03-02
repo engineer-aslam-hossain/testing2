@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Card, Form } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
+import DreamFinderContext from "../components/Context/Context";
 
 const GetInTouch = () => {
+  const { loggedInUser } = useContext(DreamFinderContext);
+  const { name, email, phone_number } = loggedInUser;
   const [getInTouch, setGetInTouch] = useState({
     type: "Get In Touch",
+    name: name ? name : "",
+    email: email ? email : "",
+    phone_number: phone_number ? phone_number : "",
   });
 
   const router = useRouter();
@@ -131,7 +137,7 @@ const GetInTouch = () => {
                   <Form.Label>Name</Form.Label>
                   <Form.Control
                     type="text"
-                    // defaultValue={loggedInUser.name}
+                    defaultValue={name && name}
                     onChange={(e) =>
                       setGetInTouch({
                         ...getInTouch,
@@ -145,7 +151,7 @@ const GetInTouch = () => {
                   <Form.Label>Email ID</Form.Label>
                   <Form.Control
                     type="email"
-                    // defaultValue={loggedInUser.email}
+                    defaultValue={email && email}
                     onChange={(e) =>
                       setGetInTouch({
                         ...getInTouch,
@@ -159,7 +165,7 @@ const GetInTouch = () => {
                   <Form.Label>Phone No.</Form.Label>
                   <Form.Control
                     type="number"
-                    // defaultValue={loggedInUser.phone_number}
+                    defaultValue={phone_number && phone_number}
                     onChange={(e) =>
                       setGetInTouch({
                         ...getInTouch,

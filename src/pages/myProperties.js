@@ -4,6 +4,7 @@ import {
   Form,
   FormControl,
   InputGroup,
+  Pagination,
   Spinner,
 } from "react-bootstrap";
 import MyLocationIcon from "@material-ui/icons/MyLocation";
@@ -67,6 +68,21 @@ const myProperties = () => {
       area_sqft_min: Math.floor(minArea),
       area_sqft_max: Math.floor(maxArea),
     });
+  };
+
+  const [pageNo, setPageNo] = useState(1);
+  const [endIndex, setEndIndex] = useState(20);
+  const [startIndex, setStartIndex] = useState(0);
+
+  const previousPage = () => {
+    pageNo > 1 && setPageNo(pageNo - 1);
+    startIndex > 0 && setStartIndex(startIndex - 20);
+    endIndex > 20 && setEndIndex(endIndex - 20);
+  };
+  const nextPage = () => {
+    setPageNo(pageNo + 1);
+    setStartIndex(startIndex + 20);
+    setEndIndex(endIndex + 20);
   };
 
   const searchLoadData = async () => {
@@ -158,18 +174,27 @@ const myProperties = () => {
           <div className="col-md-12">
             <CardDeck>
               {searchResult && searchResult.length > 0 ? (
-                searchResult.map(
-                  (item) =>
-                    item.purpose === findProperty && (
-                      <SingleProperty item={item} key={item._id} />
-                    )
-                )
+                searchResult
+                  .slice(startIndex, endIndex)
+                  .map(
+                    (item) =>
+                      item.purpose === findProperty && (
+                        <SingleProperty item={item} key={item._id} />
+                      )
+                  )
               ) : (
                 <div className="col-md-12 d-flex justify-content-center align-items-center">
                   <Spinner animation="border" />
                 </div>
               )}
             </CardDeck>
+          </div>
+          <div className="col-md-12 d-flex justify-content-center mt-5">
+            <Pagination>
+              <Pagination.Prev onClick={previousPage} />
+              <Pagination.Item active>{pageNo}</Pagination.Item>
+              <Pagination.Next onClick={nextPage} />
+            </Pagination>
           </div>
         </div>
       </div>

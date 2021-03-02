@@ -7,6 +7,8 @@ import fakeRoleData from "../fakeData/fakeRoleData";
 import fakeProperty from "../fakeData/fakeProperty";
 import CloseIcon from "@material-ui/icons/Close";
 import DreamFinderContext from "../components/Context/Context";
+import Swal from "sweetalert2";
+
 const ListANewProperty = () => {
   const { loggedInUser } = useContext(DreamFinderContext);
 
@@ -41,10 +43,20 @@ const ListANewProperty = () => {
         // setDistrictData(data.data);
         handleShow();
       }
+      if (data.success === "no") {
+        Swal.fire({
+          icon: "error",
+          title: data.message,
+        });
+      }
       setListPropertyData({});
       // console.log(data);
     } catch (err) {
       // console.log(err);
+      Swal.fire({
+        icon: "error",
+        title: "something went wrong",
+      });
     }
   };
   const residentHandler = () => {

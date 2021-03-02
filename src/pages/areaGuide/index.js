@@ -6,7 +6,7 @@ import CommonHeader from "../../components/CommonHeader/CommonHeader";
 import fakeAreaDetails from "../../fakeData/fakeAreaDetails";
 import SingleAreaDetails from "../../components/SingleAreaDetails/SingleAreaDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 const AreaGuide = () => {
   const [districts, setDistricts] = useState([]);
   useEffect(() => {
@@ -18,6 +18,9 @@ const AreaGuide = () => {
 
   const [districtData, setDistrictData] = useState([]);
   const [selectedDistrict, setSelectedDistrict] = useState("Dhaka");
+  const [seeAll, setSeeAll] = useState(false);
+
+  // console.log(seeAll);
 
   const searchAreaByDistrict = async () => {
     // console.log(e);
@@ -72,7 +75,7 @@ const AreaGuide = () => {
     searchAreaByDistrict();
   }, [selectedDistrict]);
 
-  // console.log(searchAreaAddress, searchAreaAddressData);
+  // console.log(districtData, searchAreaAddressData);
   return (
     <section className="areaGuide">
       <section className="areaGuideHeaderMain">
@@ -157,13 +160,18 @@ const AreaGuide = () => {
               key={searchAreaAddress._id}
             />
           )) ||
-            districtData.map((item) => (
-              <SingleAreaDetails item={item} key={item._id} />
-            ))}
+          seeAll
+            ? districtData
+                .slice(0, 20)
+                .map((item) => <SingleAreaDetails item={item} key={item._id} />)
+            : districtData.map((item) => (
+                <SingleAreaDetails item={item} key={item._id} />
+              ))}
 
           <div className="col-md-12 d-flex justify-content-center my-5">
-            <button className="seeAllBtn">
-              See All <ExpandMoreIcon />
+            <button className="seeAllBtn" onClick={() => setSeeAll(!seeAll)}>
+              {seeAll ? "See Less" : "See All"}
+              {seeAll ? <ExpandLessIcon /> : <ExpandMoreIcon />}
             </button>
           </div>
         </div>
