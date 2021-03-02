@@ -754,6 +754,9 @@ a.mb-1.placeName {
   box-shadow: var(--box-shadow);
   height: 100%;
 }
+.propertyCard:hover {
+  cursor: pointer;
+}
 .propertyName {
   font-size: 18px;
   line-height: 24px;

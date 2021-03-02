@@ -10,7 +10,17 @@ const SingleProperty = ({ item }) => {
     DreamFinderContext
   );
 
-  const { _id, name, address, bed, bath, purpose, detail, price } = item;
+  const {
+    _id,
+    name,
+    address,
+    bed,
+    bath,
+    purpose,
+    property_type,
+    category,
+    price,
+  } = item;
 
   const [saved, setSaved] = useState(false);
   // console.log(item);
@@ -53,7 +63,7 @@ const SingleProperty = ({ item }) => {
             <Card.Img variant="top" src="/images/Foyer-Mob 1.png" />
             <h5 className="propertyName">{name} </h5>
             <h6 className="propertyAdd">{address}</h6>
-            <Card.Text className="propertyText">{`${bed} beds | ${bath} baths | ${purpose} | ${detail} |`}</Card.Text>
+            <Card.Text className="propertyText">{`${bed} beds | ${bath} baths | ${purpose} |  ${category} | ${property_type} |`}</Card.Text>
           </Card.Body>
         </Link>
 
