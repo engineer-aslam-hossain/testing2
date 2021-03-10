@@ -21,7 +21,7 @@ const AllUsers = () => {
   //   console.log(startIndex, endIndex);
   const searchLoadData = async () => {
     try {
-      const getToken = JSON.parse(localStorage.getItem("dreamfinder_session"));
+      const getToken = JSON.parse(localStorage.getItem("DreamFinder_session"));
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/user/search`,
         {
@@ -29,7 +29,7 @@ const AllUsers = () => {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            dreamfinder: getToken,
+            DreamFinder: getToken,
           },
         }
       );

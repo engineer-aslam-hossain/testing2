@@ -157,7 +157,7 @@ const JobPost = ({ data }) => {
                     <Form.Label>Cover Letter</Form.Label>
                     <Form.Control
                       as="textarea"
-                      // defaultValue={`I am interested to inquire about your property in Dreamfinder: ID-${ref_code}. Please contact me according to your convenience
+                      // defaultValue={`I am interested to inquire about your property in DreamFinder: ID-${ref_code}. Please contact me according to your convenience
                       //           `}
                       onChange={(e) =>
                         setApplyInfo({

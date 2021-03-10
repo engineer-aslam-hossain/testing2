@@ -61,15 +61,15 @@ const Login = () => {
       const data = await res.json();
 
       if (data.data) {
-        localStorage.setItem("dreamfinder_session", JSON.stringify(data.data));
+        localStorage.setItem("DreamFinder_session", JSON.stringify(data.data));
         try {
           const getToken = JSON.parse(
-            localStorage.getItem("dreamfinder_session")
+            localStorage.getItem("DreamFinder_session")
           );
           console.log(getToken);
           const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user`, {
             method: "GET",
-            headers: { dreamfinder: getToken },
+            headers: { DreamFinder: getToken },
           });
           const data = await res.json();
           // console.log(data);

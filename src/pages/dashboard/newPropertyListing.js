@@ -146,7 +146,7 @@ const NewPropertyListing = () => {
     e.preventDefault();
 
     try {
-      const token = JSON.parse(localStorage.getItem("dreamfinder_session"));
+      const token = JSON.parse(localStorage.getItem("DreamFinder_session"));
 
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/property/create`,
@@ -154,7 +154,7 @@ const NewPropertyListing = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            dreamfinder: token,
+            DreamFinder: token,
           },
           body: JSON.stringify(addListDetails),
         }

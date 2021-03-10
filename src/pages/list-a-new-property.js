@@ -202,7 +202,7 @@ const ListANewProperty = () => {
                     requirements individually.
                   </p>
                   <p className="listPropertyDetailsBold">
-                    Just submit your property info and Dreamfinder will contact
+                    Just submit your property info and DreamFinder will contact
                     you very soon for further details.
                   </p>
                 </div>

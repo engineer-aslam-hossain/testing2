@@ -16,6 +16,7 @@ const StyledBadge = withStyles((theme) => ({
     width: "100%",
     borderRadius: "4px",
     zIndex: 0,
+    fontSize: "10px",
     justifyContent: "start",
     transform: "none",
     paddingTop: ".25rem",
@@ -185,7 +186,7 @@ const SearchItemGroup = ({ btnName }) => {
           </Dropdown.Toggle>
         </StyledBadge>
 
-        <Dropdown.Menu className="searchDropDownMenu">
+        <Dropdown.Menu className="searchDropDownMenu PriceMenu">
           <div className="p-3">
             <Form className="d-flex flex-column" onSubmit={submitHandler}>
               <Form.Group>
@@ -227,7 +228,7 @@ const SearchItemGroup = ({ btnName }) => {
           </Dropdown.Toggle>
         </StyledBadge>
 
-        <Dropdown.Menu className="searchDropDownMenu">
+        <Dropdown.Menu className="searchDropDownMenu bedmenu">
           <div>
             <div>
               <div className="proTypeOptionsDiv">
@@ -282,7 +283,7 @@ const SearchItemGroup = ({ btnName }) => {
           </Dropdown.Toggle>
         </StyledBadge>
 
-        <Dropdown.Menu className="searchDropDownMenu" align="right">
+        <Dropdown.Menu className="searchDropDownMenu bathmenu" align="right">
           <div className="p-3">
             <Form
               noValidate

@@ -12,11 +12,11 @@ export const ContextProvider = ({ children }) => {
 
   const getUser = async () => {
     try {
-      const getUser = JSON.parse(localStorage.getItem("dreamfinder_session"));
+      const getUser = JSON.parse(localStorage.getItem("DreamFinder_session"));
       if (getUser) {
         const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user/`, {
           method: "GET",
-          headers: { dreamfinder: getUser },
+          headers: { DreamFinder: getUser },
         });
         const data = await res.json();
         // console.log(data);

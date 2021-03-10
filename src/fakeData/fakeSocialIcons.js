@@ -7,12 +7,12 @@ const fakeSocialIcons = [
   {
     id: 2,
     img: "/icons/FooterInstagramIcon.svg",
-    link: "https://www.instagram.com/iqidreamfinder.bd/",
+    link: "https://www.instagram.com/iqiDreamFinder.bd/",
   },
   {
     id: 3,
     img: "/icons/FooterLinkedinIcon.svg",
-    link: "https://www.linkedin.com/in/iqidreamfinder-limited-06a28a207/",
+    link: "https://www.linkedin.com/in/iqiDreamFinder-limited-06a28a207/",
   },
   {
     id: 4,

@@ -38,7 +38,7 @@ const fakeFooterItems = [
 
   {
     id: 9,
-    title: "Teams & Conditions",
+    title: "Terms & Conditions",
     column: "thirdColumn",
     link: "termsAndConditions",
   },

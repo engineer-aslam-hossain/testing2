@@ -47,7 +47,7 @@ const SinglePropertyInfoDetails = ({ data }) => {
     name: loggedInUser.name ? loggedInUser.name : "",
     email: loggedInUser.email ? loggedInUser.email : "",
     phone_number: loggedInUser.phone_number ? loggedInUser.phone_number : "",
-    message: `I am interested to inquire about your property in Dreamfinder: ID-${ref_code}. Please contact me according to your convenience
+    message: `I am interested to inquire about your property in DreamFinder: ID-${ref_code}. Please contact me according to your convenience
     `,
   });
 
@@ -120,7 +120,7 @@ const SinglePropertyInfoDetails = ({ data }) => {
                       <MonetizationOnIcon /> floor plan
                     </button>
                     <button>
-                      <MonetizationOnIcon /> mortage calculator
+                      <MonetizationOnIcon /> mortgage calculator
                     </button>
                     <button>
                       <ZoomOutMapIcon /> expand images
@@ -266,7 +266,7 @@ const SinglePropertyInfoDetails = ({ data }) => {
                           <MonetizationOnIcon /> floor plan
                         </button>
                         <button>
-                          <MonetizationOnIcon /> mortage calculator
+                          <MonetizationOnIcon /> mortgage calculator
                         </button>
                         <button>
                           <ZoomOutMapIcon /> expand images

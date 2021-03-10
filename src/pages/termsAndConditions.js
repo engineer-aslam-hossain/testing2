@@ -42,7 +42,7 @@ const TermsAndConditions = () => {
               Ltd reputation.
               <br /> "User"- any party who uses the Website. <br />
               "Website" - Dream Finder Ltd website located at www.
-              dreamfinder.com.bd <br />
+              DreamFinder.com.bd <br />
               ‘’Dream Finder Ltd‘’ Dream Finder Ltd. which is the owner of the
               Website and whose registered office is Shanta Western
               Tower,Level-10,Office Suite-1004, 186 Bir Uttam Mir Shawkat Sarak,

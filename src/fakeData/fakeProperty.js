@@ -36,7 +36,7 @@ const fakeProperty = [
   },
   {
     id: 7,
-    name: "Pent house",
+    name: "Penthouse",
     category: "residential",
   },
   {
@@ -89,11 +89,7 @@ const fakeProperty = [
     name: "Factory",
     category: "comercial",
   },
-  {
-    id: 17,
-    name: "Factory",
-    category: "comercial",
-  },
+
   {
     id: 88,
     name: "Full Building",

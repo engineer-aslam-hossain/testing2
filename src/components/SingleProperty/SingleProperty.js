@@ -1,7 +1,7 @@
 import { Card } from "react-bootstrap";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-
+import Swal from "sweetalert2";
 import Link from "next/link";
 import { useContext, useState } from "react";
 import DreamFinderContext from "../Context/Context";
@@ -33,7 +33,7 @@ const SingleProperty = ({ item }) => {
   const savePropertyHandler = async (id) => {
     // console.log(id);
     try {
-      const getToken = JSON.parse(localStorage.getItem("dreamfinder_session"));
+      const getToken = JSON.parse(localStorage.getItem("DreamFinder_session"));
       if (getToken) {
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_BASE_URL}/user/add_to_favourite`,
@@ -42,13 +42,21 @@ const SingleProperty = ({ item }) => {
             headers: {
               Accept: "application/json",
               "Content-Type": "application/json",
-              dreamfinder: getToken,
+              DreamFinder: getToken,
             },
             body: JSON.stringify({ property_id: id }),
           }
         );
         const data = await res.json();
         // console.log(data);
+        if (data.success === "yes") {
+          Swal.fire({
+            icon: "success",
+            title: "Property Saved",
+            showConfirmButton: false,
+            timer: 1000,
+          });
+        }
       }
     } catch (err) {
       console.log(err);

@@ -18,7 +18,7 @@ const PostPopularLocations = () => {
     e.target.reset();
     // console.log(locationArea, locations);
     try {
-      const token = JSON.parse(localStorage.getItem("dreamfinder_session"));
+      const token = JSON.parse(localStorage.getItem("DreamFinder_session"));
       const popular_area = {};
       popular_area[locationArea] = locations;
       //   console.log(JSON.stringify(popular_area));
@@ -26,7 +26,7 @@ const PostPopularLocations = () => {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          dreamfinder: token,
+          DreamFinder: token,
         },
 
         body: JSON.stringify({ popular_location: popular_area }),

@@ -17,7 +17,7 @@ const UserProfile = () => {
 
   const logoutHandler = () => {
     setLoggedInUser({});
-    localStorage.removeItem("dreamfinder_session");
+    localStorage.removeItem("DreamFinder_session");
     router.push("/login");
   };
 

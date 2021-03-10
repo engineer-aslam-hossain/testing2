@@ -87,13 +87,13 @@ const myProperties = () => {
 
   const searchLoadData = async () => {
     try {
-      const getToken = JSON.parse(localStorage.getItem("dreamfinder_session"));
+      const getToken = JSON.parse(localStorage.getItem("DreamFinder_session"));
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/user/my`, {
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          dreamfinder: getToken,
+          DreamFinder: getToken,
         },
         body: JSON.stringify({ purpose: findProperty }),
       });

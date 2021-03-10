@@ -84,7 +84,7 @@ const privacyPolicy = () => {
               <br />
               Copyright <br /> All website design, text, graphics, the selection
               and arrangement thereof are Copyright © {new Date().getFullYear()}
-              , dreamfinder.com.bd , ALL RIGHTS RESERVED.
+              , DreamFinder.com.bd , ALL RIGHTS RESERVED.
             </p>
           </div>
           <div className="col-md-12 mb-4">

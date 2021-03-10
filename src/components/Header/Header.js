@@ -107,7 +107,7 @@ const Header = () => {
                           Pay Rent
                         </a>
                       </Link>
-                      <Link href="/">
+                      <Link href="/myProperties">
                         <a>
                           <img
                             src="/icons/Profile_MyListedProperties.svg"

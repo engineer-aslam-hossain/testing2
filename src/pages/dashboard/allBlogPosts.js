@@ -16,8 +16,8 @@ const AllBlogPosts = ({ blogs }) => {
             </div>
           </div>
           <div className="col-md-12">
-            <div className="d-flex justify-content-between align-items-center mb-5 mt-3">
-              <div className="d-flex align-items-center flex-wrap my-3">
+            <div className="col-lg-12 d-flex flex-wrap justify-content-between align-items-center mb-5 mt-3">
+              <div className="d-flex align-items-center flex-wrap my-3 col-lg-6 col-md-6 col-sm-6">
                 <h5 className="mb-0 mr-3"> SHOW VISIBILITY </h5>
                 <Dropdown className="d-flex align-items-center">
                   <Dropdown.Toggle className="headerMain" drop="left">
@@ -55,7 +55,7 @@ const AllBlogPosts = ({ blogs }) => {
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
-              <div>
+              <div className="col-lg-6 col-md-6 col-sm-6 postPropertyBtnDiv">
                 <Link href="/dashboard/newBlogPost">
                   <a className="postPropertyBtn">+ POST NEW BLOG</a>
                 </Link>

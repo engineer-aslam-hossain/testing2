@@ -152,7 +152,7 @@ const loanCalculator = () => {
                 <p>Calculate home loan for buying properties in Bangladesh</p>
               </div>
               <div className="col-md-5">
-                <Card style={{ padding: "2rem 2rem" }} className="signUpCard">
+                <Card className="signUpCard">
                   <Form noValidate onSubmit={submitHandler}>
                     <Form.Group>
                       <Form.Label>Property Price</Form.Label>
@@ -303,8 +303,8 @@ const loanCalculator = () => {
                 <h2 className="calculationTitle"> Calculation Results</h2>
               </div>
               <div className="col-md-12 d-flex flex-wrap calculationResult justify-content-between">
-                <div className="col-md-4 px-0 calculationLeft d-flex flex-column justify-content-between">
-                  <div>
+                <div className="col-md-6 calculationLeft d-flex flex-column justify-content-between">
+                  <div className="col-lg-8">
                     <div className="d-flex mb-2 justify-content-between">
                       <div className="px-0">
                         <p>Property Price</p>
@@ -345,36 +345,46 @@ const loanCalculator = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="my-4">
-                    <Link href="/loan-calculator#calculate">
-                      <a onClick={calculateAgain} className="calculateAgain">
-                        CALCULATE AGAIN
-                      </a>
-                    </Link>
-                  </div>
                 </div>
-                <div className="col-md-6 ">
-                  <div className="calculationRight">
-                    <div>
-                      <div className="">
-                        <h6>monthly installment</h6>
-                        <h1>BDT {loanCalculation.monthlyInstallment} </h1>
-                      </div>
-                      <div className="my-3">
-                        <h6>Loan Period</h6>
-                        <h1>{loanCalculation.period} Years </h1>
+                <div className="col-md-6 calculationRight">
+                  <div className="col-lg-8">
+                    <div className="d-flex mb-2 justify-content-between">
+                      <div className="px-0">
+                        <p>Monthly Installment</p>
                       </div>
                       <div className="">
-                        <h6>Loan Amount</h6>
-                        <h1>
+                        <p>
+                          <strong>
+                            BDT {loanCalculation.monthlyInstallment}
+                          </strong>
+                        </p>
+                      </div>
+                    </div>
+                    <div className="d-flex mb-2 justify-content-between">
+                      <div className="px-0">
+                        <p>Loan Amount</p>
+                      </div>
+                      <p>
+                        <strong>
                           BDT{" "}
                           {(
                             loanCalculation.monthlyInstallment *
                             loanCalculation.period *
                             12
                           ).toFixed(0)}
-                        </h1>
-                      </div>
+                        </strong>
+                      </p>
+                    </div>
+
+                    <div className="my-4">
+                      <Link href="/loan-calculator#calculate">
+                        <button
+                          onClick={calculateAgain}
+                          className="calculateAgain w-100"
+                        >
+                          CALCULATE AGAIN
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -485,7 +495,7 @@ const loanCalculator = () => {
                     <Form.Label>Message</Form.Label>
                     <Form.Control
                       as="textarea"
-                      // defaultValue={`I am interested to inquire about your property in Dreamfinder: ID-${ref_code}. Please contact me according to your convenience
+                      // defaultValue={`I am interested to inquire about your property in DreamFinder: ID-${ref_code}. Please contact me according to your convenience
                       //           `}
                       onChange={(e) =>
                         setApplyInfo({

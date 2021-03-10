@@ -57,13 +57,7 @@ const GetInTouch = () => {
   // console.log(getInTouch);
   return (
     <section>
-      <section className="">
-        <iframe
-          src="http://maps.google.com/maps?q=23.770541202199745, 90.40633522570474&z=15&output=embed"
-          height="400px"
-          width="100%"
-        ></iframe>
-      </section>
+      <section className="map"></section>
       <div className="container">
         <div className="row py-5 justify-content-around">
           <div className="col-md-4 mb-5 getInTouchLeft">
@@ -77,7 +71,7 @@ const GetInTouch = () => {
                   alt="icons"
                   className="img-fluid"
                 />
-                info@dreamfinderltd.com <span>Mail Now</span>
+                info@DreamFinderltd.com <span>Mail Now</span>
               </p>
               <p>
                 <img
@@ -93,7 +87,7 @@ const GetInTouch = () => {
                   alt="icons"
                   className="img-fluid"
                 />
-                +88 02 88 78 78 1<span>Call Now</span>
+                +88 02 88 78 78 2<span>Call Now</span>
               </p>
               <p>
                 <img
@@ -101,7 +95,7 @@ const GetInTouch = () => {
                   alt="icons"
                   className="img-fluid"
                 />
-                +88 02 88 78 78 1<span>Call Now</span>
+                +88 02 88 78 78 3<span>Call Now</span>
               </p>
               <p>
                 <img
@@ -121,10 +115,18 @@ const GetInTouch = () => {
               >
                 ABOUT US
               </button>
-              <button className="getInTouchSendBtn my-4">
+              <button
+                className="getInTouchSendBtn my-4"
+                onClick={() => router.push("/careers")}
+              >
                 CAREER OPPORTUNITIES
               </button>
-              <button className="getInTouchSendBtn">EXPLORE PROPERTIES</button>
+              <button
+                className="getInTouchSendBtn"
+                onClick={() => router.push("/findProperties")}
+              >
+                EXPLORE PROPERTIES
+              </button>
             </div>
           </div>
           <div className="col-md-4">
@@ -193,7 +195,7 @@ const GetInTouch = () => {
                   <Form.Label>Message</Form.Label>
                   <Form.Control
                     as="textarea"
-                    // defaultValue={`I am interested to inquire about your property in Dreamfinder: ID-${ref_code}. Please contact me according to your convenience
+                    // defaultValue={`I am interested to inquire about your property in DreamFinder: ID-${ref_code}. Please contact me according to your convenience
                     //           `}
                     placeholder="write your message here"
                     rows={3}

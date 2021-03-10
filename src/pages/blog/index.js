@@ -79,16 +79,16 @@ const blogPage = () => {
             <Link href={`/blog/${[item._id]}`} key={item._id}>
               <div
                 key={item._id}
-                className="col-md-10 mx-auto d-flex flex-wrap m-3 blogCard justify-content-between"
+                className="col-md-10 mx-auto d-flex flex-wrap p-0 blogCard justify-content-between"
               >
-                <div className="col-md-4 pl-0 d-flex">
+                <div className="col-md-4 py-3  d-flex">
                   <img
-                    src="/images/Dhaka.png"
+                    src="/images/Ahsan_Manzil.png"
                     alt="blogImage"
                     className="img-fluid"
                   />
                 </div>
-                <div className="col-md-8 blogBody">
+                <div className="col-md-8 blogBody my-3">
                   <div className="mb-3">
                     <h1>{item.title}</h1>
                     <p>

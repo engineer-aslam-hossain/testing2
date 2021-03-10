@@ -83,14 +83,14 @@ const SaveProperty = () => {
 
   const getSaveProperty = async () => {
     try {
-      const getToken = JSON.parse(localStorage.getItem("dreamfinder_session"));
+      const getToken = JSON.parse(localStorage.getItem("DreamFinder_session"));
       // console.log(getToken);
       if (getToken) {
         const res = await fetch(
           `${process.env.NEXT_PUBLIC_BASE_URL}/user/favourites`,
           {
             method: "GET",
-            headers: { dreamfinder: getToken },
+            headers: { DreamFinder: getToken },
           }
         );
         const data = await res.json();

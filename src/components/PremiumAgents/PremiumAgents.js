@@ -68,8 +68,9 @@ const PremiumAgents = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <div className="sectionTitle">
+            <div className="sectionTitle col-lg-7 mx-auto">
               <h2 className="Title">
+                Wondering where to live? Dreamfinder will help you find it!
                 Browse properties by city , town or country…
               </h2>
             </div>

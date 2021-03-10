@@ -40,7 +40,7 @@ const SocialMedia = ({ posts }) => {
                 </div>
               </div>
               <div className="col-md-4">
-                <Link href="https://www.linkedin.com/in/iqidreamfinder-limited-06a28a207/">
+                <Link href="https://www.linkedin.com/in/iqiDreamFinder-limited-06a28a207/">
                   <h5 className="text-white py-1">
                     <img src="/images/linkedin.png" alt="" /> LinkedIn
                   </h5>
@@ -64,7 +64,7 @@ const SocialMedia = ({ posts }) => {
                 </div>
               </div>
               <div className="col-md-4">
-                <Link href="https://www.instagram.com/iqidreamfinder.bd/">
+                <Link href="https://www.instagram.com/iqiDreamFinder.bd/">
                   <h5 className="text-white">
                     <img src="/images/icon_insta.svg" alt="" /> Instagram
                   </h5>

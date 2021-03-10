@@ -261,7 +261,7 @@ const SignUp = () => {
                       <p className="text-secondary">Or Sign Up with...</p>
                     </div>
                     <div className="d-flex flex-column justify-content-around flex-wrap">
-                      <Link href="https://dreamfinder.com.bd/api/auth/google">
+                      <Link href="https://DreamFinder.com.bd/api/auth/google">
                         <a className="social-btn">
                           <img
                             src="/images/google.png"

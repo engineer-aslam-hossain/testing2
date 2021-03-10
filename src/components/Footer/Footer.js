@@ -20,7 +20,7 @@ const Footer = () => {
         <div className="row pt-5">
           <div className="footerItem d-flex  align-items-center justify-content-center col-md-12 flex-wrap px-0">
             <div className="col-md-6 footerLeft">
-              <h1 className="footerLogo">DREAMFINDER</h1>
+              <h1 className="footerLogo">DreamFinder</h1>
               <p>
                 Shanta Western Tower,Level-10,Office Suite-1004, 186 Bir Uttam
                 Mir Shawkat Sarak, Tejgaon ,Dhaka -1208,Bangladesh
@@ -31,7 +31,7 @@ const Footer = () => {
               </p>
               <p>
                 <span style={{ color: "#FFE778" }}>Email:</span>{" "}
-                info@dreamfinderltd.com
+                info@DreamFinderltd.com
               </p>
               <div className="socialIcon mb-3">
                 {fakeSocialIcons.map((item) => (

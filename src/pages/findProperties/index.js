@@ -24,6 +24,7 @@ import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 import SearchItemGroup from "../../components/SearchItemGroup/SearchItemGroup";
 import fakeProperty from "../../fakeData/fakeProperty";
+import ModalSearchComponent from "../../components/ModalSearchComonent/ModalSearchComponent";
 const StyledBadge = withStyles((theme) => ({
   badge: {
     paddingLeft: ".8rem",
@@ -98,9 +99,21 @@ const findProperties = () => {
   };
   useEffect(() => {
     searchLoadData();
-  }, [pageNo]);
+  }, [pageNo, searchData]);
 
-  // console.log(searchData);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [screenWidth, setScreenWidth] = useState(0);
+
+  useEffect(() => {
+    const wid = window.innerWidth;
+    setScreenWidth(wid);
+  });
+
+  console.log(searchData);
   return (
     <section className="Properties">
       <div className="container py-5">
@@ -126,7 +139,7 @@ const findProperties = () => {
                 onClick={() => setFindProperty("New_Project")}
                 className={`${findProperty === "New_Project" && "active"}`}
               >
-                New Project
+                New&nbsp;Project
               </button>
               <button
                 onClick={() => setFindProperty("Auction")}
@@ -227,11 +240,26 @@ const findProperties = () => {
               </Dropdown> */}
             </div>
           </div>
+          {screenWidth < 992 && (
+            <div className="col-lg-12 col-md-12 col-sm-12">
+              <div className="filterBtnDiv col-lg-6 px-0 my-3 col-md-6">
+                <button className="getInTouchSendBtn" onClick={handleShow}>
+                  <img
+                    src="/icons/filter.svg"
+                    alt="filterIcon"
+                    className="mr-3"
+                  />
+                  Open Search Filters
+                </button>
+              </div>
+            </div>
+          )}
+
           <div className="col-md-12 my-1 d-flex justify-content-between flex-wrap">
             <div className="col-md findPropertySearch1 p-0">
               <div className="searchBtn">
                 <InputGroup className="align-items-center">
-                  <div className="col-md-9 px-0">
+                  <div className="col-md-9 px-0 col-sm-9 col-9">
                     <Select
                       isMulti
                       name="colors"
@@ -254,7 +282,7 @@ const findProperties = () => {
                       }
                     />
                   </div>
-                  <div className="col-md-3 px-0 d-flex justify-content-end">
+                  <div className="col-md-3 col-sm-3 col-3 px-0 d-flex justify-content-end">
                     <InputGroup.Append>
                       {/* <InputGroup.Text className="searchIcon">
                         <MyLocationIcon />
@@ -274,7 +302,7 @@ const findProperties = () => {
             <div className="col-md  findPropertySearch2 p-0">
               <div className="searchBtn">
                 <InputGroup className="align-items-center">
-                  <div className="col-md-9 px-0">
+                  <div className="col-md-9 col-sm-9 col-9 px-0">
                     <Select
                       isMulti
                       name="colors"
@@ -317,7 +345,7 @@ const findProperties = () => {
                       }
                     />
                   </div>
-                  <div className="col-md-3 px-0 d-flex justify-content-end">
+                  <div className="col-md-3 col-sm-3 col-3 px-0 d-flex justify-content-end">
                     <InputGroup.Append>
                       <button
                         className="searchFindBtn"
@@ -380,6 +408,7 @@ const findProperties = () => {
               <Pagination.Next onClick={() => setPageNo(pageNo + 1)} />
             </Pagination>
           </div>
+          <ModalSearchComponent show={show} handleClose={handleClose} />
         </div>
       </div>
     </section>

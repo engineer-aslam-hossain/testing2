@@ -18,106 +18,102 @@ const AboutUs = () => {
   }, []);
   //   console.log(windowSize);
   return (
-    <section>
-      <div className="container py-5">
-        <div className="row">
-          <div className="col-md-12 d-flex justify-content-between findPropertyHeader align-items-center flex-wrap">
-            <div>
-              <h1>About Us</h1>
-            </div>
-            <div className="">
-              <button className="getInTouch d-flex justify-content-between align-items-center">
-                <MailOutlineIcon />
-                <p className="mb-1" onClick={() => router.push("/getInTouch")}>
-                  Get in Touch with us
-                </p>
-              </button>
-            </div>
-          </div>
-          <div className="col-md-12">
-            <CommonHeader title="Our Team" />
-
-            <div>
-              <img
-                src="/images/aboutUs.jpg"
-                alt="teamImg"
-                className="img-fluid teamImg"
-              />
-            </div>
-          </div>
-          <div className="col-md-12">
-            <CommonHeader title="Our Origin" />
-            <div>
-              <p>
-                DreamFinder Ltd. is an esteemed sister concern of Amader Bari
-                Ltd.
-              </p>
-              <p>
-                Amader Bari Ltd. grew exponentially since its inception n 2005,
-                known for building numerous luxurious multi-storied residential
-                & commercial complexes across the most prominent zones in Dhaka,
-                Bangladesh.
-              </p>
-              <p>
-                Inheriting the extensive local knoledge, resources and skills,
-                DreamFinder Ltd. aims to build a strong relationship with its
-                valuable customers and provide them a unque experience this
-                industry requires.
-              </p>
-            </div>
-          </div>
-
-          <div className="col-md-12">
-            <CommonHeader title="What We Do" />
-            <div>
-              <p>
-                DreamFinder Ltd. is a real estate agent serving to facilitate
-                all out clients’ realty solution.
-              </p>
-              <p>
-                Whether you are selling or buying, a landlord seeking
-                resonsible, quality tenants, or a tenant searching for a home,
-                the process itself can get incredibly stressful.
-              </p>
-              <p>
-                DreamFinder Ltd. operates to simplify and expedite the entire
-                course of action and delivers the kind of quality services that
-                buyers, sellers, landlords and tenants require.
-              </p>
-            </div>
-          </div>
-          {aboutUsDetails.map((item) => (
-            <div className="col-md-12 px-0 d-flex flex-wrap my-4" key={item.id}>
-              {item.id % 2 !== 0 || windowSize < 768 ? (
-                <div className="col-md-4 d-flex align-items-center mb-4">
-                  <img
-                    src={item.img}
-                    alt="img"
-                    className="img-fluid aboutUsDetailsImg"
-                  />
-                </div>
-              ) : null}
-
-              <div className="col-md-8">
-                <h2 className="aboutUsDetailsTitle">{item.title}</h2>
-                <p>{item.firstP}</p>
-                <p>{item.secondP}</p>
-                <p>{item.thirdP}</p>
-              </div>
-              {item.id % 2 === 0 && windowSize > 768 ? (
-                <div className="col-md-4 d-flex align-items-center mb-4">
-                  <img
-                    src={item.img}
-                    alt="img"
-                    className="img-fluid aboutUsDetailsImg"
-                  />
-                </div>
-              ) : null}
-            </div>
-          ))}
+    <>
+      <section>
+        <div className="pt-3">
+          <img
+            src="/images/aboutUs.jpg"
+            alt="teamImg"
+            className="img-fluid teamImg"
+          />
         </div>
-      </div>
-    </section>
+      </section>
+      <section>
+        <div className="container py-5">
+          <div className="row">
+            <div className="col-md-12">
+              <CommonHeader title="Our Origin" />
+              <div className="ourOriginText">
+                <p>
+                  DreamFinder Ltd. is an esteemed sister concern of Amader Bari
+                  Ltd.
+                </p>
+                <p>
+                  Amader Bari Ltd. grew exponentially since its inception n
+                  2005, known for building numerous luxurious multi-storied
+                  residential & commercial complexes across the most prominent
+                  zones in Dhaka, Bangladesh.
+                </p>
+                <p>
+                  Inheriting the extensive local knoledge, resources and skills,
+                  DreamFinder Ltd. aims to build a strong relationship with its
+                  valuable customers and provide them a unque experience this
+                  industry requires.
+                </p>
+              </div>
+            </div>
+
+            <div className="col-md-12">
+              <CommonHeader title="What We Do" />
+              <div className="ourOriginText">
+                <p>
+                  DreamFinder Ltd. is a real estate agent serving to facilitate
+                  all out clients’ realty solution.
+                </p>
+                <p>
+                  Whether you are selling or buying, a landlord seeking
+                  resonsible, quality tenants, or a tenant searching for a home,
+                  the process itself can get incredibly stressful.
+                </p>
+                <p>
+                  DreamFinder Ltd. operates to simplify and expedite the entire
+                  course of action and delivers the kind of quality services
+                  that buyers, sellers, landlords and tenants require.
+                </p>
+              </div>
+            </div>
+            <div className="col-md-12">
+              <CommonHeader title="Mission & Vision" />
+              <div className="ourOriginText">
+                <p>
+                  Our mission is to differentiate ourselves through our
+                  dedicated and knowledgeable sales, management and
+                  administration team and offer a first class range of services
+                  to cater to all our clients’ needs and requirements.
+                </p>
+                <div>
+                  <br />
+                  <br />
+                  <p>
+                    DreamFinder Ltd. is a real estate agent serving to
+                    facilitate all our clients’ realty solutions. Whether you
+                    are selling or buying, a landlord seeking responsible,
+                    quality tenants, or a tenant searching for a home, the
+                    process itself can get incredibly stressful. DreamFinder
+                    Ltd. operates to simplify and expedite the entire course of
+                    action and delivers the kind of quality services that
+                    buyers, sellers, landlords and tenants require.
+                  </p>
+
+                  <p>
+                    DreamFinder Ltd. is an esteemed sister concern of Amader
+                    Bari Ltd. headed by a dynamic leader, Chowdhury Munir Uddin
+                    Mahfuz. Amader Bari Ltd. grew exponentially since its
+                    inception, known for building numerous luxurious
+                    multi-storied residential & commercial complexes across the
+                    most prominent zones in Dhaka, Bangladesh. Inheriting the
+                    extensive local knowledge, resources and skills, DreamFinder
+                    Ltd. aims to build a strong relationship with its valuable
+                    customers and provide them a unique experience this industry
+                    requires
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 
