@@ -76,10 +76,7 @@ const ModalSearchComponent = ({ show, handleClose }) => {
             >
               Reset Filter
             </button>
-            <button
-              className="w-100 getInTouchSendBtn mt-3"
-              onClick={findHandler}
-            >
+            <button className="w-100 calculateAgain mt-3" onClick={findHandler}>
               Find
             </button>
           </div>
