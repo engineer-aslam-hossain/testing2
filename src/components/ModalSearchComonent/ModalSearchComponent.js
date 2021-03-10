@@ -71,7 +71,7 @@ const ModalSearchComponent = ({ show, handleClose }) => {
         <div className="col-md-12 col-sm-12 fixedDiv">
           <div className="searchModalFooter px-3">
             <button
-              className="w-100 resetFilter text-dark font-weight-bold"
+              className="w-100 resetFilter text-dark"
               onClick={() => SetSearchData({})}
             >
               Reset Filter
