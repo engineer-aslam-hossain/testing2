@@ -126,8 +126,8 @@ const SinglePropertyInfoDetails = ({ data }) => {
                       <ZoomOutMapIcon /> expand images
                     </button>
                   </div>
-                  <div className="col-md-12 d-flex flex-wrap">
-                    <div className="col-md-8">
+                  <div className="col-md-12 d-flex flex-wrap px-0">
+                    <div className="col-md-8 px-0">
                       <div className="propertyName mb-3">
                         <h2>{name}</h2>
                         <div className="d-flex align-items-center">
@@ -171,7 +171,7 @@ const SinglePropertyInfoDetails = ({ data }) => {
                       </div>
                     </div>
 
-                    <div className="col-md-4">
+                    <div className="col-md-4 px-0">
                       <div className="findedItemcontactUsForm">
                         <h1>{price} BDT</h1>
                         <p>GET IN TOUCH WITH US</p>
@@ -273,7 +273,11 @@ const SinglePropertyInfoDetails = ({ data }) => {
                         </button>
                       </div>
                       <div className="mapDiv">
-                        <img src="/images/locations.png" alt="" />
+                        <img
+                          src="/images/locations.png"
+                          alt=""
+                          className="img-fluid"
+                        />
                         {/* <iframe
                           src="http://maps.google.com/maps?q=23.770541202199745, 90.40633522570474&z=15&output=embed"
                           height="500px"
