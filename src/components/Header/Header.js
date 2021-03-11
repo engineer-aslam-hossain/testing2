@@ -79,7 +79,9 @@ const Header = () => {
 
       {!loggedInUser.email && (
         <Link href="/sign-up">
-          <a className={`signUpBtn`}> Become a Member : SIGNUP</a>
+          <a className={`px-2 headerLinks signUpBtn`}>
+            Become a Member : SIGNUP
+          </a>
         </Link>
       )}
       {loggedInUser.email && (
