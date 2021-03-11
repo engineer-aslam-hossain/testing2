@@ -44,7 +44,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 100000000;
   background-color: white;
   box-sizing: border-box;
   display: flex;
@@ -332,8 +332,8 @@ footer {
 /* end of footer styles */
 
 /* headermain styles */
-.modal-dialog,
-.modal-content {
+.headerMainSearchModal .modal-dialog,
+.headerMainSearchModal .modal-content {
   max-width: 100% !important;
   margin: 0 !important;
   height: 45rem !important;
@@ -793,12 +793,22 @@ a.headerLink {
 img.sliderImg {
   width: 8rem;
 }
-
+.slick-prev,
+.slick-next {
+  z-index: 100;
+}
+button.slick-arrow.slick-next {
+  margin-right: 5rem;
+}
+button.slick-arrow.slick-prev {
+  margin-left: 2rem;
+}
 .slick-arrow.slick-prev:before,
 .slick-arrow.slick-next:before {
-  color: black;
+  color: #bc992f;
+  font-size: 4rem;
 }
-.slick-track {
+.premiumAgentsSlider .slick-track {
   padding-top: 3rem;
   width: 500px;
   margin: 0 auto;

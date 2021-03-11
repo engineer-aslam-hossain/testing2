@@ -184,68 +184,6 @@ const HeaderMain = () => {
               </Accordion>
             </div>
           </div>
-          {/* <Modal
-            dialogClassName="modal-90w"
-            show={show}
-            onHide={handleClose}
-            animation={false}
-          >
-            <Modal.Body>
-              <div className="col-md-12 col-sm-12 d-flex justify-content-between align-items-center ">
-                <h3 className="filterSearch">Search Filters</h3>
-                <CloseIcon onClick={handleClose} />
-              </div>
-              <div className="modalBtnDiv col-sm-12 col-md-12 d-flex justify-content-between px-3">
-                <button
-                  className={`w-100 rent ${
-                    findProperty === "Rent" && "active"
-                  }`}
-                  onClick={() => setFindProperty("Rent")}
-                >
-                  Rent
-                </button>
-                <button
-                  className={`w-100 ${findProperty === "Sell" && "active"}`}
-                  onClick={() => setFindProperty("Sell")}
-                >
-                  Sale
-                </button>
-                <button
-                  className={`w-100 ${
-                    findProperty === "new_project" && "active"
-                  }`}
-                  onClick={() => setFindProperty("new_project")}
-                >
-                  Projects
-                </button>
-                <button
-                  className={`w-100 auction ${
-                    findProperty === "Auction" && "active"
-                  }`}
-                  onClick={() => setFindProperty("Auction")}
-                >
-                  Auction
-                </button>
-              </div>
-              <ModalSearchInputGroup />
-              <div className="col-md-12 col-sm-12 position-relative">
-                <div className="searchModalFooter">
-                  <button
-                    className="w-100 resetFilter text-dark font-weight-bold"
-                    onClick={() => SetSearchData({})}
-                  >
-                    Reset Filter
-                  </button>
-                  <button
-                    className="w-100 getInTouchSendBtn mt-3"
-                    onClick={findHandler}
-                  >
-                    Find
-                  </button>
-                </div>
-              </div>
-            </Modal.Body>
-          </Modal> */}
           <ModalSearchComponent show={show} handleClose={handleClose} />
         </div>
       </div>

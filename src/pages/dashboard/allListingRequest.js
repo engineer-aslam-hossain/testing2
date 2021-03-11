@@ -180,7 +180,12 @@ const AllListingRequest = ({ router }) => {
                 </div>
               </div>
               <div className="d-flex justify-content-center mt-5">
-                <Link href="newPropertyListing">
+                <Link
+                  href={{
+                    pathname: "/dashboard/newPropertyListing",
+                    query: { post: modalDetails._id },
+                  }}
+                >
                   <a className="postPropertyBtn">+ POST THIS PROPERTY</a>
                 </Link>
               </div>

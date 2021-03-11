@@ -30,6 +30,7 @@ const ModalSearchComponent = ({ show, handleClose }) => {
   return (
     <Modal
       dialogClassName="modal-90w"
+      className="headerMainSearchModal"
       show={show}
       onHide={handleClose}
       animation={false}

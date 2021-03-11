@@ -7,10 +7,19 @@ import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 import SingleProperty from "../../components/SingleProperty/SingleProperty";
 import DreamFinderContext from "../../components/Context/Context";
 import Swal from "sweetalert2";
+import Slider from "react-slick";
 
 import { useContext, useState } from "react";
 
 const SinglePropertyInfoDetails = ({ data }) => {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   const {
     address,
     address_area,
@@ -21,7 +30,7 @@ const SinglePropertyInfoDetails = ({ data }) => {
     amenity,
     price,
     ref_code,
-    image,
+    images,
   } = data.data;
 
   const {
@@ -112,7 +121,20 @@ const SinglePropertyInfoDetails = ({ data }) => {
             <div className="col-md-12">
               <Card className="propertyCard">
                 <Card.Body>
-                  <Card.Img variant="top" src={image} alt="PropertyImg" />
+                  <div className="singlePropertySlider">
+                    <Slider {...settings}>
+                      {images.map((img, index) => (
+                        <div key={index}>
+                          <Card.Img
+                            variant="top"
+                            src={img}
+                            alt="PropertyImg"
+                            className="img-fluid"
+                          />
+                        </div>
+                      ))}
+                    </Slider>
+                  </div>
                   <div className="col-md-12 d-flex justify-content-end algin-items-center px-0 propertyCardButtonGroup">
                     <button>
                       <LocationOnIcon /> location in maps

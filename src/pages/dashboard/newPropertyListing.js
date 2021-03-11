@@ -1,6 +1,6 @@
-import { Dropdown, Form } from "react-bootstrap";
+import { Dropdown, Form, Modal } from "react-bootstrap";
 import AddIcon from "@material-ui/icons/Add";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import fakeProperty from "../../fakeData/fakeProperty";
 import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
@@ -8,14 +8,19 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/router";
 import PublishIcon from "@material-ui/icons/Publish";
 import axios from "axios";
+import { withRouter } from "next/router";
+import DreamFinderContext from "../../components/Context/Context";
 
-const NewPropertyListing = () => {
-  const router = useRouter();
-
+const NewPropertyListing = ({ router }) => {
+  const { loggedInUser } = useContext(DreamFinderContext);
+  const route = useRouter();
+  const [postRequest, setPostRequest] = useState({});
   const [addListDetails, setAddListDetails] = useState({
     currency: "BDT",
     category: "Residential",
   });
+
+  // console.log(addListDetails);
 
   const residentHandler = () => {
     setAddListDetails({
@@ -49,26 +54,75 @@ const NewPropertyListing = () => {
   const [zillas, setZillas] = useState([]);
   const [zilla_id, setZilla_id] = useState("");
 
-  useEffect(() => {
+  // console.log(postRequest);
+  const asyncFunction = async () => {
     try {
-      fetch(
+      const res = await fetch(
         "https://raw.githubusercontent.com/nuhil/bangladesh-geocode/master/upazilas/upazilas.json"
-      )
-        .then((res) => res.json())
-        .then((data) => setUpozillas(data[2].data));
+      );
+
+      const data = await res.json();
+      // console.log(data[2].data);
+      setUpozillas(data[2].data);
     } catch (err) {
       console.log(err);
     }
     try {
-      fetch(
+      const res = await fetch(
         "https://raw.githubusercontent.com/nuhil/bangladesh-geocode/master/districts/districts.json"
-      )
-        .then((res) => res.json())
-        .then((data) => setZillas(data[2].data));
+      );
+      const data = await res.json();
+      // console.log(data[2].data);
+      setZillas(data[2].data);
     } catch (err) {
       console.log(err);
     }
+
+    try {
+      const token = JSON.parse(localStorage.getItem("DreamFinder_session"));
+      const postId = await router.query.post;
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/list/?_id=${postId}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            DreamFinder: token,
+          },
+        }
+      );
+      const data = await res.json();
+
+      if (data.success === "yes") {
+        setAddListDetails({
+          ...addListDetails,
+          address_district: data.data.district,
+          address_subdistrict: data.data.subdistrict,
+          property_type: data.data.property_type,
+          submitor_id: data.data._id,
+          purpose: data.data.purpose,
+        });
+        setPostRequest(data.data);
+      }
+
+      // console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    asyncFunction();
   }, []);
+
+  useEffect(() => {
+    const loginUser = loggedInUser._id;
+    !addListDetails.submitor_id &&
+      setAddListDetails({
+        ...addListDetails,
+        submitor_id: loginUser,
+      });
+  }, [loggedInUser]);
 
   const zilaHandler = (item) => {
     setAddListDetails({
@@ -186,11 +240,30 @@ const NewPropertyListing = () => {
   };
 
   // console.log(addListDetails);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [uploadImage, setUploadImage] = useState({});
+  const [imageArr, setImageArr] = useState([]);
+
+  // console.log(imageArr);
+
+  const modalCancel = () => {
+    handleClose();
+    setUploadImage({});
+  };
 
   const handleFileChange = async (e) => {
-    const formData = new FormData();
-    formData.append("file", e.target.files[0]);
+    setUploadImage(e.target.files[0]);
+    handleShow();
+  };
 
+  const fileUploadHandler = () => {
+    const formData = new FormData();
+    formData.append("file", uploadImage);
+    setImageArr([...imageArr, uploadImage]);
+
+    handleClose();
     try {
       const token = JSON.parse(localStorage.getItem("DreamFinder_session"));
       axios({
@@ -207,9 +280,12 @@ const NewPropertyListing = () => {
           const { data } = response;
           setAddListDetails({
             ...addListDetails,
-            image: data.data,
+            images: addListDetails.images
+              ? [...addListDetails.images, data.data]
+              : [data.data],
           });
-          // console.log(data);
+
+          console.log(data);
         })
         .catch(function (response) {
           //handle error
@@ -220,7 +296,7 @@ const NewPropertyListing = () => {
     }
   };
 
-  // console.log(addListDetails);
+  console.log(addListDetails);
 
   return (
     <section>
@@ -257,16 +333,30 @@ const NewPropertyListing = () => {
                   />
                 </Form.Group>
                 <Form.Group>
-                  <h5>Images</h5>
-                  <Form.Control
+                  <h5>Image</h5>
+                  <input
                     type="file"
-                    placeholder="Images"
+                    id="file"
+                    multiple
+                    className="file"
                     onChange={handleFileChange}
                   />
-                  {/* <button type="button">
-                      <AddIcon />
-                    </button> */}
+                  <label htmlFor="file" className="fileLabel">
+                    <p className="mb-0">Select file</p> <PublishIcon />
+                  </label>
                 </Form.Group>
+                <Form.Group>
+                  <h5></h5>
+                  <div className="">
+                    {imageArr &&
+                      imageArr.map((item, index) => (
+                        <h5 key={index} className="mb-0">
+                          {item.name}
+                        </h5>
+                      ))}
+                  </div>
+                </Form.Group>
+
                 <div className="d-flex align-items-center flex-wrap my-3">
                   <h5 className=""> Property Type </h5>
                   <Dropdown>
@@ -831,18 +921,6 @@ const NewPropertyListing = () => {
                     </div>
                   </div>
 
-                  {/* <Form.Group>
-                    <h5>Image</h5>
-                    <input
-                      type="file"
-                      id="file"
-                      className="file"
-                      onChange={handleFileChange}
-                    />
-                    <label htmlFor="file" className="fileLabel">
-                      <p className="mb-0">Select file</p> <PublishIcon />
-                    </label>
-                  </Form.Group> */}
                   <Form.Group>
                     <h5>Developer Name</h5>
                     <Form.Control
@@ -949,7 +1027,7 @@ const NewPropertyListing = () => {
                   <button
                     className="showRequest"
                     type="button"
-                    onClick={() => router.push("/dashboard")}
+                    onClick={() => route.push("/dashboard")}
                   >
                     CANCEL
                   </button>
@@ -957,10 +1035,36 @@ const NewPropertyListing = () => {
               </Form>
             </div>
           </div>
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Body>
+              <div>
+                <h5>Upload File ?</h5>
+              </div>
+              <div>
+                <p>image.jpg</p>
+              </div>
+              <div className="col-md-6 d-flex  justify-content-between my-4 ml-auto px-0">
+                <button
+                  className="showRequest"
+                  type="button"
+                  onClick={modalCancel}
+                >
+                  CANCEL
+                </button>
+                <button
+                  className="postPropertyBtn"
+                  type="button"
+                  onClick={fileUploadHandler}
+                >
+                  Upload
+                </button>
+              </div>
+            </Modal.Body>
+          </Modal>
         </div>
       </div>
     </section>
   );
 };
 
-export default NewPropertyListing;
+export default withRouter(NewPropertyListing);

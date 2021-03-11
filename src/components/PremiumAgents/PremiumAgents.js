@@ -78,7 +78,7 @@ const PremiumAgents = () => {
             <div className="d-flex justify-content-center align-items-center">
               <h5>No agents published yet</h5>
             </div>
-            {/* <div className="mx-auto" style={{ width: "80%" }}>
+            {/* <div className="mx-auto premiumAgentsSlider" style={{ width: "80%" }}>
               <Slider {...settings}>
                 {fakeSlideItems.map((item) => (
                   <div
