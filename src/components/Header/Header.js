@@ -8,7 +8,146 @@ import Link from "next/link";
 import Image from "next/image";
 import DreamFinderContext from "../Context/Context";
 
+import clsx from "clsx";
+import { makeStyles } from "@material-ui/core/styles";
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
+import Button from "@material-ui/core/Button";
+import List from "@material-ui/core/List";
+import Divider from "@material-ui/core/Divider";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import MailIcon from "@material-ui/icons/Mail";
+import { Fragment } from "react";
+
+const useStyles = makeStyles({
+  list: {
+    width: "auto",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    padding: "2rem",
+  },
+  fullList: {
+    width: "auto",
+  },
+});
+
 const Header = () => {
+  // test code
+
+  const classes = useStyles();
+  const [state, setState] = React.useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event &&
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
+
+  const list = (anchor) => (
+    <div
+      className={clsx(classes.list, {
+        [classes.fullList]: anchor === "top" || anchor === "bottom",
+      })}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      {navLink.map((item) => (
+        <Fragment key={item.id}>
+          {item.id == 5 && loggedInUser.email ? null : (
+            <Link href={item.to} key={item.id}>
+              <a className={`headerLinks ${isActive(item.to)}`}>{item.name}</a>
+            </Link>
+          )}
+        </Fragment>
+      ))}
+
+      {!loggedInUser.email && (
+        <Link href="/sign-up">
+          <a className={`signUpBtn`}> Become a Member : SIGNUP</a>
+        </Link>
+      )}
+      {loggedInUser.email && (
+        <Link href="/profile">
+          <a className="headerLinks">
+            <img
+              src="/icons/admin/user.svg"
+              alt="icons"
+              className="img-fluid navImg"
+            />
+            My Profile
+          </a>
+        </Link>
+      )}
+      <Link href="/list-a-new-property">
+        <a className="headerLinks">
+          <img
+            src="/icons/Profile_ListNewProperty.svg"
+            alt="icons"
+            className="img-fluid navImg"
+          />
+          List a New Property
+        </a>
+      </Link>
+      <Link href="/">
+        <a className="headerLinks">
+          <img
+            src="/icons/Profile_ManageRenters.svg"
+            alt="icons"
+            className="img-fluid navImg"
+          />
+          Pay Rent
+        </a>
+      </Link>
+      <Link href="/myProperties">
+        <a className="headerLinks">
+          <img
+            src="/icons/Profile_MyListedProperties.svg"
+            alt="icons"
+            className="img-fluid navImg"
+          />
+          My Existing Properties
+        </a>
+      </Link>
+      <Link href="/save-property">
+        <a className="headerLinks">
+          <img
+            src="/icons/Profile_FavoriteProperties.svg"
+            alt="icons"
+            className="img-fluid navImg"
+          />
+          Saved Properties
+        </a>
+      </Link>
+      <Link href="/">
+        <a className="headerLinks">
+          <img
+            src="/icons/Profile_SiteSettings.svg"
+            alt="icons"
+            className="img-fluid navImg"
+          />
+          Site Settings
+        </a>
+      </Link>
+    </div>
+  );
+
+  // test code
   const { loggedInUser, setLoggedInUser } = useContext(DreamFinderContext);
   const router = useRouter();
 
@@ -52,7 +191,10 @@ const Header = () => {
             ""
           ) : (
             <>
-              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Toggle
+                aria-controls="basic-navbar-nav"
+                onClick={toggleDrawer("right", true)}
+              />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto headerLink">
                   {navLink.map((item) => (
@@ -144,6 +286,16 @@ const Header = () => {
             </>
           ))}
       </Navbar>
+      <div>
+        <SwipeableDrawer
+          anchor={"right"}
+          open={state["right"]}
+          onClose={toggleDrawer("right", false)}
+          onOpen={toggleDrawer("right", true)}
+        >
+          {list("right")}
+        </SwipeableDrawer>
+      </div>
     </header>
   );
 };

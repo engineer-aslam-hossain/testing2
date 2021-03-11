@@ -20,6 +20,7 @@ const SingleProperty = ({ item }) => {
     property_type,
     category,
     price,
+    image,
   } = item;
 
   const [saved, setSaved] = useState(false);
@@ -68,7 +69,7 @@ const SingleProperty = ({ item }) => {
       <Card className="propertyCard">
         <Link href={`/findProperties/${_id}`}>
           <Card.Body>
-            <Card.Img variant="top" src="/images/Foyer-Mob 1.png" />
+            <Card.Img variant="top" src={image} alt="PropertyImg" />
             <h5 className="propertyName">{name} </h5>
             <h6 className="propertyAdd">{address}</h6>
             <Card.Text className="propertyText">{`${bed} beds | ${bath} baths | ${purpose} |  ${category} | ${property_type} |`}</Card.Text>

@@ -21,11 +21,12 @@ const SinglePropertyInfoDetails = ({ data }) => {
     amenity,
     price,
     ref_code,
+    image,
   } = data.data;
 
   const {
     extra_details,
-    belcony,
+    balcony,
     unit,
     developer_name,
     floor,
@@ -111,7 +112,7 @@ const SinglePropertyInfoDetails = ({ data }) => {
             <div className="col-md-12">
               <Card className="propertyCard">
                 <Card.Body>
-                  <Card.Img variant="top" src="/images/Foyer-Mob 1.png" />
+                  <Card.Img variant="top" src={image} alt="PropertyImg" />
                   <div className="col-md-12 d-flex justify-content-end algin-items-center px-0 propertyCardButtonGroup">
                     <button>
                       <LocationOnIcon /> location in maps
@@ -140,7 +141,7 @@ const SinglePropertyInfoDetails = ({ data }) => {
                         <h5>property details</h5>
                         <p>Floor : {floor} </p>
                         <p>Unit : {unit} </p>
-                        <p>Belcony : {belcony} </p>
+                        <p>Balcony : {balcony} </p>
                         <p>Land Size : {land_size} Katha </p>
                         <p>Service Charge : {service_charge} </p>
                         <p>Manager Name : {manager_name} </p>

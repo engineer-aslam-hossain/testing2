@@ -70,17 +70,22 @@ header.scrolled img.logoImg {
 
 .headerLink.navbar-nav .navDiv a {
   margin: 0.5rem 1.5rem;
+}
+.headerLink.navbar-nav .navDiv a,
+a.headerLinks {
   padding: 0.3rem 0;
-  color: #bc9700;
-  text-decoration: none;
+  color: #bc9700 !important;
+  text-decoration: none !important;
   font-size: 18px;
   border-bottom: 3px solid rgba(156, 137, 18, 0);
   transition: border-bottom 0.3s ease;
 }
-.headerLink.navbar-nav .navDiv a:hover {
+.headerLink.navbar-nav .navDiv a:hover,
+a.headerLinks:hover {
   border-bottom: 3px solid #bc9700;
 }
-.headerLink.navbar-nav .navDiv a.active {
+.headerLink.navbar-nav .navDiv a.active,
+a.headerLinks:active {
   border-bottom: 3px solid #bc9700;
 }
 .navDiv {
@@ -715,6 +720,17 @@ h3.filterSearch {
   background-color: white;
 }
 
+@media (max-width: 991px) {
+  div#basic-navbar-nav {
+    display: none;
+  }
+}
+img.img-fluid.navImg {
+  width: 1rem;
+  margin-right: 0.5rem;
+}
+a.headerLink {
+}
 /* end of header main styles */
 
 /* common header css start */
@@ -2379,7 +2395,7 @@ label.fileLabel {
   align-items: center;
   position: relative;
   width: 300px;
-  height: 50px;
+  height: 44px;
   border-radius: 8px;
   border: 2px solid #e7e7e7;
   font-weight: bold;

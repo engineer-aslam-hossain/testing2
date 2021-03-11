@@ -6,6 +6,8 @@ import CheckIcon from "@material-ui/icons/Check";
 import CloseIcon from "@material-ui/icons/Close";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
+import PublishIcon from "@material-ui/icons/Publish";
+import axios from "axios";
 
 const NewPropertyListing = () => {
   const router = useRouter();
@@ -121,7 +123,7 @@ const NewPropertyListing = () => {
         });
   };
 
-  console.log(addListDetails);
+  // console.log(addListDetails);
 
   useEffect(() => {
     setAddListDetails({
@@ -185,6 +187,41 @@ const NewPropertyListing = () => {
 
   // console.log(addListDetails);
 
+  const handleFileChange = async (e) => {
+    const formData = new FormData();
+    formData.append("file", e.target.files[0]);
+
+    try {
+      const token = JSON.parse(localStorage.getItem("DreamFinder_session"));
+      axios({
+        method: "post",
+        cache: false,
+        contentType: false,
+        processData: false,
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/file/upload`,
+        data: formData,
+        headers: { DreamFinder: token },
+      })
+        .then(function (response) {
+          //handle success
+          const { data } = response;
+          setAddListDetails({
+            ...addListDetails,
+            image: data.data,
+          });
+          // console.log(data);
+        })
+        .catch(function (response) {
+          //handle error
+          console.log(response);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // console.log(addListDetails);
+
   return (
     <section>
       <div className="container">
@@ -218,6 +255,17 @@ const NewPropertyListing = () => {
                       })
                     }
                   />
+                </Form.Group>
+                <Form.Group>
+                  <h5>Images</h5>
+                  <Form.Control
+                    type="file"
+                    placeholder="Images"
+                    onChange={handleFileChange}
+                  />
+                  {/* <button type="button">
+                      <AddIcon />
+                    </button> */}
                 </Form.Group>
                 <div className="d-flex align-items-center flex-wrap my-3">
                   <h5 className=""> Property Type </h5>
@@ -614,16 +662,16 @@ const NewPropertyListing = () => {
                     />
                   </Form.Group>
                   <Form.Group>
-                    <h5>Belcony</h5>
+                    <h5>Balcony</h5>
                     <Form.Control
                       type="number"
-                      placeholder="Belcony"
+                      placeholder="Balcony"
                       onChange={(e) =>
                         setAddListDetails({
                           ...addListDetails,
                           detail: {
                             ...addListDetails.detail,
-                            belcony: e.target.value,
+                            balcony: e.target.value,
                           },
                         })
                       }
@@ -783,14 +831,18 @@ const NewPropertyListing = () => {
                     </div>
                   </div>
 
-                  {/* <Form.Group >
-                    <h5>Images</h5>
-                    <Form.Control type="file" placeholder="Images" />
-                    <button type="button">
-                      <AddIcon />
-                    </button>
+                  {/* <Form.Group>
+                    <h5>Image</h5>
+                    <input
+                      type="file"
+                      id="file"
+                      className="file"
+                      onChange={handleFileChange}
+                    />
+                    <label htmlFor="file" className="fileLabel">
+                      <p className="mb-0">Select file</p> <PublishIcon />
+                    </label>
                   </Form.Group> */}
-
                   <Form.Group>
                     <h5>Developer Name</h5>
                     <Form.Control
