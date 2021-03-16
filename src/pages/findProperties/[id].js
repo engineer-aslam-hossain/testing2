@@ -122,18 +122,28 @@ const SinglePropertyInfoDetails = ({ data }) => {
               <Card className="propertyCard">
                 <Card.Body>
                   <div className="singlePropertySlider">
-                    <Slider {...settings}>
-                      {images.map((img, index) => (
-                        <div key={index}>
-                          <Card.Img
-                            variant="top"
-                            src={img}
-                            alt="PropertyImg"
-                            className="img-fluid"
-                          />
-                        </div>
-                      ))}
-                    </Slider>
+                    {!images.length > 0 ? (
+                      <Card.Img
+                        variant="top"
+                        src={`${
+                          images.length > 0 ? images[0] : "/images/stockImg.jpg"
+                        }`}
+                        alt="PropertyImg"
+                      />
+                    ) : (
+                      <Slider {...settings}>
+                        {images.map((img, index) => (
+                          <div key={index}>
+                            <Card.Img
+                              variant="top"
+                              src={img}
+                              alt="PropertyImg"
+                              className="img-fluid"
+                            />
+                          </div>
+                        ))}
+                      </Slider>
+                    )}
                   </div>
                   <div className="col-md-12 d-flex justify-content-end algin-items-center px-0 propertyCardButtonGroup">
                     <button>

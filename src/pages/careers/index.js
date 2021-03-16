@@ -30,6 +30,17 @@ const Careers = () => {
 
   return (
     <section>
+      <section className="careerGuideWelcome">
+        <div className="container h-100">
+          <div className="row  areaGuideHeaderMain h-100  align-items-center">
+            <div className="col-md-12 AreaGuideTitle d-flex flex-column align-items-center justify-content-between">
+              <div className="col-md-12 d-flex flex-column align-items-center ">
+                <h1>Welcome to Careers at DreamFinder Ltd.</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <div className="container">
         <div className="row">
           <div className="col-md-12 careerTitle">

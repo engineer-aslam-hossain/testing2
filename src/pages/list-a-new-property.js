@@ -600,7 +600,7 @@ const ListANewProperty = () => {
                 <a className="backToProfile mr-4">Go to Profile</a>
               </Link>
               <button className="listPropertySubmitBtn" onClick={handleClose}>
-                Okey
+                Okay
               </button>
             </div>
           </div>
