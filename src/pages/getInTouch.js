@@ -71,7 +71,10 @@ const GetInTouch = () => {
                   alt="icons"
                   className="img-fluid"
                 />
-                info@DreamFinderltd.com <span>Mail Now</span>
+                <a href="mailto:info@DreamFinderltd.com">
+                  info@DreamFinderltd.com
+                </a>
+                <span>Mail Now</span>
               </p>
               <p>
                 <img
@@ -79,7 +82,8 @@ const GetInTouch = () => {
                   alt="icons"
                   className="img-fluid"
                 />
-                +88 02 88 78 78 1<span>Call Now</span>
+                <a href="tel:+88028878781">+88 02 88 78 78 1</a>
+                <span>Call Now</span>
               </p>
               <p>
                 <img
@@ -87,7 +91,8 @@ const GetInTouch = () => {
                   alt="icons"
                   className="img-fluid"
                 />
-                +88 02 88 78 78 2<span>Call Now</span>
+                <a href="tel:+88028878782">+88 02 88 78 78 2</a>
+                <span>Call Now</span>
               </p>
               <p>
                 <img
@@ -95,7 +100,8 @@ const GetInTouch = () => {
                   alt="icons"
                   className="img-fluid"
                 />
-                +88 02 88 78 78 3<span>Call Now</span>
+                <a href="tel:+88028878783">+88 02 88 78 78 3</a>
+                <span>Call Now</span>
               </p>
               <p>
                 <img

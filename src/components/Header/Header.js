@@ -181,11 +181,7 @@ const Header = () => {
       <Navbar expand="lg" className="p-0">
         <Link href="/">
           <a>
-            <img
-              src="/images/Output_Dream_Finder_logo.jpg"
-              alt="me"
-              className="logoImg"
-            />
+            <img src="/images/logoPng.png" alt="me" className="logoImg" />
           </a>
         </Link>
         {router.pathname === "/login" ||
@@ -269,16 +265,6 @@ const Header = () => {
                             className="img-fluid"
                           />
                           Saved Properties
-                        </a>
-                      </Link>
-                      <Link href="/">
-                        <a>
-                          <img
-                            src="/icons/Profile_SiteSettings.svg"
-                            alt="icons"
-                            className="img-fluid"
-                          />
-                          Site Settings
                         </a>
                       </Link>
                     </Dropdown.Menu>

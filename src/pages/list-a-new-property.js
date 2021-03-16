@@ -18,9 +18,16 @@ const ListANewProperty = () => {
     name: loggedInUser.name ? loggedInUser.name : "",
     phone_number: loggedInUser.phone_number ? loggedInUser.phone_number : "",
   });
+  const [divisions, setDivisions] = useState([]);
+  const [division, setDivision] = useState("");
   const [upozillas, setUpozillas] = useState([]);
+
   const [zillas, setZillas] = useState([]);
   const [zilla_id, setZilla_id] = useState("");
+  const [division_id, setDivision_id] = useState("");
+
+  // console.log(divisions, zillas);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const submitHandler = async (e) => {
@@ -83,7 +90,7 @@ const ListANewProperty = () => {
   useEffect(() => {
     try {
       fetch(
-        "https://raw.githubusercontent.com/nuhil/bangladesh-geocode/master/upazilas/upazilas.json"
+        "https://raw.githubusercontent.com/engineer-aslam-hossain/AllDistrictUpazillaWithDhakaThana/master/AllDistrictUpazillaWithDhakaThana.json"
       )
         .then((res) => res.json())
         .then((data) => setUpozillas(data[2].data));
@@ -99,6 +106,16 @@ const ListANewProperty = () => {
     } catch (err) {
       console.log(err);
     }
+
+    try {
+      fetch(
+        "https://raw.githubusercontent.com/nuhil/bangladesh-geocode/master/divisions/divisions.json"
+      )
+        .then((res) => res.json())
+        .then((data) => setDivisions(data[2].data));
+    } catch (err) {
+      console.log(err);
+    }
   }, []);
 
   const zilaHandler = (item) => {
@@ -107,6 +124,11 @@ const ListANewProperty = () => {
       district: item.name,
     });
     setZilla_id(item.id);
+  };
+
+  const divisionHandler = (item) => {
+    setDivision(item.name);
+    setDivision_id(item.id);
   };
 
   // console.log(listPropertyData);
@@ -134,7 +156,7 @@ const ListANewProperty = () => {
                       type="text"
                       placeholder="Enter Your Full Name"
                       name="name"
-                      value={loggedInUser.name}
+                      value={loggedInUser.name || ""}
                       onChange={(e) =>
                         setListPropertyData({
                           ...listPropertyData,
@@ -155,7 +177,7 @@ const ListANewProperty = () => {
                       type="email"
                       placeholder="Enter Your Email"
                       name="email"
-                      value={loggedInUser.email}
+                      value={loggedInUser.email || ""}
                       onChange={(e) =>
                         setListPropertyData({
                           ...listPropertyData,
@@ -176,7 +198,7 @@ const ListANewProperty = () => {
                       type="number"
                       placeholder="Enter Your Phone no."
                       name="phone_number"
-                      value={loggedInUser.phone_number}
+                      value={loggedInUser.phone_number || ""}
                       onChange={(e) =>
                         setListPropertyData({
                           ...listPropertyData,
@@ -434,12 +456,10 @@ const ListANewProperty = () => {
                   </Dropdown>
                 </div>
                 <div className="col-md-4 d-flex align-items-center justify-content-between flex-wrap my-3">
-                  <h5 className="mr-4">in Location</h5>
+                  <h5 className="mr-4">in Division</h5>
                   <Dropdown className="d-flex align-items-center">
                     <Dropdown.Toggle className="headerMain" drop="left">
-                      {(listPropertyData.district &&
-                        listPropertyData.district) ||
-                        "Select Location"}
+                      {(division && division) || "Select Divison"}
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu className="searchDropDownMenu">
@@ -447,14 +467,14 @@ const ListANewProperty = () => {
                         <div>
                           <div className="proTypeOptionsDiv">
                             <div className="d-flex flex-column">
-                              {zillas.map((item) => (
+                              {divisions.map((item) => (
                                 <button
                                   type="button"
                                   className="propertyTypeBtn"
                                   key={item.id}
-                                  onClick={() => zilaHandler(item)}
+                                  onClick={() => divisionHandler(item)}
                                 >
-                                  {listPropertyData.district === item.name && (
+                                  {division === item.name && (
                                     <CheckIcon className="mr-3" />
                                   )}
                                   {item.name}
@@ -467,13 +487,52 @@ const ListANewProperty = () => {
                     </Dropdown.Menu>
                   </Dropdown>
                 </div>
-                <div className="col-md-5 d-flex align-items-center justify-content-between flex-wrap my-3">
-                  <h5 className="mr-4">at Sub-Location</h5>
+                <div className="col-md-4 d-flex align-items-center justify-content-between flex-wrap my-3">
+                  <h5 className="mr-4">Zilla</h5>
+                  <Dropdown className="d-flex align-items-center">
+                    <Dropdown.Toggle className="headerMain" drop="left">
+                      {(listPropertyData.district &&
+                        listPropertyData.district) ||
+                        "Select Zilla"}
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu className="searchDropDownMenu">
+                      <div>
+                        <div>
+                          <div className="proTypeOptionsDiv">
+                            <div className="d-flex flex-column">
+                              {zillas.map(
+                                (item) =>
+                                  division_id &&
+                                  division_id === item.division_id && (
+                                    <button
+                                      type="button"
+                                      className="propertyTypeBtn"
+                                      key={item.id}
+                                      onClick={() => zilaHandler(item)}
+                                    >
+                                      {listPropertyData.district ===
+                                        item.name && (
+                                        <CheckIcon className="mr-3" />
+                                      )}
+                                      {item.name}
+                                    </button>
+                                  )
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </div>
+                <div className="col-md-4 d-flex align-items-center justify-content-between flex-wrap my-3">
+                  <h5 className="mr-4">Thana/Upozilla</h5>
                   <Dropdown className="d-flex align-items-center">
                     <Dropdown.Toggle className="headerMain" drop="left">
                       {(listPropertyData.subdistrict &&
                         listPropertyData.subdistrict) ||
-                        "Select Sub-Location"}
+                        "Select Thana/Upozilla"}
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu className="searchDropDownMenu">

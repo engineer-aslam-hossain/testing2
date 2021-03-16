@@ -2526,8 +2526,8 @@ h2.aboutUsDetailsTitle {
 section.map {
   background-image: url("../images/Map_Embed.png");
   background-position: center;
-  height: 60vh;
-  background-size: auto;
+  height: 65vh;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
@@ -2563,6 +2563,10 @@ button.getInTouchSendBtn {
   display: flex;
   align-items: center;
   font-weight: 600;
+}
+
+.getInTouchLeft p a {
+  color: #333333;
 }
 
 .getInTouchLeft p span {
