@@ -62,7 +62,7 @@ const GetInTouch = () => {
         <div className="row py-5 justify-content-around">
           <div className="col-md-4 mb-5 getInTouchLeft">
             <div>
-              <h1>Get in Touch With us</h1>
+              <h1>Get in Touch With Us</h1>
             </div>
             <div className="my-5">
               <p>

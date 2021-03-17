@@ -45,9 +45,12 @@ const PopularArea = () => {
               </div>
 
               <div className="col-md-2 d-flex align-items-center justify-content-center">
-                <p className="text-center seeMoreBtn">
-                  <FontAwesomeIcon icon={faArrowRight} /> <br /> See More
-                </p>
+                <div className="d-flex align-items-center flex-column">
+                  <p className="text-center seeMoreBtn mb-0">
+                    <FontAwesomeIcon icon={faArrowRight} />
+                  </p>
+                  <p className="areaName">See More</p>
+                </div>
               </div>
             </div>
           </div>

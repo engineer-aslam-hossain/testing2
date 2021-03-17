@@ -11,23 +11,26 @@ const TermsAndConditions = () => {
               Effective Date:- 21 February , 2021 Usage of this site is governed
               by the following terms and conditions: <br /> THIS AGREEMENT is
               made between Dream Finder Limited and you ("the User"). <br />
-              DEFINITIONS <br /> "Effective Date" - the date on which this set
-              of terms and conditions entered effect. <br /> "Intellectual
-              Property Rights"- all copyrights, patents, registered and
-              unregistered design rights, database rights, trademarks and
-              service marks and applications for any of the foregoing, together
-              with all trade secrets, know-how, rights to confidence and other
-              intellectual and industrial property rights in all parts of the
-              world.
+              <br />
+              DEFINITIONS <br />
+              <br /> "Effective Date" - the date on which this set of terms and
+              conditions entered effect. <br />
+              <br /> "Intellectual Property Rights"- all copyrights, patents,
+              registered and unregistered design rights, database rights,
+              trademarks and service marks and applications for any of the
+              foregoing, together with all trade secrets, know-how, rights to
+              confidence and other intellectual and industrial property rights
+              in all parts of the world. <br />
               <br /> "Material" - content published on the Website or otherwise
               provided to Dream Finder Ltd. For the avoidance of doubt, it
               includes all content posted on the Website by the User or
-              otherwise provided to Dream Finder Ltd by the User.
+              otherwise provided to Dream Finder Ltd by the User. <br />
               <br /> "Registration Details" - the details which a User must
               provide on registering for the Website including name, phone
-              numbers, email address, age or address.
+              numbers, email address, age or address. <br />
               <br /> "Service" - the provision of the Website as a property
               portal.
+              <br />
               <br /> "Unacceptable" - Material which under the laws of any
               jurisdiction from which the Website may be accessed may be
               considered either:- illegal, illicit, indecent, obscene, racist,
@@ -40,6 +43,7 @@ const TermsAndConditions = () => {
               contravene legislation, including without limitation, that
               relating to weapons, animals or alcohol; might harm Dream Finder
               Ltd reputation.
+              <br />
               <br /> "User"- any party who uses the Website. <br />
               "Website" - Dream Finder Ltd website located at www.
               DreamFinder.com.bd <br />
@@ -56,12 +60,15 @@ const TermsAndConditions = () => {
               accurate, current and complete Registration Details which the User
               must update after any changes (except age) before using the
               Website for further services in the future.
+              <br />
               <br /> The User hereby warrants to Dream Finder Ltd that it is at
               least eighteen years of age and legally able to enter into
               contracts. <br />
+              <br />
               Dream Finder Ltd reserves the discretion to withdraw any Material
               from the Website without prior notice and to refuse any Material
               posted by a User. <br />
+              <br />
               The User's Registration Details and data relating to its use of
               the Website will be recorded by Dream Finder Ltd but this
               information shall not be disclosed to third parties (otherwise
@@ -76,6 +83,7 @@ const TermsAndConditions = () => {
               otherwise than in relation to this Website. The User can set its
               computer browser to reject cookies but this may preclude use of
               certain parts of this Website. <br />
+              <br />
               The User hereby authorises Dream Finder Ltd to use any information
               which it submits to this Website to inform the User of special
               offers, occasional third party offers and for other marketing and
@@ -84,6 +92,7 @@ const TermsAndConditions = () => {
               Finder Ltd may disclose this data if compelled to do so by law, or
               at the request of a law enforcement agency or governmental
               authority.
+              <br />
               <br /> If the User does not wish Dream Finder Ltd to use its
               information as set out in Clauses 2.3 and 2.4 above, it should
               leave the Website before submitting its personal details.
@@ -91,12 +100,14 @@ const TermsAndConditions = () => {
               address to send information concerning the Website and related
               matters, the User should send a message to Dream Finder Ltd and
               insert unsubscribe as the subject heading.
+              <br />
               <br /> Dream Finder Ltd reserves the right to suspend or terminate
               a User's account where, in its absolute discretion, it deems such
               suspension appropriate. In the event of such suspension or
               termination, Dream Finder Ltd will notify the User by email and
               the User must not seek to re-register either directly or
               indirectly through a related entity.
+              <br />
               <br />
               For the avoidance of doubt, Dream Finder Ltd is providing a
               service not goods.
@@ -164,15 +175,18 @@ const TermsAndConditions = () => {
               howsoever arising suffered by any User arising in any way in
               connection with this Agreement or for any liability of a User to
               any third party.
+              <br />
               <br /> Whilst Dream Finder Ltd will make all reasonable attempts
               to exclude viruses from the Website, it cannot ensure such
               exclusion and no liability is accepted for viruses. Thus, the User
               is recommended to take all appropriate safeguards before
               downloading information or any Material from the Website.
+              <br />
               <br /> Dream Finder Ltd shall not be liable for ensuring that the
               Material on the Website is not Unacceptable Material and the User
               in making any financial or other decision accepts that it does so
               exclusively at its own risk.
+              <br />
               <br /> Dream Finder Ltd shall not be liable for any interruption
               to the Service, whether intentional or otherwise.
               <br /> Dream Finder Ltd is not liable for any failure in respect
@@ -185,6 +199,7 @@ const TermsAndConditions = () => {
               the Website. None of the clauses herein shall apply so as to
               restrict liability for death or personal injury resulting from the
               negligence of Dream Finder Ltd or its appointed agents.
+              <br />
               <br /> No matter how many claims are made and whatever the basis
               of such claims, Dream Finder Ltd’s maximum aggregate liability to
               a User under or in connection with this Agreement in respect of
@@ -202,10 +217,12 @@ const TermsAndConditions = () => {
               information accessible via the Website is accurate, complete or
               current. Dream Finder Ltd has no liability whatsoever in respect
               of any use which the User makes of such information.
+              <br />
               <br /> Material has not been written to meet the individual
               requirements of the User and it is the User's sole responsibility
               to satisfy itself prior to entering into any transaction or
               decision that the Material is suitable for its purposes.
+              <br />
               <br /> All warranties, express or implied, statutory or otherwise
               are hereby excluded.
               <br /> The User hereby agrees to indemnify Dream Finder Ltd
@@ -264,6 +281,7 @@ const TermsAndConditions = () => {
               any provisions of this Agreement or any of its rights hereunder
               shall not be construed as a waiver of such provision or right
               thereafter to enforce the same.
+              <br />
               <br /> The headings in this Agreement are solely used for
               convenience and shall not have any legal or contractual
               significance.

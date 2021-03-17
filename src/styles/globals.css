@@ -54,7 +54,7 @@ header {
 }
 
 img.logoImg {
-  width: 9rem;
+  width: 8rem;
   position: relative;
   transition: all 0.6s ease;
 }
@@ -188,8 +188,8 @@ footer {
   content: "";
   position: absolute;
   height: 1px;
-  width: 59rem;
-  margin-top: 0.5rem;
+  width: 65rem;
+  margin-top: 0.7rem;
   margin-left: 0.4rem;
   background-color: #ffd200;
 }
@@ -313,10 +313,10 @@ footer {
     flex-direction: column;
     align-items: center;
   }
-  .getInTouchCard.card {
+  /* .getInTouchCard.card {
     position: relative;
     top: -6rem;
-  }
+  } */
 }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
@@ -577,7 +577,7 @@ button.priceSubmitBtn {
 
 button.active,
 .modalBtnDiv button.active {
-  background-color: #bc9700;
+  background-color: #bc992f;
   color: white;
 }
 
@@ -862,9 +862,10 @@ button.seeMoreBtn {
 svg.svg-inline--fa.fa-arrow-right.fa-w-14 {
   background: #e6e4e4;
   border-radius: 50%;
-  padding: 12px;
-  width: 5rem;
-  height: 5rem;
+  padding: 20px;
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
 }
 p.text-center.seeMoreBtn {
   font-size: 1.2rem;
@@ -1034,6 +1035,9 @@ section.socailMedia {
 
 /*Social Media styles end */
 /*Sign up styles end */
+.signUpCard.calculatorCard.card .form-group {
+  margin-bottom: 0rem;
+}
 .signUpCard {
   box-shadow: var(--box-shadow);
   background: #fffef5 !important;
@@ -1833,13 +1837,19 @@ p.userRole {
     flex: 1 0 47% !important;
     max-width: 48% !important;
   }
-  .areaGuideSearch {
-    border-right: 1px solid #bfbfbf;
-  }
 }
 @media (min-width: 993px) {
   .propertyManagementTitle h3::after {
     width: 70%;
+  }
+  .areaGuideSearch::after {
+    content: "";
+    height: 3rem;
+    width: 1px;
+    right: -1.5rem;
+    background-color: #bfbfbf;
+    position: absolute;
+    border-right: 1px solid #bfbfbf;
   }
 }
 @media (min-width: 1200px) {
@@ -1991,7 +2001,7 @@ img.slideImg {
 
 /* Loan calculator styles start */
 section.CalCulationTopHeader {
-  padding: 3rem 0;
+  padding: 2rem 0;
   background-image: linear-gradient(
       0deg,
       rgba(0, 0, 0, 0.2),
@@ -2650,7 +2660,8 @@ section.careerGuideWelcome {
 }
 @media (min-width: 992px) {
   .signUpCard {
-    padding: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
   }
 }
 

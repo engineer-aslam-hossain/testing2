@@ -90,9 +90,9 @@ const AreaGuide = () => {
                   details that matter the most. Ready to get started?
                 </p>
               </div>
-              <div className="col-md-12 px-4 mx-auto ">
-                <div className="col-md-12 d-flex flex-wrap justify-content-around mx-auto areaGuideInputGroup">
-                  <div className="col-md-6 d-flex justify-content-center areaGuideSearch">
+              <div className="col-md-12 px-4 mx-auto">
+                <div className="col-md-7 d-flex flex-wrap justify-content-between mx-auto areaGuideInputGroup pl-0 position-relative">
+                  <div className="col-md-12 col-lg-6 d-flex align-items-center justify-content-center areaGuideSearch">
                     <InputGroup className="">
                       <FormControl
                         placeholder="Search for an area"
@@ -112,8 +112,8 @@ const AreaGuide = () => {
                       </InputGroup.Append>
                     </InputGroup>
                   </div>
-                  <div className="col-md-3 d-flex justify-content-center districtDiv">
-                    <Dropdown className="districtDropDow d-flex align-items-center">
+                  <div className="col-md-12 col-lg-5 d-flex align-items-center districtDiv pr-0">
+                    <Dropdown className="districtDropDow">
                       <Dropdown.Toggle className="headerMain" drop="left">
                         {selectedDistrict}
                       </Dropdown.Toggle>
