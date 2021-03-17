@@ -240,7 +240,7 @@ const loanCalculator = () => {
                           <h6>{interestRate}%</h6>
                         </div>
                       </button>
-                      <div className="my-4">
+                      <div className="my-4 pl-2">
                         <Range
                           step={0.1}
                           min={5}
