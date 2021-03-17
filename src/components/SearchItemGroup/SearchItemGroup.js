@@ -77,18 +77,6 @@ const SearchItemGroup = ({ btnName }) => {
     e.target.reset();
   };
 
-  const [minArea, setMinArea] = useState(null);
-  const [maxArea, setMaxArea] = useState(null);
-  const areaSubmitHandler = (e) => {
-    e.preventDefault();
-    e.target.reset();
-    SetSearchData({
-      ...searchData,
-      area_sqft_min: Math.floor(minArea),
-      area_sqft_max: Math.floor(maxArea),
-    });
-  };
-
   // console.log(searchData);
   return (
     <>
@@ -269,57 +257,6 @@ const SearchItemGroup = ({ btnName }) => {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </Dropdown.Menu>
-      </Dropdown>
-
-      <Dropdown className="findPropertyDiv">
-        <StyledBadge badgeContent={"Area (Sq.Ft)"}>
-          <Dropdown.Toggle className={btnName} drop="left">
-            {searchData.area_sqft_min
-              ? `${searchData.area_sqft_min} - ${searchData.area_sqft_max}`
-              : "Area (Sq.Ft)"}
-          </Dropdown.Toggle>
-        </StyledBadge>
-
-        <Dropdown.Menu className="searchDropDownMenu bathmenu" align="right">
-          <div className="p-3">
-            <Form
-              noValidate
-              className="d-flex flex-column"
-              onSubmit={areaSubmitHandler}
-            >
-              <Form.Group>
-                <Form.Label>Min</Form.Label>
-                <Form.Control
-                  type="number"
-                  className="priceInput"
-                  name="min"
-                  onChange={(e) => setMinArea(e.target.value)}
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Max</Form.Label>
-                <Form.Control
-                  type="number"
-                  className="priceInput"
-                  name="max"
-                  onChange={(e) => setMaxArea(e.target.value)}
-                />
-              </Form.Group>
-              <button type="submit" className="priceSubmitBtn">
-                SET AREA
-              </button>
-            </Form>
-            <div className="d-flex justify-content-end mt-3">
-              <button
-                className="resetBtn"
-                type="button"
-                onClick={() => setRange("")}
-              >
-                <CloseIcon /> Reset
-              </button>
             </div>
           </div>
         </Dropdown.Menu>

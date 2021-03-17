@@ -5,12 +5,39 @@ import MyLocationIcon from "@material-ui/icons/MyLocation";
 import Select from "react-select";
 import { useRouter } from "next/router";
 import CloseIcon from "@material-ui/icons/Close";
-import { Card, Accordion, Button, InputGroup, Modal } from "react-bootstrap";
+import {
+  Card,
+  Accordion,
+  Button,
+  InputGroup,
+  Modal,
+  Dropdown,
+  Form,
+} from "react-bootstrap";
 import DreamFinderContext from "../Context/Context";
 import fakeOptions from "../../fakeData/fakeOptions";
 import SearchItemGroup from "../SearchItemGroup/SearchItemGroup";
 import ModalSearchInputGroup from "../ModalSearchInputGroup/ModalSearchInputGroup";
 import ModalSearchComponent from "../ModalSearchComonent/ModalSearchComponent";
+import Badge from "@material-ui/core/Badge";
+import { withStyles } from "@material-ui/core/styles";
+
+const StyledBadge = withStyles((theme) => ({
+  badge: {
+    paddingLeft: ".8rem",
+    color: "#696969",
+    top: "-14px",
+    fontWeight: "400",
+    background: "#fff",
+    width: "100%",
+    borderRadius: "4px",
+    zIndex: 0,
+    fontSize: "10px",
+    justifyContent: "start",
+    transform: "none",
+    paddingTop: ".25rem",
+  },
+}))(Badge);
 
 const HeaderMain = () => {
   const {
@@ -64,6 +91,18 @@ const HeaderMain = () => {
   const showBtnHandler = (item) => {
     handleShow();
     setFindProperty(item);
+  };
+
+  const [minArea, setMinArea] = useState(null);
+  const [maxArea, setMaxArea] = useState(null);
+  const areaSubmitHandler = (e) => {
+    e.preventDefault();
+    e.target.reset();
+    SetSearchData({
+      ...searchData,
+      area_sqft_min: Math.floor(minArea),
+      area_sqft_max: Math.floor(maxArea),
+    });
   };
 
   return (
@@ -168,6 +207,59 @@ const HeaderMain = () => {
                       className={`searchDetails d-flex justify-content-between flex-wrap`}
                     >
                       <SearchItemGroup btnName="headerMain" />
+                      <Dropdown className="findPropertyDiv">
+                        <StyledBadge badgeContent={"Area (Sq.Ft)"}>
+                          <Dropdown.Toggle className="headerMain" drop="left">
+                            {searchData.area_sqft_min
+                              ? `${searchData.area_sqft_min} - ${searchData.area_sqft_max}`
+                              : "Area (Sq.Ft)"}
+                          </Dropdown.Toggle>
+                        </StyledBadge>
+
+                        <Dropdown.Menu
+                          className="searchDropDownMenu bathmenu"
+                          align="right"
+                        >
+                          <div className="p-3">
+                            <Form
+                              noValidate
+                              className="d-flex flex-column"
+                              onSubmit={areaSubmitHandler}
+                            >
+                              <Form.Group>
+                                <Form.Label>Min</Form.Label>
+                                <Form.Control
+                                  type="number"
+                                  className="priceInput"
+                                  name="min"
+                                  onChange={(e) => setMinArea(e.target.value)}
+                                />
+                              </Form.Group>
+                              <Form.Group>
+                                <Form.Label>Max</Form.Label>
+                                <Form.Control
+                                  type="number"
+                                  className="priceInput"
+                                  name="max"
+                                  onChange={(e) => setMaxArea(e.target.value)}
+                                />
+                              </Form.Group>
+                              <button type="submit" className="priceSubmitBtn">
+                                SET AREA
+                              </button>
+                            </Form>
+                            <div className="d-flex justify-content-end mt-3">
+                              <button
+                                className="resetBtn"
+                                type="button"
+                                onClick={() => setRange("")}
+                              >
+                                <CloseIcon /> Reset
+                              </button>
+                            </div>
+                          </div>
+                        </Dropdown.Menu>
+                      </Dropdown>
                     </div>
                   </Accordion.Collapse>
                 </Card>

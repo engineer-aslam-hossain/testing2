@@ -17,7 +17,7 @@ const loanCalculator = () => {
     type: "Home Loan",
   });
 
-  console.log(applyInfo);
+  // console.log(applyInfo);
   const downPayment = [
     {
       id: 1,
@@ -444,8 +444,8 @@ const loanCalculator = () => {
           </div>
           <Modal show={show} onHide={handleClose}>
             <div className="">
-              <Card style={{ padding: "3rem" }} className="">
-                <div className="my-4">
+              <Card style={{ padding: "1rem" }} className="">
+                <div className="my-3">
                   <h3 className="getIntouchCardTitle">Apply for Loan</h3>
                 </div>
                 <Form noValidate onSubmit={applyForLoan}>
