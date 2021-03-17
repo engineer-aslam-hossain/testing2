@@ -72,44 +72,6 @@ const AboutUs = () => {
                 </p>
               </div>
             </div>
-            <div className="col-md-12">
-              <CommonHeader title="Mission & Vision" />
-              <div className="ourOriginText">
-                <p>
-                  Our mission is to differentiate ourselves through our
-                  dedicated and knowledgeable sales, management and
-                  administration team and offer a first class range of services
-                  to cater to all our clients’ needs and requirements.
-                </p>
-                <div>
-                  <br />
-                  <br />
-                  <p>
-                    DreamFinder Ltd. is a real estate agent serving to
-                    facilitate all our clients’ realty solutions. Whether you
-                    are selling or buying, a landlord seeking responsible,
-                    quality tenants, or a tenant searching for a home, the
-                    process itself can get incredibly stressful. DreamFinder
-                    Ltd. operates to simplify and expedite the entire course of
-                    action and delivers the kind of quality services that
-                    buyers, sellers, landlords and tenants require.
-                  </p>
-
-                  <p>
-                    DreamFinder Ltd. is an esteemed sister concern of Amader
-                    Bari Ltd. headed by a dynamic leader, Chowdhury Munir Uddin
-                    Mahfuz. Amader Bari Ltd. grew exponentially since its
-                    inception, known for building numerous luxurious
-                    multi-storied residential & commercial complexes across the
-                    most prominent zones in Dhaka, Bangladesh. Inheriting the
-                    extensive local knowledge, resources and skills, DreamFinder
-                    Ltd. aims to build a strong relationship with its valuable
-                    customers and provide them a unique experience this industry
-                    requires
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
