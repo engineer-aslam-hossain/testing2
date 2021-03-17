@@ -74,7 +74,7 @@ header.scrolled img.logoImg {
 .headerLink.navbar-nav .navDiv a,
 a.headerLinks {
   padding: 0.3rem 0;
-  color: #bc9700 !important;
+  color: #c8aa22 !important;
   text-decoration: none !important;
   font-size: 18px;
   border-bottom: 3px solid rgba(156, 137, 18, 0);
@@ -82,11 +82,11 @@ a.headerLinks {
 }
 .headerLink.navbar-nav .navDiv a:hover,
 a.headerLinks:hover {
-  border-bottom: 3px solid #bc9700;
+  border-bottom: 3px solid #c8aa22;
 }
 .headerLink.navbar-nav .navDiv a.active,
 a.headerLinks:active {
-  border-bottom: 3px solid #bc9700;
+  border-bottom: 3px solid #c8aa22;
 }
 .navDiv {
   margin: 0.5rem 0;
@@ -123,7 +123,7 @@ a.headerLinks:active {
   margin-right: 0.5rem;
 }
 a.signUpBtn {
-  border: 1px solid #bc9700;
+  border: 1px solid #c8aa22;
   border-radius: 6px;
   text-align: center;
   justify-content: center;
@@ -132,7 +132,7 @@ a.signUpBtn {
   border-bottom: none;
 } */
 .dropdown-menu > a:hover {
-  color: #bc9700;
+  color: #c8aa22;
 }
 .headerLink button.headerBtn {
   margin: 0.5rem 1rem;
@@ -141,19 +141,19 @@ a.signUpBtn {
   display: flex;
   padding: 0.5rem 1rem;
   border-radius: 8px;
-  color: #bc9700;
+  color: #c8aa22;
   font-size: 1.1rem;
   background: transparent;
   transition: background 0.6s ease;
 }
 .headerLink button.headerBtn:focus {
   color: white;
-  background-color: #bc9700;
+  background-color: #c8aa22;
 }
 button#dropdown-basic {
   background-color: transparent !important;
-  border-color: #bc9700 !important;
-  color: #bc9700;
+  border-color: #c8aa22 !important;
+  color: #c8aa22;
   box-shadow: none !important;
   display: flex;
   justify-content: center;
@@ -180,7 +180,7 @@ footer {
   border-top: 1px solid rgba(211, 211, 211, 0.3);
 }
 .footerLogo {
-  color: #ffd200;
+  color: #c8aa22;
   font-size: 18px;
   font-weight: 700;
 }
@@ -191,7 +191,7 @@ footer {
   width: 65rem;
   margin-top: 0.7rem;
   margin-left: 0.4rem;
-  background-color: #ffd200;
+  background-color: #c8aa22;
 }
 
 .socialIcon a {
@@ -202,7 +202,7 @@ footer {
   margin-left: 0;
 }
 .footerRightLink a {
-  color: #ffe778 !important;
+  color: #c8aa22 !important;
   text-decoration: none;
   font-size: 14px;
   line-height: 28px;
@@ -274,6 +274,11 @@ footer {
   font-size: 2rem;
   color: white;
 }
+
+.footerTelAndMail a {
+  color: white !important;
+}
+
 @keyframes bounce-2 {
   0% {
     transform: translateY(0);
@@ -396,7 +401,7 @@ img.d-block.w-100 {
 
 .btnGroupDiv button:focus,
 .btnGroupDiv button:hover {
-  background-color: #bc992f;
+  background-color: #c8aa22;
   color: white;
 }
 
@@ -433,7 +438,7 @@ img.d-block.w-100 {
 button.searchFindBtn {
   border: none;
   outline: none !important;
-  background-color: #bc992f;
+  background-color: #c8aa22;
   color: white;
   padding: 0.8rem 2rem;
   border-radius: 0px 6px 6px 0px;
@@ -455,7 +460,7 @@ button.filter:hover,
 button.filter:focus,
 button.filter:active {
   background-color: transparent !important;
-  color: #ffe778;
+  color: #c8aa22;
   font-size: 12px;
   padding: 0;
   border: none !important;
@@ -485,14 +490,14 @@ button.filter .MuiSvgIcon-root {
 }
 .proTypeBtnDiv button:focus,
 .proTypeBtnDiv button.active {
-  color: black;
+  color: white;
   outline: none;
   border: 0.1px solid rgba(211, 211, 211, 1);
   border-radius: 6px;
 }
 button.propertyTypeBtn {
   text-decoration: none;
-  color: #bc992f;
+  color: #c8aa22;
   font-size: 12px;
   padding: 0.4rem 1rem;
   border: none;
@@ -552,7 +557,7 @@ input.priceInput.form-control {
   border: 1px solid lightgray;
 }
 button.priceSubmitBtn {
-  background: #bc992f;
+  background: #c8aa22;
   color: white;
   border: none;
   font-size: 12px;
@@ -577,7 +582,7 @@ button.priceSubmitBtn {
 
 button.active,
 .modalBtnDiv button.active {
-  background-color: #bc992f;
+  background-color: #c8aa22;
   color: white;
 }
 
@@ -695,7 +700,7 @@ button.searchModalBtn {
 }
 .modalBtnDiv button:focus,
 .modalBtnDiv button:hover {
-  background-color: #bc992f;
+  background-color: #c8aa22;
   color: white;
 }
 
@@ -805,7 +810,7 @@ button.slick-arrow.slick-prev {
 }
 .slick-arrow.slick-prev:before,
 .slick-arrow.slick-next:before {
-  color: #bc992f;
+  color: #c8aa22;
   font-size: 4rem;
 }
 .premiumAgentsSlider .slick-track {
@@ -990,7 +995,7 @@ section.socailMedia {
   background: #263238;
 }
 .sectionTitle h3 {
-  color: #ffd200;
+  color: #c8aa22;
   font-size: 18px;
   line-height: 24px;
   font-weight: 700;
@@ -1004,7 +1009,7 @@ section.socailMedia {
   width: 35%;
   margin-top: 0.6rem;
   margin-left: 0.4rem;
-  background-color: #ffd200;
+  background-color: #c8aa22;
 }
 
 @media (min-width: 768px) {
@@ -1100,7 +1105,7 @@ a.social-btn {
   font-size: 1.15rem;
   font-weight: 600;
   color: white;
-  background: #bc992f;
+  background: #c8aa22;
   border-radius: 8px;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4);
 }
@@ -1214,7 +1219,7 @@ input.form-control::placeholder {
 }
 button.seeAllBtn {
   border: 0;
-  background-color: #bc992f;
+  background-color: #c8aa22;
   color: white;
   width: 130px;
   height: 40px;
@@ -1225,7 +1230,7 @@ button.seeAllBtn {
 .AreaGuideTitle h1 {
   font-size: 60px;
   font-weight: 700;
-  color: #ffd200;
+  color: #c8aa22;
   line-height: 62px;
   margin-bottom: 5rem;
   text-align: center;
@@ -1567,7 +1572,7 @@ button.messageSendBtn {
   border-radius: 4px;
   font-size: 14px;
   line-height: 20px;
-  color: #bc9700;
+  color: #c8aa22;
   font-weight: 700;
   border: 1px solid #a7a7a7;
   text-transform: uppercase;
@@ -1589,7 +1594,7 @@ button.messageSendBtn {
   color: #c5a200;
   font-weight: 700;
   padding: 0.5rem 1rem;
-  border: 1px solid #bc9700;
+  border: 1px solid #c8aa22;
   text-transform: uppercase;
 }
 
@@ -1874,14 +1879,14 @@ p.userRole {
   font-size: 40px;
   font-weight: 700;
   line-height: 60px;
-  color: #bc9700;
+  color: #c8aa22;
   text-align: center;
 }
 
 .solutionsDiv h4 {
   font-size: 24px;
   line-height: 60px;
-  color: #bc9700;
+  color: #c8aa22;
   text-align: center;
 }
 @media (min-width: 768px) {
@@ -1905,7 +1910,7 @@ button.realEstateBtn {
   font-size: 1rem;
   color: #f1f1f1;
   width: 14rem;
-  background-color: #bc9700;
+  background-color: #c8aa22;
   padding: 1rem 1.5rem;
   border-radius: 4px;
   font-weight: 500;
@@ -1921,18 +1926,18 @@ button.realEstateBtn {
 }
 
 .fullpageDetails h1 {
-  color: #bc9700;
+  color: #c8aa22;
   font-size: 72px;
   font-weight: 700;
 }
 .fullpageDetails h2 {
-  color: #bc9700;
+  color: #c8aa22;
   font-size: 48px;
   font-weight: 600;
   margin-bottom: 2rem;
 }
 .fullpageDetails h3 {
-  color: #bc9700;
+  color: #c8aa22;
   font-size: 36px;
   font-weight: 600;
   margin-bottom: 2rem;
@@ -2040,7 +2045,7 @@ button.interestBtn h6 {
 a.calculateBtn.w-100 {
   padding: 0.8rem 2.5rem;
   border-radius: 4px;
-  background: #bc992f;
+  background: #c8aa22;
   color: white;
   font-size: 1rem;
   font-weight: 700;
@@ -2071,7 +2076,7 @@ button.calculateAgain {
   color: white !important;
   border: 0;
   outline: 0;
-  background-color: #bc992f;
+  background-color: #c8aa22;
   font-size: 1rem;
   border-radius: 4px;
   font-weight: 700;
@@ -2124,7 +2129,7 @@ button.calculateAgain {
 button.applyNowBtn {
   border: 0;
   outline: 0;
-  background: #bc992f;
+  background: #c8aa22;
   color: white;
   font-size: 1rem;
   font-weight: 700;
@@ -2198,7 +2203,7 @@ h5.mr-4 {
 }
 button.listPropertySubmitBtn {
   border: 0;
-  background: #bc992f;
+  background: #c8aa22;
   color: white;
   padding: 0.8rem 3rem;
   border-radius: 4px;
@@ -2280,7 +2285,7 @@ button.listReqBtn {
   transition: background 0.5s ease;
 }
 button.listReqBtn.active {
-  background-color: #bc992f;
+  background-color: #c8aa22;
   color: white;
 }
 /* .allPropertiesListTable td {
@@ -2330,7 +2335,7 @@ button.showRequest {
 
 a.postPropertyBtn,
 button.postPropertyBtn {
-  background-color: #bc992f;
+  background-color: #c8aa22;
   text-decoration: none !important;
   outline: none;
   border: none;
@@ -2398,7 +2403,7 @@ button.onOff {
   margin: 0;
 }
 button.onOff.active {
-  background-color: #bc992f;
+  background-color: #c8aa22;
   color: white;
   border: 1px solid #e7e7e7;
 }
@@ -2438,7 +2443,7 @@ nav.p-0.navbar.navbar-expand-lg.navbar-light {
 .zillaSideBar {
   height: 100vh;
   overflow-y: scroll;
-  /* background-color: #bc9700; */
+  /* background-color: #C8AA22; */
   border: 1px solid #e7e7e7;
   box-shadow: var(--box-shadow);
   border-radius: 4px;
@@ -2508,7 +2513,7 @@ body.plugin {
 /* about us styles start */
 button.getInTouch {
   width: 14rem;
-  background-color: #ffd200;
+  background-color: #c8aa22;
   color: #474747;
   box-shadow: var(--box-shadow);
   padding: 0.5rem 1rem;
@@ -2534,7 +2539,7 @@ h2.aboutUsDetailsTitle {
 /* get in touch styles start */
 
 section.map {
-  background-image: url("../images/Map_Embed.png");
+  background-image: url("../images/MapEmbed.png");
   background-position: center;
   height: 65vh;
   background-size: cover;
@@ -2551,7 +2556,7 @@ button.getInTouchSendBtn {
   width: 100%;
   border: 1px solid #bfbfbf;
   outline: 0;
-  background-color: #bc992f;
+  background-color: #c8aa22;
   padding: 0.5rem;
   color: white;
   font-weight: 600;
@@ -2560,7 +2565,7 @@ button.getInTouchSendBtn {
   box-shadow: var(--box-shadow);
 }
 .getInTouchCard.card {
-  border-top: 6px solid #bc992f;
+  border-top: 6px solid #c8aa22;
   box-shadow: var(--box-shadow);
 }
 
@@ -2699,7 +2704,7 @@ section.careerGuideWelcome {
 button.applyNow {
   border: 0;
   outline: 0;
-  background: #bc992f;
+  background: #c8aa22;
   color: white;
   font-size: 1rem;
   font-weight: 700;
@@ -2756,7 +2761,7 @@ button.applyNow {
 button.applyNow {
   border: 0;
   outline: 0;
-  background: #bc992f;
+  background: #c8aa22;
   color: white;
   font-size: 1rem;
   font-weight: 700;

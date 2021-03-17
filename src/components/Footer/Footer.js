@@ -25,14 +25,18 @@ const Footer = () => {
                 Shanta Western Tower,Level-10,Office Suite-1004, 186 Bir Uttam
                 Mir Shawkat Sarak, Tejgaon ,Dhaka -1208,Bangladesh
               </p>
-              <p>
-                <span style={{ color: "#FFE778" }}>Hotline:</span> +88 02
-                8878781-3
-              </p>
-              <p>
-                <span style={{ color: "#FFE778" }}>Email:</span>{" "}
-                info@DreamFinderltd.com
-              </p>
+              <div className="footerTelAndMail">
+                <p>
+                  <span style={{ color: "#c8aa22" }}>Hotline:</span>{" "}
+                  <a href="tel:+88028878781">+88 02 8878781-3</a>
+                </p>
+                <p>
+                  <span style={{ color: "#c8aa22" }}>Email:</span>{" "}
+                  <a href="mailto:info@DreamFinderltd.com">
+                    info@DreamFinderltd.com
+                  </a>
+                </p>
+              </div>
               <div className="socialIcon mb-3">
                 {fakeSocialIcons.map((item) => (
                   <Link href={item.link} key={item.id}>
@@ -89,7 +93,7 @@ const Footer = () => {
             </div>
           </div> */}
           <div className="col-md-12">
-            <p className="text-center" style={{ color: "#ffd200" }}>
+            <p className="text-center" style={{ color: "#C8AA22" }}>
               {new Date().getFullYear()} &copy; DreamFinder
             </p>
           </div>
