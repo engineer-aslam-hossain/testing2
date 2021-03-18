@@ -54,7 +54,7 @@ const SocialMedia = ({ posts }) => {
                   }}
                 >
                   <iframe
-                    src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6744826546416156672"
+                    src="https://www.linkedin.com/embed/feed/update/urn:li:share:6774666855878549505"
                     height="500"
                     width="360"
                     frameBorder="0"

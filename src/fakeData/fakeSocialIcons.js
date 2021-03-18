@@ -12,7 +12,7 @@ const fakeSocialIcons = [
   {
     id: 3,
     img: "/icons/FooterLinkedinIcon.svg",
-    link: "https://www.linkedin.com/in/iqiDreamFinder-limited-06a28a207/",
+    link: "https://www.linkedin.com/in/dreamfinder-limited-06a28a207/",
   },
   {
     id: 4,
@@ -22,7 +22,7 @@ const fakeSocialIcons = [
   {
     id: 5,
     img: "/icons/FooterYoutubeIcon.svg",
-    link: "/",
+    link: "https://www.youtube.com/channel/UCrOk_77yslBUzRSB_UXzPwA",
   },
 ];
 
