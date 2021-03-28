@@ -1,11 +1,16 @@
 import fakeArea from "../../fakeData/fakeArea";
 import SingleArea from "../SingleArea/SingleArea";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import CommonHeader from "../CommonHeader/CommonHeader";
-import { useEffect, useState } from "react";
+import ArrowRightAltIcon from "@material-ui/icons/ArrowRightAlt";
+import { useRouter } from "next/router";
+import { useContext, useEffect, useState } from "react";
+import DreamFinderContext from "../Context/Context";
+
 const PopularArea = () => {
+  const { searchData, SetSearchData } = useContext(DreamFinderContext);
   const [location, setLocation] = useState({});
+  const router = useRouter();
+
   const getAllProperty = async () => {
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/config/`, {
@@ -26,6 +31,17 @@ const PopularArea = () => {
     getAllProperty();
   }, []);
 
+  const gotoFindProperty = (place_name) => {
+    SetSearchData({
+      ...searchData,
+      address: searchData.address
+        ? [...searchData.address, place_name]
+        : [place_name],
+    });
+
+    router.push("/findProperties");
+  };
+
   // console.log(data);
   return (
     <section className="popular-area pb-5">
@@ -33,26 +49,35 @@ const PopularArea = () => {
         <div className="row">
           <div className="col-md-12">
             <CommonHeader title="Popular Location" />
-            <div className="col-md-12 d-flex flex-wrap locationTable">
-              <div className="area-name d-flex flex-wrap col-md-10">
-                {fakeArea.map((area) => (
-                  <SingleArea area={area} key={area.id} />
-                ))}
 
-                <div className="col-md-8 mx-auto d-flex justify-content-center align-items-center">
-                  <h5>More cities coming soon....</h5>
+            {fakeArea.map((item, index) => (
+              <div className="locationTable" key={index}>
+                <div className="d-flex justify-content-between align-items-center mb-4">
+                  <h5 className="areaName">{item.name} </h5>
+                  <button className="seeAllBtn">
+                    <ArrowRightAltIcon />
+                    See More
+                  </button>
+                </div>
+                <div className="placeGridDiv">
+                  {item &&
+                    item.places.map((place) => (
+                      <div
+                        className="position-relative placeDIv"
+                        key={place.id}
+                        onClick={() => gotoFindProperty(place.place_name)}
+                      >
+                        <img
+                          src="/images/Dhaka.png"
+                          alt="divImg"
+                          className="img-fluid"
+                        />
+                        <h4>{place.place_name} </h4>
+                      </div>
+                    ))}
                 </div>
               </div>
-
-              <div className="col-md-2 d-flex align-items-center justify-content-center">
-                <div className="d-flex align-items-center flex-column">
-                  <p className="text-center seeMoreBtn mb-0">
-                    <FontAwesomeIcon icon={faArrowRight} />
-                  </p>
-                  <p className="areaName">See More</p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

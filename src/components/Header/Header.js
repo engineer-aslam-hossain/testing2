@@ -184,95 +184,91 @@ const Header = () => {
             <img src="/images/logoPng.png" alt="me" className="logoImg" />
           </a>
         </Link>
-        {router.pathname === "/login" ||
-          (router.pathname === "/sign-up" ? (
-            ""
-          ) : (
-            <>
-              <Navbar.Toggle
-                aria-controls="basic-navbar-nav"
-                onClick={toggleDrawer("right", true)}
-              />
-              <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="ml-auto headerLink">
-                  {navLink.map((item) => (
-                    <div className="navDiv" key={item.id}>
-                      {item.id == 5 && loggedInUser.email ? null : (
-                        <Link href={item.to} key={item.id}>
-                          <a className={`${isActive(item.to)}`}>{item.name}</a>
-                        </Link>
-                      )}
-                    </div>
-                  ))}
 
-                  <Dropdown>
-                    <Dropdown.Toggle id="dropdown-basic" drop="left">
-                      <FontAwesomeIcon icon={faUserCircle} />
-                      MyDreamFinder
-                    </Dropdown.Toggle>
+        <>
+          <Navbar.Toggle
+            aria-controls="basic-navbar-nav"
+            onClick={toggleDrawer("right", true)}
+          />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ml-auto headerLink">
+              {navLink.map((item) => (
+                <div className="navDiv" key={item.id}>
+                  {item.id == 5 && loggedInUser.email ? null : (
+                    <Link href={item.to} key={item.id}>
+                      <a className={`${isActive(item.to)}`}>{item.name}</a>
+                    </Link>
+                  )}
+                </div>
+              ))}
 
-                    <Dropdown.Menu alignRight className="mb-5 myDreamFinder">
-                      {!loggedInUser.email && (
-                        <Link href="/sign-up">
-                          <a className={`signUpBtn`}>
-                            {" "}
-                            Become a Member : SIGNUP
-                          </a>
-                        </Link>
-                      )}
-                      {loggedInUser.email && (
-                        <Link href="/profile">
-                          <a>
-                            <FontAwesomeIcon icon={faUserCircle} /> My Profile
-                          </a>
-                        </Link>
-                      )}
-                      <Link href="/list-a-new-property">
-                        <a>
-                          <img
-                            src="/icons/Profile_ListNewProperty.svg"
-                            alt="icons"
-                            className="img-fluid"
-                          />
-                          List a New Property
-                        </a>
-                      </Link>
-                      <Link href="/">
-                        <a>
-                          <img
-                            src="/icons/Profile_ManageRenters.svg"
-                            alt="icons"
-                            className="img-fluid"
-                          />
-                          Pay Rent
-                        </a>
-                      </Link>
-                      <Link href="/myProperties">
-                        <a>
-                          <img
-                            src="/icons/Profile_MyListedProperties.svg"
-                            alt="icons"
-                            className="img-fluid"
-                          />
-                          My Existing Properties
-                        </a>
-                      </Link>
-                      <Link href="/save-property">
-                        <a>
-                          <img
-                            src="/icons/Profile_FavoriteProperties.svg"
-                            alt="icons"
-                            className="img-fluid"
-                          />
-                          Saved Properties
-                        </a>
-                      </Link>
-                    </Dropdown.Menu>
-                  </Dropdown>
-                </Nav>
-              </Navbar.Collapse>
-            </>
-          ))}
+              <Dropdown>
+                <Dropdown.Toggle id="dropdown-basic" drop="left">
+                  <FontAwesomeIcon icon={faUserCircle} />
+                  My DreamFinder
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu alignRight className="mb-5 myDreamFinder">
+                  {!loggedInUser.email && (
+                    <Link href="/sign-up">
+                      <a className={`signUpBtn`}>
+                        {" "}
+                        Become a Member : Register Now
+                      </a>
+                    </Link>
+                  )}
+                  {loggedInUser.email && (
+                    <Link href="/profile">
+                      <a>
+                        <FontAwesomeIcon icon={faUserCircle} /> My Profile
+                      </a>
+                    </Link>
+                  )}
+                  <Link href="/list-a-new-property">
+                    <a>
+                      <img
+                        src="/icons/Profile_ListNewProperty.svg"
+                        alt="icons"
+                        className="img-fluid"
+                      />
+                      List a New Property
+                    </a>
+                  </Link>
+                  <Link href="/">
+                    <a>
+                      <img
+                        src="/icons/Profile_ManageRenters.svg"
+                        alt="icons"
+                        className="img-fluid"
+                      />
+                      Pay Rent
+                    </a>
+                  </Link>
+                  <Link href="/myProperties">
+                    <a>
+                      <img
+                        src="/icons/Profile_MyListedProperties.svg"
+                        alt="icons"
+                        className="img-fluid"
+                      />
+                      My Existing Properties
+                    </a>
+                  </Link>
+                  <Link href="/save-property">
+                    <a>
+                      <img
+                        src="/icons/Profile_FavoriteProperties.svg"
+                        alt="icons"
+                        className="img-fluid"
+                      />
+                      Saved Properties
+                    </a>
+                  </Link>
+                </Dropdown.Menu>
+              </Dropdown>
+            </Nav>
+          </Navbar.Collapse>
+        </>
       </Navbar>
       <div>
         <SwipeableDrawer

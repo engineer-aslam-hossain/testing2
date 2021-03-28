@@ -131,7 +131,9 @@ const AllListingRequest = ({ router }) => {
             <div className="p-5 modalDiv">
               <div className="modalTop pb-4">
                 <div className="mb-4">
-                  <h2 className="modalPurpose">Property Type for Purpose</h2>
+                  <h2 className="modalPurpose">
+                    Property Type for {modalDetails.purpose}
+                  </h2>
                 </div>
                 <div className="my-4">
                   <h3 className="modalLocation">

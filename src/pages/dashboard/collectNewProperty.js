@@ -11,15 +11,16 @@ import axios from "axios";
 import { withRouter } from "next/router";
 import DreamFinderContext from "../../components/Context/Context";
 
-const NewPropertyListing = ({ router }) => {
+const collectNewProperty = ({ router }) => {
   const { loggedInUser } = useContext(DreamFinderContext);
   const route = useRouter();
   const [postRequest, setPostRequest] = useState({});
   const [addListDetails, setAddListDetails] = useState({
     currency: "BDT",
     category: "Residential",
-    is_disable: false,
   });
+
+  // console.log(addListDetails);
 
   const residentHandler = () => {
     setAddListDetails({
@@ -80,97 +81,28 @@ const NewPropertyListing = ({ router }) => {
     try {
       const token = JSON.parse(localStorage.getItem("DreamFinder_session"));
       const postId = await router.query.post;
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/list/?_id=${postId}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            DreamFinder: token,
+          },
+        }
+      );
+      const data = await res.json();
 
-      if (router.query.routeType === "collected") {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/property/${postId}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              DreamFinder: token,
-            },
-          }
-        );
-        const data = await res.json();
-        console.log(data);
-        if (data.success === "yes") {
-          const {
-            address,
-            address_area,
-            address_block,
-            address_district,
-            address_subdistrict,
-            amenity,
-            area_sqft,
-            bath,
-            bed,
-            description,
-            detail,
-            images,
-            name,
-            price,
-            property_type,
-            purpose,
-            submitor_id,
-            title,
-          } = data.data;
-          setAddListDetails({
-            ...addListDetails,
-            address: address,
-            address_area: address_area,
-            address_block: address_block,
-            address_district: address_district,
-            address_subdistrict: address_subdistrict,
-            amenity: amenity,
-            area_sqft: area_sqft,
-            bath: bath,
-            bed: bed,
-            description: description,
-            detail: detail,
-            images: images,
-            name: name,
-            price: price,
-            property_type: property_type,
-            purpose: purpose,
-            submitor_id: submitor_id._id,
-            title: title,
-          });
-        }
-      } else {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/list/?_id=${postId}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              DreamFinder: token,
-            },
-          }
-        );
-        const data = await res.json();
-        console.log(data);
-        if (data.success === "yes") {
-          const {
-            district,
-            email,
-            name,
-            subdistrict,
-            property_type,
-            purpose,
-          } = data.data;
-          setAddListDetails({
-            ...addListDetails,
-            submitor: {
-              name: name,
-              email: email,
-            },
-            address_district: district,
-            address_subdistrict: subdistrict,
-            property_type: property_type,
-            purpose: purpose,
-          });
-        }
+      if (data.success === "yes") {
+        setAddListDetails({
+          ...addListDetails,
+          address_district: data.data.district,
+          address_subdistrict: data.data.subdistrict,
+          property_type: data.data.property_type,
+          submitor_id: data.data._id,
+          purpose: data.data.purpose,
+        });
+        setPostRequest(data.data);
       }
 
       // console.log(data);
@@ -184,11 +116,11 @@ const NewPropertyListing = ({ router }) => {
   }, []);
 
   useEffect(() => {
-    const loginUser = loggedInUser._id;
-    loginUser &&
+    const loginUser_id = loggedInUser._id;
+    loginUser_id &&
       setAddListDetails({
         ...addListDetails,
-        submitor_id: loginUser,
+        submitor_id: loginUser_id,
       });
   }, [loggedInUser]);
 
@@ -236,12 +168,7 @@ const NewPropertyListing = ({ router }) => {
     const itemIndex =
       addListDetails.amenity && addListDetails.amenity.indexOf(item);
     addListDetails.amenity && addListDetails.amenity.includes(item)
-      ? setAddListDetails({
-          ...addListDetails,
-          amenity: addListDetails.amenity.filter(
-            (item) => addListDetails.amenity.indexOf(item) !== itemIndex
-          ),
-        })
+      ? addListDetails.amenity.splice(itemIndex, 1)
       : setAddListDetails({
           ...addListDetails,
           amenity: addListDetails.amenity
@@ -278,7 +205,7 @@ const NewPropertyListing = ({ router }) => {
       const token = JSON.parse(localStorage.getItem("DreamFinder_session"));
 
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/property/create`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/property/create/as/data-collector`,
         {
           method: "POST",
           headers: {
@@ -295,11 +222,10 @@ const NewPropertyListing = ({ router }) => {
         Swal.fire({
           position: "top-center",
           icon: "success",
-          title: "Property Posted SuccessFully",
+          title: "Property Data Collected SuccessFully",
           showConfirmButton: false,
           timer: 1500,
         });
-        setAddListDetails({ currency: "BDT", category: "Residential" });
       }
       if (data.success === "no") {
         Swal.fire({
@@ -310,6 +236,7 @@ const NewPropertyListing = ({ router }) => {
     } catch (err) {
       console.log(err);
     }
+    setAddListDetails({ currency: "BDT", category: "Residential" });
   };
 
   // console.log(addListDetails);
@@ -377,19 +304,14 @@ const NewPropertyListing = ({ router }) => {
         <div className="row">
           <div className="col-md-12 d-flex justify-content-between my-4 newPropertyListing align-items-center flex-wrap">
             <div>
-              <h1>New Property Listing</h1>
-            </div>
-            <div>
-              <button className="showRequest ">
-                <strong>SHOW ALL REQUESTS</strong>
-              </button>
+              <h1>New Collection Request</h1>
             </div>
           </div>
 
           <div className="col-md-12 my-4">
             <div className="col-xl-9">
               <Form
-                className="newPropertyListingForm"
+                className="collectPropertyForm"
                 onSubmit={propertySubmitHandler}
               >
                 <Form.Group>
@@ -397,7 +319,6 @@ const NewPropertyListing = ({ router }) => {
                   <Form.Control
                     type="text"
                     placeholder="Property Name"
-                    defaultValue={addListDetails.name}
                     onChange={(e) =>
                       setAddListDetails({
                         ...addListDetails,
@@ -422,10 +343,10 @@ const NewPropertyListing = ({ router }) => {
                 <Form.Group>
                   <h5></h5>
                   <div className="">
-                    {addListDetails.images &&
-                      addListDetails.images.map((item, index) => (
+                    {imageArr &&
+                      imageArr.map((item, index) => (
                         <p key={index} className="mb-0">
-                          {item}
+                          {item.name}
                         </p>
                       ))}
                   </div>
@@ -667,8 +588,7 @@ const NewPropertyListing = ({ router }) => {
                   <Form.Label>City / Area</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="City / Area"
-                    defaultValue={addListDetails.address_area}
+                    placeholder="CIty / Area"
                     onChange={(e) =>
                       setAddListDetails({
                         ...addListDetails,
@@ -678,25 +598,10 @@ const NewPropertyListing = ({ router }) => {
                   />
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label>Address Block</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Address Block"
-                    defaultValue={addListDetails.address_block}
-                    onChange={(e) =>
-                      setAddListDetails({
-                        ...addListDetails,
-                        address_block: e.target.value,
-                      })
-                    }
-                  />
-                </Form.Group>
-                <Form.Group>
                   <Form.Label>Detailed Address</Form.Label>
                   <Form.Control
                     type="text"
                     placeholder="Detailed Address"
-                    defaultValue={addListDetails.address}
                     onChange={(e) =>
                       setAddListDetails({
                         ...addListDetails,
@@ -721,11 +626,10 @@ const NewPropertyListing = ({ router }) => {
                 <div className="col-md-8 px-0">
                   <Form.Group>
                     <Form.Label>Price</Form.Label>
-                    <div className="d-flex align-items-center">
+                    <div className="d-flex justify-content-between align-items-center">
                       <Form.Control
                         type="number"
                         placeholder="Price"
-                        defaultValue={addListDetails.price}
                         onChange={(e) =>
                           setAddListDetails({
                             ...addListDetails,
@@ -738,14 +642,10 @@ const NewPropertyListing = ({ router }) => {
                   </Form.Group>
                   <Form.Group>
                     <Form.Label>Service Charge</Form.Label>
-                    <div className="d-flex align-items-center">
+                    <div className="d-flex justify-content-between align-items-center">
                       <Form.Control
                         type="number"
                         placeholder="Service Charge"
-                        defaultValue={
-                          addListDetails.detail &&
-                          addListDetails.detail.service_charge
-                        }
                         onChange={(e) =>
                           setAddListDetails({
                             ...addListDetails,
@@ -761,12 +661,10 @@ const NewPropertyListing = ({ router }) => {
                   </Form.Group>
                   <Form.Group>
                     <Form.Label>Area</Form.Label>
-                    <div className="d-flex align-items-center">
-                      {" "}
+                    <div className="d-flex justify-content-between align-items-center">
                       <Form.Control
                         type="number"
                         placeholder="Area"
-                        defaultValue={addListDetails.area_sqft}
                         onChange={(e) =>
                           setAddListDetails({
                             ...addListDetails,
@@ -779,14 +677,10 @@ const NewPropertyListing = ({ router }) => {
                   </Form.Group>
                   <Form.Group>
                     <Form.Label>Land Size</Form.Label>
-                    <div className="d-flex align-items-center">
+                    <div className="d-flex justify-content-between align-items-center">
                       <Form.Control
                         type="number"
                         placeholder="Land Size"
-                        defaultValue={
-                          addListDetails.detail &&
-                          addListDetails.detail.land_size
-                        }
                         onChange={(e) =>
                           setAddListDetails({
                             ...addListDetails,
@@ -806,9 +700,6 @@ const NewPropertyListing = ({ router }) => {
                     <Form.Control
                       type="text"
                       placeholder="Floor"
-                      defaultValue={
-                        addListDetails.detail && addListDetails.detail.floor
-                      }
                       onChange={(e) =>
                         setAddListDetails({
                           ...addListDetails,
@@ -826,9 +717,6 @@ const NewPropertyListing = ({ router }) => {
                     <Form.Control
                       type="text"
                       placeholder="Unit"
-                      defaultValue={
-                        addListDetails.detail && addListDetails.detail.unit
-                      }
                       onChange={(e) =>
                         setAddListDetails({
                           ...addListDetails,
@@ -845,7 +733,6 @@ const NewPropertyListing = ({ router }) => {
                     <Form.Control
                       type="number"
                       placeholder="Beds"
-                      defaultValue={addListDetails.bed}
                       onChange={(e) =>
                         setAddListDetails({
                           ...addListDetails,
@@ -859,7 +746,6 @@ const NewPropertyListing = ({ router }) => {
                     <Form.Control
                       type="number"
                       placeholder="Baths"
-                      defaultValue={addListDetails.bath}
                       onChange={(e) =>
                         setAddListDetails({
                           ...addListDetails,
@@ -873,9 +759,6 @@ const NewPropertyListing = ({ router }) => {
                     <Form.Control
                       type="number"
                       placeholder="Balcony"
-                      defaultValue={
-                        addListDetails.detail && addListDetails.detail.balcony
-                      }
                       onChange={(e) =>
                         setAddListDetails({
                           ...addListDetails,
@@ -893,7 +776,6 @@ const NewPropertyListing = ({ router }) => {
                   <Form.Control
                     as="textarea"
                     rows={3}
-                    defaultValue={addListDetails.description}
                     onChange={(e) =>
                       setAddListDetails({
                         ...addListDetails,
@@ -906,7 +788,7 @@ const NewPropertyListing = ({ router }) => {
                   <div>
                     <Form.Group>
                       <Form.Label>Amenities List</Form.Label>
-                      <div className="d-flex align-items-center">
+                      <div className="d-flex justify-content-between align-items-center">
                         <Form.Control
                           type="text"
                           placeholder="Amenities"
@@ -931,10 +813,6 @@ const NewPropertyListing = ({ router }) => {
                     </div>
                     <Form.Group controlId="formBasicCheckbox1">
                       <Form.Check
-                        checked={
-                          addListDetails.amenity &&
-                          addListDetails.amenity.includes("CCTV")
-                        }
                         type="checkbox"
                         onChange={() => amenityHandler("CCTV")}
                         label="CCTV ?"
@@ -943,10 +821,6 @@ const NewPropertyListing = ({ router }) => {
                     <Form.Group controlId="formBasicCheckbox2">
                       <Form.Check
                         type="checkbox"
-                        checked={
-                          addListDetails.amenity &&
-                          addListDetails.amenity.includes("Security")
-                        }
                         onChange={() => amenityHandler("Security")}
                         label="Security ?"
                       />
@@ -954,10 +828,6 @@ const NewPropertyListing = ({ router }) => {
                     <Form.Group controlId="formBasicCheckbox3">
                       <Form.Check
                         type="checkbox"
-                        checked={
-                          addListDetails.amenity &&
-                          addListDetails.amenity.includes("Lift")
-                        }
                         onChange={() => amenityHandler("Lift")}
                         label="Lift ?"
                       />
@@ -965,10 +835,6 @@ const NewPropertyListing = ({ router }) => {
                     <Form.Group controlId="formBasicCheckbox4">
                       <Form.Check
                         type="checkbox"
-                        checked={
-                          addListDetails.amenity &&
-                          addListDetails.amenity.includes("Gas")
-                        }
                         onChange={() => amenityHandler("Gas")}
                         label="Gas ?"
                       />
@@ -976,10 +842,6 @@ const NewPropertyListing = ({ router }) => {
                     <Form.Group controlId="formBasicCheckbox5">
                       <Form.Check
                         type="checkbox"
-                        checked={
-                          addListDetails.amenity &&
-                          addListDetails.amenity.includes("Tiles")
-                        }
                         onChange={() => amenityHandler("Tiles")}
                         label="Tiles ?"
                       />
@@ -987,10 +849,6 @@ const NewPropertyListing = ({ router }) => {
                     <Form.Group controlId="formBasicCheckbox6">
                       <Form.Check
                         type="checkbox"
-                        checked={
-                          addListDetails.amenity &&
-                          addListDetails.amenity.includes("Swimming Pool")
-                        }
                         onChange={() => amenityHandler("Swimming Pool")}
                         label="Swimming Pool ?"
                       />
@@ -998,10 +856,6 @@ const NewPropertyListing = ({ router }) => {
                     <Form.Group controlId="formBasicCheckbox7">
                       <Form.Check
                         type="checkbox"
-                        checked={
-                          addListDetails.amenity &&
-                          addListDetails.amenity.includes("Gym")
-                        }
                         onChange={() => amenityHandler("Gym")}
                         label="Gym ?"
                       />
@@ -1009,10 +863,6 @@ const NewPropertyListing = ({ router }) => {
                     <Form.Group controlId="formBasicCheckbox8">
                       <Form.Check
                         type="checkbox"
-                        checked={
-                          addListDetails.amenity &&
-                          addListDetails.amenity.includes("Prayer Room")
-                        }
                         onChange={() => amenityHandler("Prayer Room")}
                         label="Prayer Room ?"
                       />
@@ -1020,10 +870,6 @@ const NewPropertyListing = ({ router }) => {
                     <Form.Group controlId="formBasicCheckbox9">
                       <Form.Check
                         type="checkbox"
-                        checked={
-                          addListDetails.amenity &&
-                          addListDetails.amenity.includes("Emergency Exit")
-                        }
                         onChange={() => amenityHandler("Emergency Exit")}
                         label="Emergency Exit ?"
                       />
@@ -1031,10 +877,6 @@ const NewPropertyListing = ({ router }) => {
                     <Form.Group controlId="formBasicCheckbox10">
                       <Form.Check
                         type="checkbox"
-                        checked={
-                          addListDetails.amenity &&
-                          addListDetails.amenity.includes("Stair")
-                        }
                         onChange={() => amenityHandler("Stair")}
                         label="Stair ?"
                       />
@@ -1042,10 +884,6 @@ const NewPropertyListing = ({ router }) => {
                     <Form.Group controlId="formBasicCheckbox11">
                       <Form.Check
                         type="checkbox"
-                        checked={
-                          addListDetails.amenity &&
-                          addListDetails.amenity.includes("Parking")
-                        }
                         onChange={() => amenityHandler("Parking")}
                         label="Parking ?"
                       />
@@ -1054,7 +892,7 @@ const NewPropertyListing = ({ router }) => {
                   <div>
                     <Form.Group>
                       <Form.Label>Property Details List</Form.Label>
-                      <div className="d-flex align-items-center">
+                      <div className="d-flex justify-content-between align-items-center">
                         <Form.Control
                           type="text"
                           value={propertyDetail}
@@ -1084,10 +922,6 @@ const NewPropertyListing = ({ router }) => {
                     <Form.Control
                       type="text"
                       placeholder="Developer Name"
-                      defaultValue={
-                        addListDetails.detail &&
-                        addListDetails.detail.developer_name
-                      }
                       onChange={(e) =>
                         setAddListDetails({
                           ...addListDetails,
@@ -1105,10 +939,6 @@ const NewPropertyListing = ({ router }) => {
                     <Form.Control
                       type="date"
                       placeholder="Handover Date"
-                      defaultValue={
-                        addListDetails.detail &&
-                        addListDetails.detail.handover_date
-                      }
                       onChange={(e) =>
                         setAddListDetails({
                           ...addListDetails,
@@ -1125,10 +955,6 @@ const NewPropertyListing = ({ router }) => {
                     <Form.Control
                       type="text"
                       placeholder="Manager Name"
-                      defaultValue={
-                        addListDetails.detail &&
-                        addListDetails.detail.manager_name
-                      }
                       onChange={(e) =>
                         setAddListDetails({
                           ...addListDetails,
@@ -1145,10 +971,6 @@ const NewPropertyListing = ({ router }) => {
                     <Form.Control
                       type="number"
                       placeholder="Manager Number"
-                      defaultValue={
-                        addListDetails.detail &&
-                        addListDetails.detail.manager_number
-                      }
                       onChange={(e) =>
                         setAddListDetails({
                           ...addListDetails,
@@ -1165,10 +987,6 @@ const NewPropertyListing = ({ router }) => {
                     <Form.Control
                       type="text"
                       placeholder="Landlord Name"
-                      defaultValue={
-                        addListDetails.detail &&
-                        addListDetails.detail.landlord_name
-                      }
                       onChange={(e) =>
                         setAddListDetails({
                           ...addListDetails,
@@ -1185,10 +1003,6 @@ const NewPropertyListing = ({ router }) => {
                     <Form.Control
                       type="number"
                       placeholder="Landlord Number"
-                      defaultValue={
-                        addListDetails.detail &&
-                        addListDetails.detail.landlord_number
-                      }
                       onChange={(e) =>
                         setAddListDetails({
                           ...addListDetails,
@@ -1202,9 +1016,9 @@ const NewPropertyListing = ({ router }) => {
                   </Form.Group>
                 </div>
 
-                <div className="col-md-6 d-flex  justify-content-between my-5 px-0">
+                <div className="col-lg-6 d-flex  justify-content-between my-5 px-0">
                   <button className="postPropertyBtn" type="submit">
-                    POST THIS PROPERTY
+                    SAVE PROPERTY COLLECTION
                   </button>
                   <button
                     className="showRequest"
@@ -1249,4 +1063,4 @@ const NewPropertyListing = ({ router }) => {
   );
 };
 
-export default withRouter(NewPropertyListing);
+export default withRouter(collectNewProperty);

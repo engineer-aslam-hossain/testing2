@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
 import Link from "next/link";
 import DreamFinderContext from "../Context/Context";
+
 const SingleArea = ({ area }) => {
   const { name } = area;
   const { searchData, SetSearchData } = useContext(DreamFinderContext);
 
   return (
     <div className="singleArea">
-      <h5 className="areaName">{name} </h5>
       <div className="d-flex flex-column">
         {area.places &&
           area.places.map((singlePlace) => (

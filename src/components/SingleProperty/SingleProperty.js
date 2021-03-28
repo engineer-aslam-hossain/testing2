@@ -4,6 +4,10 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import Swal from "sweetalert2";
 import Link from "next/link";
 import { useContext, useState } from "react";
+import BathtubIcon from "@material-ui/icons/Bathtub";
+import HotelIcon from "@material-ui/icons/Hotel";
+import ViewModuleIcon from "@material-ui/icons/ViewModule";
+
 import DreamFinderContext from "../Context/Context";
 const SingleProperty = ({ item }) => {
   const { allProperty, saveProperties, loggedInUser } = useContext(
@@ -16,11 +20,11 @@ const SingleProperty = ({ item }) => {
     address,
     bed,
     bath,
-    purpose,
-    property_type,
-    category,
+    area_sqft,
     price,
     images,
+    address_block,
+    address_area,
   } = item;
 
   const [saved, setSaved] = useState(false);
@@ -75,8 +79,14 @@ const SingleProperty = ({ item }) => {
               alt="PropertyImg"
             />
             <h5 className="propertyName">{name} </h5>
-            <h6 className="propertyAdd">{address}</h6>
-            <Card.Text className="propertyText">{`${bed} beds | ${bath} baths | ${purpose} |  ${category} | ${property_type} |`}</Card.Text>
+            <h6 className="propertyAdd">
+              {address_block && `${address_block} , `}
+              {address_area}
+            </h6>
+            <Card.Text className="propertyText">
+              <HotelIcon /> {bed} beds | <BathtubIcon /> {bath} baths |{" "}
+              <ViewModuleIcon /> {area_sqft} Sqft
+            </Card.Text>
           </Card.Body>
         </Link>
 

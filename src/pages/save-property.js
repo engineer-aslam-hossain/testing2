@@ -73,7 +73,6 @@ const SaveProperty = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    e.target.reset();
     SetSearchData({
       ...searchData,
       area_sqft_min: Math.floor(minArea),

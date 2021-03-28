@@ -15,7 +15,6 @@ const PostPopularLocations = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    e.target.reset();
     // console.log(locationArea, locations);
     try {
       const token = JSON.parse(localStorage.getItem("DreamFinder_session"));

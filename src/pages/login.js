@@ -43,8 +43,6 @@ const Login = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    e.target.reset();
-
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/user/signin`,
@@ -103,23 +101,6 @@ const Login = () => {
         <div className="row">
           <div className="col-md-12">
             <div className="row justify-content-center">
-              {/* <div className="col-md-6 signUpLeft my-auto">
-                <div
-                  style={{
-                    paddingRight: "3rem",
-                    marginLeft: "auto",
-                  }}
-                >
-                  <h1 className="signUpTitle">Sign In</h1>
-                  <p>
-                    Pariatur blanditiis dolorem fugit et illo omnis. Maxime
-                    animi eum temporibus autem.
-                  </p>
-                  <div className="d-flex justify-content-center align-items-center">
-                    <img src="/images/House searching.png" alt="#" />
-                  </div>
-                </div>
-              </div> */}
               <div className="col-md-5">
                 <Card
                   style={{ padding: "2rem 2rem", border: "none" }}

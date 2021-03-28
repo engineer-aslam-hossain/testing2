@@ -25,7 +25,6 @@ const JobPost = ({ data }) => {
 
   const jobApplySubmitHandler = async (e) => {
     e.preventDefault();
-    e.target.reset();
 
     // const formData = new FormData();
 

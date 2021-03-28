@@ -74,7 +74,6 @@ const SearchItemGroup = ({ btnName }) => {
       price_min: parseInt(range.min),
       price_max: parseInt(range.max),
     });
-    e.target.reset();
   };
 
   // console.log(searchData);

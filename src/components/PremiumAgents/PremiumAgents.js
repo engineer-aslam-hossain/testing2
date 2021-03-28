@@ -74,10 +74,10 @@ const PremiumAgents = () => {
                 Browse properties by city , town or country…
               </h2>
             </div>
-            <CommonHeader title="Premium Agents" />
-            <div className="d-flex justify-content-center align-items-center">
+            {/* <CommonHeader title="Premium Agents" /> */}
+            {/* <div className="d-flex justify-content-center align-items-center">
               <h5>No agents published yet</h5>
-            </div>
+            </div> */}
             {/* <div className="mx-auto premiumAgentsSlider" style={{ width: "80%" }}>
               <Slider {...settings}>
                 {fakeSlideItems.map((item) => (

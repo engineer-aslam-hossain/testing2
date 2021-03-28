@@ -46,7 +46,6 @@ const NewJobPost = () => {
 
   const newJobSubmitHandler = async (e) => {
     e.preventDefault();
-    e.target.reset();
 
     try {
       const token = JSON.parse(localStorage.getItem("DreamFinder_session"));
@@ -97,7 +96,7 @@ const NewJobPost = () => {
               onSubmit={newJobSubmitHandler}
             >
               <Form.Group>
-                <h5>Job Post Title</h5>
+                <Form.Label>Job Post Title</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Job Post Title"
@@ -109,62 +108,36 @@ const NewJobPost = () => {
                   }
                 />
               </Form.Group>
-              <div className="addingDiv">
-                <Form.Group controlId="formBasicEmail">
-                  <h5>Job Functions</h5>
-                  <Form.Control
-                    type="text"
-                    placeholder="Job Functions"
-                    value={jobFunctions}
-                    onChange={(e) => setJobFunctions(e.target.value)}
-                  />
-                  <button type="button" onClick={jobFunctionsHandler}>
-                    <AddIcon />
-                  </button>
-                </Form.Group>
-                <div className="d-flex flex-column justify-content-center align-items-center my-3">
-                  {jobPostInfo.functions &&
-                    jobPostInfo.functions.map((item, index) => (
-                      <h5 key={index} className="mb-0">
-                        {index + 1}-{item}
-                      </h5>
-                    ))}
-                </div>
-              </div>
-              <div className="d-flex align-items-center flex-wrap my-3">
-                <h5 className=""> Employment Type </h5>
-                <Dropdown className="d-flex align-items-center">
-                  <Dropdown.Toggle className="headerMain" drop="left">
-                    {jobPostInfo.type ? jobPostInfo.type : "Select Type"}
-                  </Dropdown.Toggle>
 
-                  <Dropdown.Menu className="searchDropDownMenu">
-                    <div>
-                      <div>
-                        <div className="proTypeOptionsDiv">
-                          <div className="d-flex flex-column">
-                            {jobTypes.map((item) => (
-                              <Dropdown.Item
-                                onClick={() =>
-                                  setJobPostInfo({
-                                    ...jobPostInfo,
-                                    type: item.type,
-                                  })
-                                }
-                                key={item.id}
-                              >
-                                {item.type}
-                              </Dropdown.Item>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </div>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Label>Job Division</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Job Division"
+                  onChange={(e) =>
+                    setJobPostInfo({
+                      ...jobPostInfo,
+                      division: e.target.value,
+                    })
+                  }
+                />
+              </Form.Group>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Label>Job Position</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Job Position"
+                  onChange={(e) =>
+                    setJobPostInfo({
+                      ...jobPostInfo,
+                      position: e.target.value,
+                    })
+                  }
+                />
+              </Form.Group>
+
               <Form.Group controlId="exampleForm.ControlTextarea1">
-                <h5>Job Description</h5>
+                <Form.Label>Job Description</Form.Label>
                 <Form.Control
                   as="textarea"
                   rows={3}

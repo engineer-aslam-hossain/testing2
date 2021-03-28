@@ -89,14 +89,12 @@ const ModalSearchInputGroup = () => {
       price_min: parseInt(range.min),
       price_max: parseInt(range.max),
     });
-    e.target.reset();
   };
 
   const [minArea, setMinArea] = useState(null);
   const [maxArea, setMaxArea] = useState(null);
   const areaSubmitHandler = (e) => {
     e.preventDefault();
-    e.target.reset();
     SetSearchData({
       ...searchData,
       area_sqft_min: Math.floor(minArea),

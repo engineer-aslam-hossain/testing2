@@ -63,11 +63,11 @@ const findProperties = () => {
   const [minArea, setMinArea] = useState(null);
   const [maxArea, setMaxArea] = useState(null);
 
-  // console.log(searchResult);
+  // console.log(searchData);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    e.target.reset();
+
     SetSearchData({
       ...searchData,
       area_sqft_min: Math.floor(minArea),
@@ -116,7 +116,6 @@ const findProperties = () => {
 
   const areaSubmitHandler = (e) => {
     e.preventDefault();
-    e.target.reset();
     SetSearchData({
       ...searchData,
       area_sqft_min: Math.floor(minArea),

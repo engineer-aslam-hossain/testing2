@@ -107,7 +107,7 @@ const adminPanelData = [
     details: "Manage payment for properties you’ve rented.",
   },
   {
-    id: 33,
+    id: 14,
     icon: "icons/admin/career.svg",
     title: "Careers & Jobs",
     query: "All",
@@ -115,7 +115,7 @@ const adminPanelData = [
     details: "Post Jobs and See Incoming Job Requests",
   },
   {
-    id: 34,
+    id: 15,
     icon: "icons/admin/bank.svg",
     title: "Bank Loan Info",
     query: "All",
@@ -123,7 +123,7 @@ const adminPanelData = [
     details: "List of all users and managing options",
   },
   {
-    id: 35,
+    id: 16,
     icon: "icons/admin/location.svg",
     title: "Popular Locations",
     query: "All",
@@ -131,7 +131,7 @@ const adminPanelData = [
     details: "Post Jobs and See Incoming Job Requests",
   },
   {
-    id: 14,
+    id: 17,
     icon: "icons/admin/Users.svg",
     title: "Users",
     query: "All",
@@ -139,7 +139,7 @@ const adminPanelData = [
     details: "List of all users and managing options",
   },
   {
-    id: 15,
+    id: 18,
     icon: "icons/admin/ManageAdmins.svg",
     title: "Manage Admins",
     route: "",
@@ -147,10 +147,26 @@ const adminPanelData = [
     details: "Manage Payments from renters of your property ",
   },
   {
-    id: 16,
+    id: 19,
     icon: "icons/admin/SiteSettings.svg",
     title: "Site Settings",
     route: "",
+    query: "All",
+    details: "Change Site Settings an Preferences",
+  },
+  {
+    id: 20,
+    icon: "icons/admin/PostNewProperty.svg",
+    title: "Collect New Property",
+    route: "collectNewProperty",
+    query: "All",
+    details: "Change Site Settings an Preferences",
+  },
+  {
+    id: 21,
+    icon: "icons/admin/ListedAll.svg",
+    title: "Collected Properties",
+    route: "allCollectedProperties",
     query: "All",
     details: "Change Site Settings an Preferences",
   },

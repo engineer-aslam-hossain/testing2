@@ -8,6 +8,9 @@ import SingleProperty from "../../components/SingleProperty/SingleProperty";
 import DreamFinderContext from "../../components/Context/Context";
 import Swal from "sweetalert2";
 import Slider from "react-slick";
+import BathtubIcon from "@material-ui/icons/Bathtub";
+import HotelIcon from "@material-ui/icons/Hotel";
+import ViewModuleIcon from "@material-ui/icons/ViewModule";
 
 import { useContext, useState } from "react";
 
@@ -19,7 +22,6 @@ const SinglePropertyInfoDetails = ({ data }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-
   const {
     address,
     address_area,
@@ -31,8 +33,10 @@ const SinglePropertyInfoDetails = ({ data }) => {
     price,
     ref_code,
     images,
+    bed,
+    bath,
+    area_sqft,
   } = data.data;
-
   const {
     extra_details,
     balcony,
@@ -40,18 +44,13 @@ const SinglePropertyInfoDetails = ({ data }) => {
     developer_name,
     floor,
     land_size,
-    landlord_name,
-    landlord_number,
-    manager_name,
-    manager_number,
+
     service_charge,
   } = detail;
-
   const { allProperty, loggedInUser } = useContext(DreamFinderContext);
   const similarProperty = allProperty.filter(
     (item) => item.address_district === address_district
   );
-
   const [getInTouch, setGetInTouch] = useState({
     type: "Get In Touch",
     name: loggedInUser.name ? loggedInUser.name : "",
@@ -60,13 +59,10 @@ const SinglePropertyInfoDetails = ({ data }) => {
     message: `I am interested to inquire about your property in DreamFinder: ID-${ref_code}. Please contact me according to your convenience
     `,
   });
-
-  // console.log(data.data);
-
+  console.log(data.data);
   const getInTouchSubmitHandler = async (e) => {
     e.preventDefault();
     e.target.reset();
-
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/message/send`,
@@ -80,7 +76,6 @@ const SinglePropertyInfoDetails = ({ data }) => {
       );
       const data = await res.json();
       // console.log(data);
-
       if (data.success === "yes") {
         Swal.fire({
           position: "top-center",
@@ -101,6 +96,26 @@ const SinglePropertyInfoDetails = ({ data }) => {
     }
   };
 
+  const mainAmenitis = [
+    "CCTV",
+    "Emergency Exit",
+    "Gas",
+    "Gym",
+    "Lift",
+    "Stair",
+    "Parking",
+    "Prayer Room",
+    "Swimming Pool",
+    "Tiles",
+    "Security",
+  ];
+
+  const otherAmenities =
+    amenity && amenity.filter((ame) => !mainAmenitis.includes(ame));
+
+  const mainAmenityList =
+    amenity && amenity.filter((ame) => mainAmenitis.includes(ame));
+  // console.log(otherAmenities);
   if (data) {
     return (
       <section className="SingleAreaInfo">
@@ -164,30 +179,37 @@ const SinglePropertyInfoDetails = ({ data }) => {
                       <div className="propertyName mb-3">
                         <h2>{name}</h2>
                         <div className="d-flex align-items-center">
-                          <h4>{address}</h4>
+                          <h4>{address_area}</h4>
                           {/* <Link href="/">( Open In Maps )</Link> */}
                         </div>
                       </div>
-
                       <div className="FindedPropertyDetails mb-4">
-                        <h5>property details</h5>
-                        <p>Floor : {floor} </p>
+                        <div>
+                          <h5>property details</h5>
+                          <div className="d-flex align-items-center">
+                            <div className="propertyDetailsIcons">
+                              <HotelIcon /> {bed} beds
+                            </div>
+                            <div className="propertyDetailsIcons">
+                              <BathtubIcon /> {bath} baths
+                            </div>
+                            <div className="propertyDetailsIcons">
+                              <ViewModuleIcon /> {area_sqft} Sq.ft
+                            </div>
+                          </div>
+                        </div>
+                        {/* <p>Floor : {floor} </p>
                         <p>Unit : {unit} </p>
                         <p>Balcony : {balcony} </p>
                         <p>Land Size : {land_size} Katha </p>
                         <p>Service Charge : {service_charge} </p>
-                        <p>Manager Name : {manager_name} </p>
-                        <p>Manager Number : {manager_number} </p>
-                        <p>Land Lord Name : {landlord_name} </p>
-                        <p>Land Lord Number : {landlord_number} </p>
                         <p>Developer Name : {developer_name} </p>
-
                         <ul>
                           {extra_details &&
                             extra_details.map((item, index) => (
                               <li key={index}>{item}</li>
                             ))}
-                        </ul>
+                        </ul> */}
                       </div>
                       <div className="FindedPropertyDetails mb-4">
                         <h5>property descriptions</h5>
@@ -195,15 +217,79 @@ const SinglePropertyInfoDetails = ({ data }) => {
                       </div>
                       <div className="FindedPropertyDetails mb-4">
                         <h5>property amenities</h5>
-                        <ul>
-                          {amenity &&
-                            amenity.map((item, index) => (
-                              <li key={index}>{item}</li>
-                            ))}
-                        </ul>
+
+                        <div>
+                          <div>
+                            {mainAmenityList.length > 0 && (
+                              <h6 className="amenityTitle">Main Amenities</h6>
+                            )}
+                          </div>
+                          <div className="col-lg-12 col-md-12 d-flex p-0 flex-wrap">
+                            <div className="col-lg-4 col-md-6 p-0">
+                              {mainAmenityList.map(
+                                (item, index) =>
+                                  index <= 5 && (
+                                    <div
+                                      className="d-flex align-items-center my-3 mainAmenityIcons"
+                                      key={index}
+                                    >
+                                      <img
+                                        src={`/icons/amenityIcons/${item}.svg`}
+                                        alt="amenityIcon"
+                                      />
+                                      <span> {item} </span>
+                                    </div>
+                                  )
+                              )}
+                            </div>
+                            <div className="col-lg-4 col-md-6 p-0">
+                              {mainAmenityList.map(
+                                (item, index) =>
+                                  index > 5 && (
+                                    <div
+                                      className="d-flex align-items-center my-3 mainAmenityIcons"
+                                      key={index}
+                                    >
+                                      <img
+                                        src={`/icons/amenityIcons/${item}.svg`}
+                                        alt="amenityIcon"
+                                      />
+                                      <span key={index}> {item} </span>
+                                    </div>
+                                  )
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div>
+                            {otherAmenities.length > 0 && (
+                              <h6 className="amenityTitle">Other Amenities</h6>
+                            )}
+                          </div>
+                          <div className="col-lg-12 d-flex flex-wrap p-0">
+                            <div className="col-lg-4 col-md-6 p-0">
+                              <ul>
+                                {otherAmenities &&
+                                  otherAmenities.map(
+                                    (item, index) =>
+                                      index <= 5 && <li key={index}>{item}</li>
+                                  )}
+                              </ul>
+                            </div>
+                            <div className="col-lg-4 col-md-6 p-0">
+                              <ul>
+                                {otherAmenities &&
+                                  otherAmenities.map(
+                                    (item, index) =>
+                                      index > 5 && <li key={index}>{item}</li>
+                                  )}
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-
                     <div className="col-md-4 px-0">
                       <div className="findedItemcontactUsForm">
                         <h1>{price} BDT</h1>
@@ -212,8 +298,8 @@ const SinglePropertyInfoDetails = ({ data }) => {
                       <Card style={{ padding: "1rem" }} className="signUpCard">
                         <Form noValidate onSubmit={getInTouchSubmitHandler}>
                           <div className="formHeading">
-                            {/* <p>Property ID: 12144141</p>
-                            <h1>A1B2C3D4</h1> */}
+                            <p>Property ID:</p>
+                            <h1>{ref_code}</h1>
                           </div>
                           <Form.Group controlId="formBasicEmail">
                             <Form.Label>Name</Form.Label>
@@ -344,16 +430,14 @@ const SinglePropertyInfoDetails = ({ data }) => {
       </section>
     );
   } else {
-    // return <Error />;
+    return <Error />;
   }
 };
 
 export default SinglePropertyInfoDetails;
 
 export async function getServerSideProps({ params }) {
-  const res = await fetch(
-    `${process.env.API_BASE_URL}/property/?_id=${params.id}`
-  );
+  const res = await fetch(`${process.env.API_BASE_URL}/property/${params.id}`);
   const data = await res.json();
   // console.log(data);
 

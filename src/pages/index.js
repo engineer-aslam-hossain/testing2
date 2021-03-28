@@ -15,7 +15,7 @@ export default function Home() {
       <PopularArea />
       <NewProperties />
       <Partner />
-      <Blog />
+      {/* <Blog /> */}
       <SocialMedia />
     </>
   );

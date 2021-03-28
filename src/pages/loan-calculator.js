@@ -105,7 +105,6 @@ const loanCalculator = () => {
 
   const applyForLoan = async (e) => {
     e.preventDefault();
-    e.target.reset();
 
     try {
       const res = await fetch(

@@ -26,7 +26,6 @@ const NewBlogPost = () => {
 
   const blogSubmitHandler = async (e) => {
     e.preventDefault();
-    e.target.reset();
     try {
       const token = JSON.parse(localStorage.getItem("DreamFinder_session"));
 

@@ -106,31 +106,34 @@ const Careers = () => {
             <div className="my-5 availablePost">
               <h3>Available Job Posts</h3>
             </div>
-            {allJobPosts.map((item) => (
-              <div className="col-md-12 jobPost p-4 my-4" key={item._id}>
-                <div>
-                  <h4>{item.title}</h4>
-                  <p>Posted on : {new Date(item.createdAt).toLocaleString()}</p>
-                </div>
-                <div className="my-4">
-                  <h5>{item.description}</h5>
-                </div>
-                <div className="d-flex flex-wrap justify-content-between align-items-center">
+            {allJobPosts &&
+              allJobPosts.map((item) => (
+                <div className="col-md-12 jobPost p-4 my-4" key={item._id}>
                   <div>
-                    <h6>
-                      {item.type} |{" "}
-                      {item.functions &&
-                        item.functions.map((item) => `${item}, `)}
-                    </h6>
+                    <h4>{item.title}</h4>
+                    <p>
+                      Posted on : {new Date(item.createdAt).toLocaleString()}
+                    </p>
                   </div>
-                  <div>
-                    <Link href={`/careers/${[item._id]}`}>
-                      <a className="applyNow">APPLY NOW</a>
-                    </Link>
+                  <div className="my-4">
+                    <h5>{item.description}</h5>
+                  </div>
+                  <div className="d-flex flex-wrap justify-content-between align-items-center">
+                    <div>
+                      <h6>
+                        {item.type} |{" "}
+                        {item.functions &&
+                          item.functions.map((item) => `${item}, `)}
+                      </h6>
+                    </div>
+                    <div>
+                      <Link href={`/careers/${[item._id]}`}>
+                        <a className="applyNow">APPLY NOW</a>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
           <div className="col-md-12 d-flex justify-content-center mb-5">
             <Pagination>

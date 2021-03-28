@@ -18,8 +18,6 @@ const GetInTouch = () => {
 
   const getInTouchSubmitHandler = async (e) => {
     e.preventDefault();
-    e.target.reset();
-
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/message/send`,

@@ -99,7 +99,8 @@ const UserProfile = () => {
                 ))}
               </div>
             </div>
-            {role && role.includes("ADMIN") ? (
+            {(role && role.includes("ADMIN")) ||
+            role.includes("DATA_COLLECTOR") ? (
               <div className="col-md-12 p-3 mb-5">
                 <div className="px-4 propertyManagementTitle mb-3 position-relative">
                   <h3>Administrative Management</h3>

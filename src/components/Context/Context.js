@@ -32,7 +32,7 @@ export const ContextProvider = ({ children }) => {
   const getAllProperty = async () => {
     try {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/property/search	`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/property/search`,
         {
           method: "POST",
           headers: {
@@ -49,9 +49,9 @@ export const ContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getUser();
-    getAllProperty();
-  }, []);
+    !loggedInUser.name && getUser();
+    allProperty.length <= 0 && getAllProperty();
+  }, [loggedInUser]);
 
   // console.log(loggedInUser);
 
