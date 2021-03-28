@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import { Dropdown } from "react-bootstrap";
 const AllJobPosts = () => {
   const [showVisibility, setShowVisibility] = useState("Show All");
+
+  const [allJobPost, setAllJobPost] = useState([]);
+
   const getAllJobPosts = async () => {
     try {
       const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/job/all`, {
@@ -12,8 +15,8 @@ const AllJobPosts = () => {
         },
       });
       const { data } = await res.json();
-      console.log(data);
-      //   setAllProperty(data);
+      // console.log(data);
+      setAllJobPost(data);
     } catch (err) {
       console.log(err);
     }
@@ -77,46 +80,41 @@ const AllJobPosts = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-12 jobPost p-4 my-4">
-            <div>
-              <h4>Job Post Title</h4>
-              <p>Posted on 17 Feb, 2021</p>
-            </div>
-            <div className="my-4">
-              <h5>
-                Job Post Description Architecto excepturi quia voluptatibus ex
-                est numquam ut non. Repellat qui inventore corrupti voluptatem
-                modi nihil inventore vero. Odit sint natus animi modi eius
-                quibusdam. Enim possimus soluta nisi aperiam in sit. Tepturi
-                quia voluptatibus ex est numquam ut non. Repellat qui inventore
-                corrupti voluptatem modi nihil inventore vero. Odit sint natus
-                animi modi eius quibusdam. Enim possimus soluta nisi ... ... ...
-              </h5>
-            </div>
-            <div className="d-flex flex-wrap justify-content-between align-items-center">
-              <div>
-                <h6>EMPLOYMENTTYPE | JOBFUNCTIONS</h6>
+          {allJobPost &&
+            allJobPost.map((item) => (
+              <div className="col-md-12 jobPost p-4 my-4" key={item._id}>
+                <div>
+                  <h4>{item.title}</h4>
+                  <p>Posted on {new Date(item.createdAt).toDateString()}</p>
+                </div>
+                <div className="my-4">
+                  <h5>{item.description}</h5>
+                </div>
+                <div className="d-flex flex-wrap justify-content-between align-items-center">
+                  <div>
+                    <h6>
+                      {item.division} | {item.position}
+                    </h6>
+                  </div>
+                  <div>
+                    <Link
+                      href={{
+                        pathname: `/dashboard/allJobPosts`,
+                      }}
+                    >
+                      <a className="editJobPost">EDIT POST</a>
+                    </Link>
+                    <Link
+                      href={{
+                        pathname: `/dashboard/allJobPosts`,
+                      }}
+                    >
+                      <a className="applyNow">SEE APPLICANTS</a>
+                    </Link>
+                  </div>
+                </div>
               </div>
-              <div>
-                <Link
-                  href={{
-                    pathname: `/`,
-                    query: { id: "602a3e1340fc4f05382471a0" },
-                  }}
-                >
-                  <a className="editJobPost">EDIT POST</a>
-                </Link>
-                <Link
-                  href={{
-                    pathname: `/`,
-                    query: { id: "602a3e1340fc4f05382471a0" },
-                  }}
-                >
-                  <a className="applyNow">SEE APPLICANTS</a>
-                </Link>
-              </div>
-            </div>
-          </div>
+            ))}
         </div>
       </div>
     </section>

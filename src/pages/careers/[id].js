@@ -9,7 +9,16 @@ const JobPost = ({ data }) => {
   const [serviceFile, setServiceFile] = useState(null);
   const { loggedInUser } = useContext(DreamFinderContext);
   const { name, email, phone_number } = loggedInUser;
-  const { title, createdAt, description, functions, type, _id } = data.data[0];
+  const {
+    title,
+    createdAt,
+    description,
+    division,
+    position,
+    functions,
+    type,
+    _id,
+  } = data.data[0];
   const handleFileChange = (e) => {
     const newFile = e.target.files[0];
     setServiceFile(newFile);
@@ -84,22 +93,18 @@ const JobPost = ({ data }) => {
               <div>
                 <div className="d-flex align-items-center jobPostFooter">
                   <div>
-                    <h6>Employment Type </h6>
+                    <h6>Job Divison </h6>
                   </div>
                   <div>
-                    <p>{type}</p>
+                    <p>{division}</p>
                   </div>
                 </div>
                 <div className="d-flex align-items-center jobPostFooter">
                   <div>
-                    <h6>Job Functions </h6>
+                    <h6>Job Position </h6>
                   </div>
                   <div className="d-flex align-items-center">
-                    {functions.map((item, index) => (
-                      <p key={index} className="mr-2">
-                        {item},
-                      </p>
-                    ))}
+                    <p className="mr-2">{position}</p>
                   </div>
                 </div>
               </div>

@@ -121,9 +121,7 @@ const Careers = () => {
                   <div className="d-flex flex-wrap justify-content-between align-items-center">
                     <div>
                       <h6>
-                        {item.type} |{" "}
-                        {item.functions &&
-                          item.functions.map((item) => `${item}, `)}
+                        {item.position} | {item.division}
                       </h6>
                     </div>
                     <div>
