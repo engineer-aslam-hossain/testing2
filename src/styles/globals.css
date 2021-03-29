@@ -843,6 +843,12 @@ button.slick-arrow.slick-prev {
   .col-md-10.mx-auto.d-flex.blogCard {
     margin: 1rem !important;
   }
+  .availableJobLists {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-rows: 1fr;
+    grid-gap: 2rem;
+  }
 }
 /* Premium Agents styles end */
 
@@ -1008,6 +1014,12 @@ img.partnerImg {
     width: 375px;
     margin-bottom: 3rem;
   }
+  .availableJobLists {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-rows: 1fr;
+    grid-gap: 2rem;
+  }
 }
 .partnerName {
   font-weight: 700;
@@ -1111,6 +1123,7 @@ section.socailMedia {
 }
 .signUpCard .card {
   box-shadow: var(--box-shadow);
+  border-top: 6px solid #c8aa22;
 }
 h3.formTitle {
   font-size: 30px;
@@ -1710,6 +1723,9 @@ button.messageSendBtn {
   text-transform: uppercase;
 }
 
+.singlePropertyGetInTouchCard {
+  box-shadow: var(--box-shadow);
+}
 /* Finded single property details styles end*/
 
 /* blog page styles start */
@@ -2796,7 +2812,8 @@ section.careerGuideWelcome {
 }
 
 .jobPost {
-  border: 1px solid #474747;
+  border: 1px solid #a7a7a7;
+  border-radius: 0.5rem;
 }
 
 .jobPost h4 {
@@ -2897,6 +2914,15 @@ label.cvLabel {
   font-weight: bold;
   cursor: pointer;
 }
+
+button.careerDropDown {
+  background-color: transparent !important;
+  color: #474747 !important;
+  outline: 0 !important;
+  border: 1px solid #a7a7a7 !important;
+  box-shadow: none !important;
+}
+
 /* careers styles end */
 
 /* termsAndConditions styles start */

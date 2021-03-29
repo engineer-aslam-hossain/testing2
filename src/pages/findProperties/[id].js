@@ -134,7 +134,7 @@ const SinglePropertyInfoDetails = ({ data }) => {
               </h3>
             </div>
             <div className="col-md-12">
-              <Card className="propertyCard">
+              <Card className="">
                 <Card.Body>
                   <div className="singlePropertySlider">
                     {!images.length > 0 ? (
@@ -293,9 +293,12 @@ const SinglePropertyInfoDetails = ({ data }) => {
                     <div className="col-md-4 px-0">
                       <div className="findedItemcontactUsForm">
                         <h1>{price} BDT</h1>
-                        <p>GET IN TOUCH WITH US</p>
+                        <p>Contact Us</p>
                       </div>
-                      <Card style={{ padding: "1rem" }} className="signUpCard">
+                      <Card
+                        style={{ padding: "1rem" }}
+                        className="singlePropertyGetInTouchCard"
+                      >
                         <Form noValidate onSubmit={getInTouchSubmitHandler}>
                           <div className="formHeading">
                             <p>Property ID:</p>
@@ -359,7 +362,7 @@ const SinglePropertyInfoDetails = ({ data }) => {
                             />
                           </Form.Group>
                           <button className="messageSendBtn" type="submit">
-                            GET IN TOUCH
+                            SEND MESSAGE
                           </button>
                         </Form>
                         <div className="contactUpFormFooter">

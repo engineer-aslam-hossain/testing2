@@ -101,18 +101,15 @@ const SignUp = () => {
             <div className="col-lg-8 col-md-6 registerText">
               <h5>Register Now, It’s Free!</h5>
               <p>
-                Post your properties on Zameen.com and directly expose them to
-                thousands of potential investors, tenants, buyers, agents &
+                Post your properties on DreamFinder.com and directly expose them
+                to thousands of potential investors, tenants, buyers, agents &
                 brokers and other interested parties. Save your favourite
                 properties in your members panel to view them later at your
-                convenience. Use Zameen.com's integrated e-mail facility to
-                track your potential buying & rental leads. Set-up property
-                email alerts providing you latest listings of properties
-                instantly as they appear on Zameen.com. Search the exact kind of
-                property you are looking for, including hundreds of
-                developments, residential & commercial properties, homes,
-                villas, apartments, plots, shops, offices, complete buildings &
-                floors, warehouses, factories and labour camps.
+                convenience. Search the exact kind of property you are looking
+                for, including hundreds of developments, residential &
+                commercial properties, homes, villas, apartments, plots, shops,
+                offices, complete buildings & floors, warehouses, factories and
+                labour camps.
               </p>
             </div>
             <div className="col-lg-4 col-md-6 signUpCard">
