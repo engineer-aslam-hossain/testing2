@@ -2923,6 +2923,21 @@ button.careerDropDown {
   box-shadow: none !important;
 }
 
+.careerImg {
+  border: 1px solid #a7a7a7;
+  padding: 2rem;
+}
+
+.careerImg h1 {
+  color: #c8aa22;
+  font-size: 10rem;
+}
+.careerImgContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-rows: 1fr;
+  grid-gap: 2rem;
+}
 /* careers styles end */
 
 /* termsAndConditions styles start */

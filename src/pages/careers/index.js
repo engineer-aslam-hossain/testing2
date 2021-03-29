@@ -95,49 +95,55 @@ const Careers = () => {
               for real-estate professionals.
             </p>
           </div>
-          <div className="col-md-12 my-3 hiringOverview px-0">
+          <div className="col-md-12 my-3 hiringOverview">
             <div className="my-5">
               <h3>An Overview of Our Hiring Process</h3>
             </div>
-            <div className="col-md-12 d-flex flex-wrap px-0">
-              <div className="col-md-4  mb-4 d-flex justify-content-center px-0">
+            <div className="careerImgContainer px-0">
+              <div className="d-flex align-items-center justify-content-center px-0 careerImg">
+                <h1>1.</h1>
                 <img
-                  src="/images/Group_476.png"
+                  src="/icons/careers/Frame.svg"
                   alt="careerImg"
                   className="img-fluid"
                 />
               </div>
-              <div className="col-md-4  mb-4 d-flex justify-content-center px-0">
+              <div className="d-flex justify-content-center px-0 align-items-center careerImg">
+                <h1>2.</h1>
                 <img
-                  src="/images/Group_477.png"
+                  src="/icons/careers/smartphone.svg"
                   alt="careerImg"
                   className="img-fluid"
                 />
               </div>
-              <div className="col-md-4  mb-4 d-flex justify-content-center px-0">
+              <div className="d-flex justify-content-center px-0 align-items-center careerImg">
+                <h1>3.</h1>
                 <img
-                  src="/images/Group_478.png"
+                  src="/icons/careers/interview.svg"
                   alt="careerImg"
                   className="img-fluid"
                 />
               </div>
-              <div className="col-md-4  mb-4 d-flex justify-content-center px-0">
+              <div className="d-flex justify-content-center px-0 align-items-center careerImg">
+                <h1>4.</h1>
                 <img
-                  src="/images/Group_479.png"
+                  src="/icons/careers/exam.svg"
                   alt="careerImg"
                   className="img-fluid"
                 />
               </div>
-              <div className="col-md-4  mb-4 d-flex justify-content-center px-0">
+              <div className="d-flex justify-content-center px-0 align-items-center careerImg">
+                <h1>5.</h1>
                 <img
-                  src="/images/Group_480.png"
+                  src="/icons/careers/flag.svg"
                   alt="careerImg"
                   className="img-fluid"
                 />
               </div>
-              <div className="col-md-4  mb-4 d-flex justify-content-center px-0">
+              <div className="d-flex justify-content-center px-0 align-items-center careerImg">
+                <h1>6.</h1>
                 <img
-                  src="/images/Group_481.png"
+                  src="/icons/careers/workspace.svg"
                   alt="careerImg"
                   className="img-fluid"
                 />
