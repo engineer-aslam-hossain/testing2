@@ -2935,11 +2935,16 @@ button.careerDropDown {
 }
 
 .careerImg h4 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   margin-top: 1rem;
   text-align: center;
 }
+
+.careerImg img {
+  width: 5rem;
+}
+
 .careerImgContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
