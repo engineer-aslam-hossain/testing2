@@ -2930,7 +2930,15 @@ button.careerDropDown {
 
 .careerImg h1 {
   color: #c8aa22;
-  font-size: 10rem;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.careerImg h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  text-align: center;
 }
 .careerImgContainer {
   display: grid;
