@@ -156,15 +156,17 @@ const Login = () => {
                       <p className="text-secondary">Or Sign Up with...</p>
                     </div>
                     <div className="d-flex flex-column justify-content-around flex-wrap">
-                      <button className="social-btn">
-                        <img
-                          src="/images/google.png"
-                          className="img-fluid"
-                          alt="#"
-                        />
-                        Sign in with Google
-                      </button>
-                      <button className="social-btn">
+                      <Link href="https://DreamFinder.com.bd/api/auth/google">
+                        <a className="social-btn">
+                          <img
+                            src="/images/google.png"
+                            className="img-fluid"
+                            alt="#"
+                          />
+                          Sign in with Google
+                        </a>
+                      </Link>
+                      <button className="social-btn" type="button">
                         <img
                           src="/images/fb.png"
                           className="img-fluid"

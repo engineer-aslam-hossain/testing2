@@ -151,7 +151,7 @@ const loanCalculator = () => {
                 <p>Calculate home loan for buying properties in Bangladesh</p>
               </div>
               <div className="col-md-5">
-                <Card className="signUpCard calculatorCard">
+                <Card className="calculatorCard">
                   <Form noValidate onSubmit={submitHandler}>
                     <Form.Group>
                       <Form.Label>Property Price</Form.Label>

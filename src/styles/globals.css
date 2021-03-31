@@ -1112,8 +1112,13 @@ section.socailMedia {
 
 /*Social Media styles end */
 /*Sign up styles end */
-.signUpCard.calculatorCard.card .form-group {
+.calculatorCard.card .form-group {
   margin-bottom: 0rem;
+}
+
+.calculatorCard.card {
+  box-shadow: var(--box-shadow);
+  padding: 2rem;
 }
 .signUpCard {
   padding: 1rem;
