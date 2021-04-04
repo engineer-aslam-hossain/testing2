@@ -105,8 +105,8 @@ const UserProfile = () => {
                 <div className="px-4 propertyManagementTitle mb-3 position-relative">
                   <h3>Administrative Management</h3>
                 </div>
-                <Link href="/dashboard">
-                  <div className="col-md-12 d-flex flex-wrap px-0">
+                <div className="d-flex flex-wrap">
+                  <Link href="/dashboard">
                     <div className="col-md-3 singlePropertyCard">
                       <div className="mb-3">
                         <img
@@ -117,8 +117,20 @@ const UserProfile = () => {
                       <h4>Admin Control Panel</h4>
                       <p>Manage Payments from renters of your property </p>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                  <Link href="/admin">
+                    <div className="col-md-3 singlePropertyCard">
+                      <div className="mb-3">
+                        <img
+                          src="/icons/Profile_ListNewProperty.svg"
+                          alt="icons"
+                        />
+                      </div>
+                      <h4>Admin Panel 2.0</h4>
+                      <p>Manage Payments from renters of your property </p>
+                    </div>
+                  </Link>
+                </div>
               </div>
             ) : (
               ""
